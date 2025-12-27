@@ -1,0 +1,1689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-01-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Jane is preparing her bank reconciliation. The bank balance in her general ledger is $422 credit. The only items which need to be dealt with are:<br>(i) A bank payment for $822 issued to a supplier which has not yet appeared on the bank statement.<br>(ii) Interest received of $153 which was credited by the bank, but not recorded by Jane.<br><br>What is the closing balance on Jane's bank statement?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The ledger balance of $422 credit should be adjusted by a debit entry of $153 for interest. Thus, the corrected balance is $269 credit.<br>The statement balance will therefore be an overdraft of $269 after the bank payment of $822 has been processed.<br>Therefore the statement balance must currently be $553 cash at bank.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$269 overdrawn</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$1,091 overdrawn</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$553 cash at bank</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$1,397 cash at bank</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-02-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>A business should be treated as separate from its owners.<br><br>Which accounting principle is described in the above sentence?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The correct answer is: Business entity</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Materiality</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Consistency</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Accrual accounting</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Business entity</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-03-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which TWO of the following statements about suspense accounts are true?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Suspense accounts are temporary accounts and one of the reasons for their use is if a trial balance does not balance. They can also be used when an accounts assistant does not know where to post one side of a transaction. Suspense accounts must be investigated and the balance cleared before financial statements are prepared.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>false</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="50.00000" format="html"><text><![CDATA[<p>A suspense account is a temporary account.</p>]]></text></answer>
+    <answer fraction="50.00000" format="html"><text><![CDATA[<p>A suspense account can be opened when a trial balance does not balance.</p>]]></text></answer>
+    <answer fraction="-100" format="html"><text><![CDATA[<p>The balance on the suspense account will be an expense in the statement of profit or loss.</p>]]></text></answer>
+    <answer fraction="-100" format="html"><text><![CDATA[<p>Suspense accounts can only be used for expenses charged to profit or loss.</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-04-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Bethan's accounts for the year-ended 30 June 20X5 include an accrual for telephone expenses of $75. During the year ended 30 June 20X6, she makes payments for telephone charges of $1,150, which includes one invoice of $270 for the quarter ending 31 July 20X6.<br><br>What will be the charge for telephone expenses in the statement of profit or loss for the year ended 30 June 20X6?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Bethan made a payment of $1,150 in the year. Of this, $75 relates to the prior year, and $90 (270/3) relates to the month of July 20X6. Therefore the amount that relates to the year ended 30 June 20X6 is $985 ($1,150 - $75 - $270 + ($270 × 2/3)).</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$1,075</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$985</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$895</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$880</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-05-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Jaya started trading a year ago, selling knitwear she makes with her team of three other knitters. She sells her sweaters at a mark-up of 35%. In the first year of trading, she bought wool for her sweaters costing $4,875. Jumper sales in the year were $5,670.<br><br>What was the value of Jaya's closing inventory of wool for sweaters?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Jaya's sweater sales of $5,670 can be attributed to purchases of $4,200 ($5,670/1.35). Therefore, of the original $4,875 of purchases, there must be $675 remaining at the year-end ($4,875 – $4,200).</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$675</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$795</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$911</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$1,190</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-06-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following are examples of non-current assets?<br>(i) Farm machinery acquired using a bank loan<br>(ii) Office furniture for resale to customers<br>(iii) Laptops used by sales staff<br>(iv) Bank loan repayable over 10 years</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The farm machinery acquired using a bank loan and laptops used by sales staff are examples of non-current assets. Office furniture for resale to customers is a current asset (inventory) rather than a non-current asset The bank loan is an example of a non-current liability, rather than a non-current asset.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i) and (ii)</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>(i) and (iii)</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(ii) and (iv)</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(iii) and (iv)</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-07-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Patrick bought a new cappuccino machine for his café. The purchase price of the machine was $2,500 and Patrick depreciates the machine over its useful life of five years. He charged a full year's worth of depreciation in the year of acquisition and none in the year of disposal. After 2 1/2 years, Patrick sold the machine for $1,600.<br><br>What was the profit or loss on disposal of the machine?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Patrick will charge $500 depreciation in each of the first two years. In the third year, when he decides to sell the machine, it will therefore have a carrying amount of $1,500 as he does not charge depreciation in the year of disposal. As he sold it for $1,600 he will have made a profit on disposal of $100.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Profit of $100</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Loss of $100</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit of $600</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit of $600</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-08-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Thomas has prepared his adjusted trial balance. The total of the statement of profit or loss debits is less than the total of the statement of profit or loss credits. Thomas takes the figure and enters it into the appropriate column for the statement of financial position.<br><br>Has Thomas made a profit or a loss for the period and which column will he enter the profit/(loss) in the statement of financial position?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Thomas has made a profit because the total of the statement of profit or loss debits is less than the total of the credits. A profit must be entered into the credit column of the statement of financial position.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A profit, entered in the debit column</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A loss, entered in the debit column</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>A profit, entered in the credit column</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A loss, entered in the credit column</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-09-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following statements about partnerships are correct?<br>(i) In a partnership, the partners always agree to share profits equally.<br>(ii) In a partnership, the partners are carrying on a business in common with a view to profit.<br>(iii) New partners cannot join the partnership if they previously worked as an employee for the business.<br>(iv) The personal liability of each partner for the partnership's liabilities is unlimited.</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>It is not necessary for the partners to share the profits equally. There is no reason why a new partner cannot have previously worked as an employee for the business.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i) and (ii)</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i) and (iii)</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>(ii) and (iv)</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(iii) and (iv)</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-10-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Patrick is reviewing the receivables ledger. The opening balance of the receivables ledger is $38,842.<br>He has found that the following errors have been made:<br>(i) A bank receipt of $1,200 was omitted from the receivables ledger.<br>(ii) A credit note for $375 was created and recorded in the receivables ledger as an invoice.<br>(iii) The total of a sales invoices was overstated by $90.<br><br>What value should be reported in Patrick's statement of financial position for receivables?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p><table><thead><tr><th></th><th>$</th></tr></thead><tbody><tr><td>Receivables ledger</td><td>38,842</td></tr><tr><td>Bank receipt</td><td>(1,200)</td></tr><tr><td>Credit note (375 × 2)</td><td>(750)</td></tr><tr><td>Invoice total overstated</td><td>(90)</td></tr><tr><td></td><td>36,802</td></tr></tbody></table></p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$38,302</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$38,092</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$36,802</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$39,382</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-11-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Manfred's business has net assets at 1 July 20X3 and 30 June 20X4 of $56,750 and $63,260 respectively. During the year, Manfred introduced capital of $5,000 and made drawings of $175 per week.<br><br>What profit or loss was made by Manfred's business in the year ended 30 June 20X5?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Opening capital + Capital introduced + Profit - Drawings = Closing capital. Rearranging this, profit = $63,260 - $56,750 – $5,000 + ($175 × 52) = $10,610.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit of $2,410</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Loss of $2,410</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Profit of $10,610</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Loss of $10,610</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-12-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Sonia is retiring as an ice-cream vendor. She sold her ice-cream van for $1,650. The van originally cost $15,800. At the date of the sale, accumulated depreciation on the van was $12,640.<br><br>What was the profit or loss on disposal of the ice-cream van?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The carrying amount of the ice-cream van at the date of disposal was 15,800 – 12,640 = $3,160. Sonia sold the van for $1,650 so made a loss on disposal of $1,510 ($3,160 – $1,650).</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A profit of $1,510</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>A loss of $1,510</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A profit of $3,160</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A loss of $3,160</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-MB-S1-13-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Shirley's bank account in the general ledger shows a balance of $1,138 at 31 December. When she compares this balance with her bank statement at the same date, she finds the following differences:<br><table><tbody><tr><td></td><td>$</td></tr><tr><td>Uncleared bank payments</td><td>78</td></tr><tr><td>Overdraft fees for November</td><td>60</td></tr><tr><td>Receipts not yet credited by bank</td><td>389</td></tr></tbody></table><br>What is the corrected balance on the bank account in the general ledger at 31 December?</p><p>Answer: {1:NUMERICAL:=1078:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The bank account in the general ledger needs to be adjusted for the bank charges of $60 (which will show in Shirley's bank statement but not in the ledger).</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-MB-S1-14-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The following information relates to questions 14.14 and 14.15.<br><br>Vivienne and Robert are in partnership, sharing profits and losses in a ratio of 3:2. They maintain current accounts and fixed capital accounts. In the last year, their profit before appropriations was $27,800. Robert is entitled to an annual salary of $3,800.<br>During the year Vivienne and Robert made cash drawings of $12,000 each.<br><br>What is Vivienne's share of the profit?</p><p>Answer: {1:NUMERICAL:=14400:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>($27,800 - $3,800) × 3/5 = $14,400</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-15-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The following information relates to questions 14.14 and 14.15.<br><br>Vivienne and Robert are in partnership, sharing profits and losses in a ratio of 3:2. They maintain current accounts and fixed capital accounts. In the last year, their profit before appropriations was $27,800. Robert is entitled to an annual salary of $3,800.<br>During the year Vivienne and Robert made cash drawings of $12,000 each.<br><br>The correct entries for the partners' drawings have been made in the bank account.<br>What entries are needed to complete the posting for the partners' drawings?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The correct answer is: Debit entries in the partners' current accounts</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Debit entries in the partners' capital accounts</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Credit entries in the partners' capital accounts</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Debit entries in the partners' current accounts</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Credit entries in the partners' current accounts</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-16-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Pam runs a restaurant. In November 20X8 she received a letter from a solicitor representing a customer who claims she suffered food poisoning after eating in the restaurant. The customer is claiming damages of $2,000. Pam offered to pay $400. Pam's solicitor has advised that the case is highly likely to go to court and, when the court case concludes, she will probably be required to pay $1,200.<br><br>What amount should be provided for in respect of the claim in Pam's financial statements for the year ended 31 December 20X8?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>$1,200 is the best estimate Pam has of the payment she may have to make, so the provision should be for that amount.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$Nil</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$400</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$1,200</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$2,000</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-17-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Joyce's trial balance has been completed and adjusted. The totals of the statement of profit or loss columns and the statement of financial position columns are:<br><table><thead><tr><th colspan="2">Statement of profit or loss</th><th colspan="2">Statement of financial position</th></tr><tr><th>DEBIT</th><th>CREDIT</th><th>DEBIT</th><th>CREDIT</th></tr></thead><tbody><tr><td>$100,478</td><td>$110,536</td><td>$120,621</td><td>$110,563</td></tr></tbody></table><br>What is Joyce's profit or loss?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>In the statement of profit or loss columns, the difference between the total of the debit balances ($100,478) and the total of the credit balances ($110,536) is the profit or loss for the period. This is $10,058. As the credit balances (income) are greater than the debit balances (expenses), the result is a profit.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Profit of $10,058</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Loss of $10,058</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit of $10,085</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Loss of $10,085</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-MB-S1-18-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Scarlett is preparing the financial statements for a business. The cost of the items in closing inventory is $41,875. This includes some items which cost $1,960 and which were damaged in-transit. She has estimated that it will cost $360 to repair the items, and that they can then be sold for $1,200.<br><br>What is the correct inventory valuation for inclusion in the financial statements?</p><p>Answer: {1:NUMERICAL:=40755:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p><table><thead><tr><th></th><th>$</th></tr></thead><tbody><tr><td>Original inventory valuation</td><td>41,875</td></tr><tr><td>Cost of damaged items</td><td>(1,960)</td></tr><tr><td>NRV of damaged items ($1,200 – $360)</td><td>840</td></tr><tr><td></td><td>40,755</td></tr></tbody></table></p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-19-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Bjorn has prepared the following bank reconciliation at 31 December:<br><table><tbody><tr><td></td><td>$</td></tr><tr><td>Balance on bank statement</td><td>974 credit</td></tr><tr><td>Uncleared bank payment</td><td>(348)</td></tr><tr><td>Outstanding lodgement</td><td>262</td></tr><tr><td>Balance on ledger account</td><td>888 debit</td></tr></tbody></table><br>What balance should be reported for cash in Bjorn's statement of financial position as at 31 December?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Bjorn's bank statement is currently in credit with a balance of $974. However, it does not reflect an outstanding lodgement of $262 and uncleared bank payment of $348. Hence, at 31 December, the bank balance should be $888 ($974 + $262 – $348). The statement of financial position at 31 December should therefore show a current asset of $888.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$888 as a current asset</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$888 as a current liability</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$974 as a current asset</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$974 as a current liability</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S1-20-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Owen allows customers to return faulty goods within 14 days of purchase. At 30 November 20X5 he made a provision of $6,548 for refunds. At 30 November 20X6 he has calculated that his provision should be $7,634.<br><br>What should be reported in Owen's statement of profit or loss for the year to 31 October 20X6 in respect of the provision?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The provision has increased by $1,086. This increase will be a charge in the statement of profit or loss.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A charge of $7,634</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A credit of $7,634</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>A charge of $1,086</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A credit of $1,086</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-01-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Edith has estimated that at 31 May 20X6, she had the following assets and liabilities:<br><table><tbody><tr><td>Non-current assets</td><td>$33,750</td></tr><tr><td>Inventory</td><td>$4,845</td></tr><tr><td>Receivables</td><td>$11,248</td></tr><tr><td>Payables</td><td>$9,633</td></tr><tr><td>Bank overdraft</td><td>$539</td></tr></tbody></table><br>On checking, you note that she also had a prepayment for rent of $520.<br><br>What was the value of Edith's capital at 31 May 20X6?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>($33,750 + $4,845 + $11,248 – $9,633 – $539 + $520). A prepayment is an asset.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$39,151</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$40,191</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$40,229</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$41,269</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-02-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which TWO of the following costs should be classified as asset expenditure (capitalised) in the financial statements of a business?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The cost of premises (including any incidental costs of acquisition, such as solicitors' fees) or any addition to the premises are both asset expenditure items which would be capitalised. Repairs and redecoration are both expenses charged to profit or loss.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>false</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="50.00000" format="html"><text><![CDATA[<p>The cost of an extension to the premises</p>]]></text></answer>
+    <answer fraction="-100" format="html"><text><![CDATA[<p>The cost of redecorating premises</p>]]></text></answer>
+    <answer fraction="-100" format="html"><text><![CDATA[<p>The cost of roof repairs on premises</p>]]></text></answer>
+    <answer fraction="50.00000" format="html"><text><![CDATA[<p>Solicitors' fees in connection with the acquisition of premises</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-03-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Are the following statements true or false?<br>(i) In the financial statements the payables account balance is included in the statement of financial position<br>(ii) In the financial statements the depreciation charge is included in the statement of profit or loss</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Statement (i) is true as the payables balance is included in current liabilities in the statement of financial position. Statement (ii) is also true as the depreciation charge is included the statement of profit or loss.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>(i) True, (ii) True</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i) True, (ii) False</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i) False, (ii) True</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i) False, (ii) False</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-04-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following items should be included in the calculation of gross profit?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Carriage inwards is part of the cost of purchases and, therefore, affects gross profit. All the other items do not affect gross profit, they affect profit for the year.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Carriage inwards</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Carriage outwards</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Depreciation of head office building</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Salaries of administrative staff</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-05-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Chimwe purchased a new non-current asset, and paid for this by bank transfer. At the same time a bank loan was raised to provide some of the funds needed for the purchase.<br><br>What entry correctly records the purchase of the non-current asset?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The correct answer is:
+DEBIT Non-current assets
+CREDIT Bank
+The bank loan is a separate transaction.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>DEBIT Non-current assets CREDIT Bank</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Non-current assets CREDIT Bank loan</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Bank CREDIT Non-current assets</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Bank loan CREDIT Non-current assets</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-06-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Jodie is carrying out a reconciliation of the bank account in her general ledger with the balance on her bank statement. She has found the following reasons for the difference between the two balances:<br>(i) Some bank payments paid to suppliers have not yet cleared the bank statement.<br>(ii) The bank has made charges on Jodie's account.<br>(iii) A customer has paid $980 directly into Jodie's bank account.<br><br>Which of the above items will require an entry in the bank general ledger account?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>(i) will simply be an item in the reconciliation.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i) and (ii) only</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>(ii) and (iii) only</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i) and (iii) only</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i), (ii) and (iii)</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-MB-S2-07-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Rashid held the following inventory at 30 April 2016:<br><table><tbody><tr><td>Units</td><td>Cost per unit</td><td>Selling price per unit</td><td>Selling costs per unit</td></tr><tr><td>200</td><td>$13.50</td><td>$15.00</td><td>$2.50</td></tr></tbody></table><br>What should be the closing inventory balance as at 30 April 20X6?</p><p>Answer: {1:NUMERICAL:=2500:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>IAS 2 states that inventory should be measured at the lower of cost and net realisable value<br><table><tbody><tr><td>Cost of inventory</td><td>200 x $13.50</td><td>$2,700</td></tr><tr><td>Net realisable value</td><td>200 × ($15 – $2.50)</td><td>$2,500</td></tr></tbody></table><br>Therefore, the NRV of $12.50 per unit is the correct answer, with 200 units giving a valuation of $2,500.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-08-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which quality of financial information is described as being complete, neutral and free from error?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The correct answer is: Faithful representation</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Relevance</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Understandability</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Faithful representation</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Comparability</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-09-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Your payables account has a balance at 1 October 20X8 of $34,500 credit. During October, credit purchases were $78,400, cash purchases were $2,400 and payments made to suppliers, excluding cash purchases, and after deducting purchase returns of $5,900, were $68,900.<br><br>What was the closing balance?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p><table><thead><tr><th></th><th>$</th></tr></thead><tbody><tr><td>Opening balance</td><td>34,500</td></tr><tr><td>Credit purchases</td><td>78,400</td></tr><tr><td>Purchase returns</td><td>(5,900)</td></tr><tr><td>Payments</td><td>(68,900)</td></tr><tr><td></td><td>38,100</td></tr></tbody></table></p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$38,100</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$40,500</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$47,500</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$49,900</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-10-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Bert is preparing his trial balance and has included cash sales of $2,450 as a credit balance of $2,540.<br><br>If this was the only error in the year, what will be the opening balance on his suspense account?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Cash sales should be a credit balance of $2,450. He has recorded a credit of $2,540 ie $90 too much, so the suspense account will have a debit balance of $90.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$90 Debit</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$90 Credit</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$180 Debit</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$180 Credit</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-11-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following errors will not be revealed by extracting a trial balance?<br>(i) Error of transposition<br>(ii) Error of original entry<br>(iii) Error of reversal<br>(iv) Complete omission</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Transposition errors will be revealed by extraction of a trial balance.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i), (ii) and (iii)</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>(ii), (iii) and (iv)</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(ii) and (iii) only</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(ii) and (iv) only</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-12-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Flora received an invoice for $96 on 2 October 20X2 relating to stationery costs for September 20X2, but she omitted to record it.<br><br>What was the effect of this error on the profit for the year to 30 September 20X2 and the net assets at the year-end?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The invoice should have been recorded as an expense in the statement of profit or loss and an accrual in the statement of financial position. Hence, profit was overstated and so were net assets.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Both profit and net assets were understated</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Both profit and net assets were overstated</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit was understated and net assets were overstated</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Profit was overstated and net assets were understated</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-13-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Steve's furniture business has cash of $3,575, receivables of $2,750, inventory worth $21,870 and a bank loan of $5,600. He rents his showroom from the owner of the premises for $12,000 a quarter, paid in advance on the 1 of February, May, August and November each year.<br><br>What is the capital balance at 31 December 20X1?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The accounting equation must be rearranged to calculate the capital balance. Since assets = capital + liabilities, it follows that capital can be derived by subtracting the liabilities from the assets. In this question, assets total $31,195 ($3,575 + $2,750 + $21,870 + $12,000/3) and liabilities total $5,600 so capital is $25,595 ($31,195 – $5,600).</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$34,595</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$25,595</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$22,595</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$28,195</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-MB-S2-14-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Naomi received a supplier statement from John showing she owed John $56,438. This did not agree with John's account balance in Naomi's payables ledger. The following discrepancies were identified:<br>(i) An electronic payment from Naomi for $4,243 had not been received by John<br>(ii) Naomi had not yet received an invoice from John for $2,130.<br><br>What is the correct amount owed to John by Naomi?</p><p>Answer: {1:NUMERICAL:=52195:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Statement (i) refers to a bank payment that Naomi has already sent John, therefore this has already been processed in her ledgers. This is a timing difference. Statement (ii) is an invoice not yet received by Naomi, therefore her accounting records must be adjusted to reflect this difference in the form of an accrual.<br>However, as we are not told the balance in Naomi's accounting records, we have to assume these are the only differences and must use John's statement as the basis to calculate the correct balance:<table><tbody><tr><td>John's balance (per statement)</td><td>$56,438</td></tr><tr><td>Naomi's payment</td><td>($4,243)</td></tr><tr><td>Reconciled statement balance</td><td>$52,195</td></tr></tbody></table></p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-15-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Kuldip has written off a customer's outstanding balance in his accounts for the year ended 30 September 20X1. However, the customer paid the full amount of the outstanding balance of $277 in December 20X1.<br><br>How should Kuldip account for the payment made by the customer?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>As the amount was received after the period in which the receivable was written off, it will be treated as sundry income in the statement of profit or loss.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Credit the irrecoverable debt expense in the statement of profit or loss</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Create an accrual in the statement of financial position</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Treat it as sundry income in the statement of profit or loss</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Create a provision for the amount received</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-16-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Jemima has petty cash of $53 and a bank overdraft (repayable on demand) of $787 at the year-end.<br><br>How should these balances be presented in her statement of financial position at the year-end?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Jemima's statement of financial position will show both a current asset (for the $53 petty cash) and a current liability (for the $787 bank overdraft). The amounts are not netted off to show a net current liability - they must be shown separately.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Current asset of $53 and current liability of $787</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Current liability of $53 and non-current liability of $787</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Current asset of $53 and non-current liability of $787</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Non-current asset of $53 and non-current liability of $787</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-17-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following are acceptable inventory valuation methods in accordance with IAS 2 Inventories?<br>(i) First in, first out<br>(ii) Last in, first out<br>(iii) Periodic weighted average<br>(iv) Continuous weighted average</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>IAS 2 Inventories allows inventory to be measured using the first in, first out, periodic weighted average or continuous weighted average method. Last in, last out is not allowed by IAS 2.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>(i), (iii) and (iv)</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(ii), (iii) and (iv)</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i) and (ii)</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(iii) and (iv) only</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-18-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Jas had the following figures in her financial statements at the year end:<br><table><tbody><tr><td>Revenue</td><td>$64,200</td></tr><tr><td>Purchases</td><td>$27,500</td></tr><tr><td>Opening inventory</td><td>$4,700</td></tr><tr><td>Closing inventory</td><td>$6,800</td></tr><tr><td>Carriage outwards</td><td>$750</td></tr><tr><td>Carriage inwards</td><td>$980</td></tr></tbody></table><br>What was Jas' gross profit for the year?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Gross profit is sales less cost of sales. In the cost of sales calculation, carriage inwards should be included as part of the purchases cost. Carriage outwards should be omitted. Cost of sales was therefore $4,700 + $27,500 + $980 - $6,800 = $26,380.<br>Gross profit must have been $64,200 – $26,380 = $37,820.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$37,820</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$38,050</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$38,800</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$39,780</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-19-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>George has built his own garage for his car repair business.<br><br>Which of the following costs can he capitalise in respect of the garage?<br>(i) Bricks and cement<br>(ii) Costs of employing Arthur to help with the building work<br>(iii) Insurance costs for the garage<br>(iv) Repair costs for the garage door</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Only the costs incurred in building the garage can be capitalised, so in this case, the costs of bricks and cement and the costs of employing Arthur will be capitalised. The insurance costs and repairs costs to the door are expenditure charged to profit or loss and will be expensed in George's statement of profit or loss.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>(i) and (ii) only</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i), (ii) and (iii)</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(ii), (iii) and (iv)</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i) and (iii) only</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S2-20-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Nutan has prepared her year-end financial statements for the year ended 31 December 20X1 but has forgotten to make adjustments for the rental charge of the photocopier and telephone charges. She pays the rental charge on the photocopier monthly in advance, paying $150 each month. The telephone bill for the quarter ended 31 January 20X2 is $270.<br><br>What adjustments are required to correct these?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Nutan must include a prepayment for the photocopier rental as she pays monthly in advance, so she must recognise a prepayment of $150. She must include an accrual for two months' worth of telephone charges as she receives the telephone bill quarterly in arrears, so she must include an accrual for $180 ($270 × 2/3).</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Prepayment of $150; accrual of $180</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Prepayment of $150; accrual of $90</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Accrual of $150; prepayment of $180</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Accrual of $150; prepayment of $90</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-01-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>You are preparing the financial statements for a partnership, and have to include the following items:<br>(i) Partners' salaries<br>(ii) Staff salaries<br>(iii) Interest on a loan from a partner<br><br>Which of the items should be included in the calculation of profit for the year in the statement of profit or loss?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Partners' salaries are an appropriation of profit, not an expense.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i) and (ii) only</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i) and (iii) only</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>(ii) and (iii) only</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i), (ii) and (iii)</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-02-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Archibald, a market trader, employs his wife in the business at a monthly salary of $450. She has not received the salary since October 20X1. The business financial statements are prepared for the year ended 31 December 20X2.<br><br>How should the amount owing to her should be included in Archibald's financial statements?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The amount owing to her should be included in Archibald's accounts in the statement of profit or loss as a credit and as a payable in the statement of financial position.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A credit in the statement of profit or loss; receivable in the statement of financial position</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>A debit in the statement of profit or loss; payable in the statement of financial position</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A credit in the statement of profit or loss; payable in the statement of financial position</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A debit in the statement of profit or loss; receivable in the statement of financial position</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-03-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>When Paul's adjusted trial balance was prepared and totalled, the totals were:<br><table><thead><tr><th colspan="2">Statement of profit or loss</th><th colspan="2">Statement of financial position</th></tr><tr><th>DEBIT</th><th>CREDIT</th><th>DEBIT</th><th>CREDIT</th></tr></thead><tbody><tr><td>$97,945</td><td>$120,634</td><td>$84,752</td><td>$62,063</td></tr></tbody></table><br>What was Paul's profit or loss?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>For the statement of profit or loss, the total of the credit column exceeded the total of the debit column by $22,689. This represents the profit.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$22,689 loss</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$22,689 profit</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$35,882 loss</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$35,882 profit</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-MB-S3-04-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Bill uses the first in, first out method of inventory valuation. At 1 May 20X8 he had 60 units in inventory at a total value of $1,320. The movement on his inventory in May 20X8 was:<br><table><tbody><tr><td>Receipts</td><td>14 May</td><td>120 units at $22.20</td></tr><tr><td></td><td>26 May</td><td>150 units at $22.30</td></tr><tr><td>Revenue</td><td>18 May</td><td>90 units</td></tr><tr><td></td><td>28 May</td><td>80 units</td></tr></tbody></table><br>What was the value of Bill's inventory at 31 May 20X8?</p><p>Answer: {1:NUMERICAL:=3567:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Closing inventory was 160 units. Using FIFO, 150 of these would all have been deemed to be part of the final delivery, and therefore they would have had a cost of $22.30 per unit = $3,345. The remaining 10 units would have been deemed to be part of the previous delivery and therefore would have had a cost of $22.20 per unit = $222.<br>Thus, total cost was $3,567.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-05-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Wilson has returned goods to his supplier. The goods were intended for resale and were bought on credit.<br><br>What journal entry should be made by Wilson?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The correct answer is:
+DEBIT Payables account
+CREDIT Purchase returns
+The debit removes the amount owing from the payables account.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Purchase returns CREDIT Payables account</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Payables account CREDIT Bank</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Bank CREDIT Payables account</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>DEBIT Payables account CREDIT Purchase returns</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-06-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The following information relates to questions 16.6 and 16.7.<br><br>Tony sold a non-current asset with a carrying amount of $1,500 for $1,600. The cash received was correctly recorded in the bank general ledger account, but was credited to the revenue account. Tony made no entries in the non-current asset accounts in the general ledger in respect of the sale.<br><br>What action should be taken to ensure that the debit and credit totals of the trial balance agree?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The double entry has been completed (albeit to the incorrect accounts) and so the trial balance will agree. There is no need for a suspense account.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Open a suspense account with a debit balance of $1,500</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Open a suspense account with a debit balance of $1,600</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Open a suspense account with a debit balance of $3,100</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>A suspense account is not needed as the total will agree</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-07-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The following information relates to questions 16.6 and 16.7.<br><br>Tony sold a non-current asset with a carrying amount of $1,500 for $1,600. The cash received was correctly recorded in the bank general ledger account, but was credited to the revenue account. Tony made no entries in the non-current asset accounts in the general ledger in respect of the sale.<br><br>If the error is not corrected before the financial statements are prepared, how will the profit for the year be affected?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The proceeds of $1,600 have been included in sales but a profit on disposal of $100 ($1,600 – $1,500) has been omitted. So profit for the year has been overstated by $1,500 ($1,600 – $100).</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit for the year will be correct</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit for the year will be overstated by $100</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Profit for the year will be overstated by $1,500</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit for the year will be overstated by $1,600</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-08-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Minnie calculated that her receivables allowance at 30 April 20X7 should be $890. At 30 April 20X6, her receivables allowance was $770.<br><br>How should the movement in the receivables allowance be recorded in Minnie's statement of profit or loss?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>$120 has to be added to the balance of $770 to make $890.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A charge of $890</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A credit of $890</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>A charge of $120</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A credit of $120</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-09-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>What does a debit balance of $1,250 on X's account in the accounting records of Y mean?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>X owes money to Y.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>X owes $1,250 to Y</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Y owes $1,250 to X</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>X has returned goods worth $1,250 to Y</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Y has returned goods worth $1,250 to X</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-10-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The following information relates to questions 16.10 and 16.11.<br><br>Jamie is reviewing recent entries on the payables ledger. He has discovered that a purchase invoice for $378 was entered in the payables ledger as $387.<br><br>Identify the type of error that has occurred.</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The correct answer is: Error of transposition</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Error of commission</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Error of omission</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Error of transposition</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Error of principle</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-11-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The following information relates to questions 16.10 and 16.11.<br><br>Jamie is reviewing recent entries on the payables ledger. He has discovered that a purchase invoice for $378 was entered in the payables ledger as $387.<br><br>What is the journal entry required to correct the error?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The purchase invoice has been overstated by $9. Therefore, to correct the error, there is a debit to payables and a credit to purchases of this amount. The error has not caused an imbalance in the trial balance, therefore there is no effect on the suspense account.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Debit Bank $9, Credit Payables $9</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Debit Purchases $9, Credit Bank $9</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Debit Purchases $9, Credit Payables $9</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Debit Payables $9, Credit Purchases $9</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-12-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Denise's trial balance does not agree by $700.<br><br>Which of the following errors could have caused this difference?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The entry should have been to debit non-current assets $350 and credit bank $350, but instead the purchases account was credited $350. This would lead to a disagreement of $700.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A stationery payment of $350 has been debited to a non-current asset account</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>A laptop costing $350 has been credited to the purchases account</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A $700 bank receipt from P Jones has been credited to S Jones' account in the payables ledger</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A $700 BACS payment for wages has been debited to the rent account</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-13-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Morph's art and craft business has suffered some bad publicity as a result of a customer claiming to be suffering from skin rashes as a result of using a new brand of paint sold in Morph's shop. The customer wrote to Morph in November 20X3, threatening to take him to court and claiming damages of $5,000. Morph's lawyer has advised him that if the case goes to court, he is likely to have to pay the customer $3,000.<br><br>What journal entry should Morph prepare to include the necessary provision in his financial statements for the year ended 31 December 20X3?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Morph should include a provision of $3,000 in his year-end financial statements as this is the best estimate of the amount he may be required to pay out. To create a provision, a debit to expenses and a credit to the provisions liability is required.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Provisions for damages $5,000 CREDIT Provisions expense (damages) $5,000</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Provisions for damages $3,000 CREDIT Provisions expense (damages) $3,000</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Provisions expense (damages) $5,000 CREDIT Provisions for damages $5,000</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>DEBIT Provisions expense (damages) $3,000 CREDIT Provisions for damages $3,000</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-14-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>According to IAS 2 Inventories inventory must be measured at the lower of cost and net realisable value.<br><br>Which of the following can be included in cost?<br>(i) Cost of purchase<br>(ii) Cost of selling<br>(iii) Cost of conversion<br>(iv) Cost of storage</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Cost can include costs of purchase and costs of conversion. It can also include other costs incurred in bringing the inventory to its present location and condition. Cost should not include selling costs and storage costs.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i) and (ii)</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>(i) and (iii)</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(ii) and (iv)</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(ii) and (iii)</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-15-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following statements about depreciation is correct?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Depreciation is a way of spreading the cost of a non-current asset over its useful life.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Depreciation is a cash expense in the statement of profit or loss</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Depreciation is a fund set aside for future replacement of a non-current asset</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Depreciation is a way of spreading the cost of a non-current asset over its useful life</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Depreciation is a method of reflecting the revised value of an asset</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-16-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Harminder's shoe business had opening inventory of $2,050 at 1 January 20X5. His closing inventory at 31 December 20X5 was valued at $1,570. Revenue for the year totalled $25,730. Harminder makes a mark-up of 25% on cost of all shoes he sells.<br><br>What was the cost of Harminder's purchases during the year?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The first stage is to calculate the cost of sales. The gross profit is 20% (25/125) which is $5,146 (20% x $25,730). Cost of sales is therefore $25,730 – $5,146 = $20,584. The second stage is to calculate purchases by rearranging the cost of sales formula (opening inventory + purchases – closing inventory = cost of sales). Hence, purchases are $20,584 + $1,570 – $2,050 = $20,104.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$13,672</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$19,624</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$20,104</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$25,250</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-17-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which TWO of the following are likely to be included in a partnership agreement?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The partnership agreement would not specify the detailed roles of each partner in the day to day running of the business, neither would it detail the level of drawings each partner could take.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>false</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="50.00000" format="html"><text><![CDATA[<p>Any salaries to be paid to partners</p>]]></text></answer>
+    <answer fraction="50.00000" format="html"><text><![CDATA[<p>The proportion in which residual profit will be shared amongst partners</p>]]></text></answer>
+    <answer fraction="-100" format="html"><text><![CDATA[<p>The detailed roles of each partner in the day-to-day running of the business</p>]]></text></answer>
+    <answer fraction="-100" format="html"><text><![CDATA[<p>The amount of drawings permissible for each partner</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-18-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Peppa has just started trading as a florist but is a bit confused as to the difference between asset expenditure (capitalised) and expenditure charged to profit or loss. She bought a new delivery van in the year for $1,500 but has expensed it all instead of capitalising it.<br><br>What effect will this have on her profit for the year and closing net assets?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Both profit for the year and closing net assets will be understated. Peppa has expensed the cost of the van through the statement of profit or loss, instead of capitalising it on the statement of financial position. The effect is therefore that profit for the year will be understated and closing net assets will also be understated.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Profit: Understated, Net assets: Understated</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit: Understated, Net assets: Overstated</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit: Overstated, Net assets: Understated</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit: Overstated, Net assets: Overstated</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-19-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Simon receives an invoice from a supplier for some printing paper which he had ordered. The invoice is for $132 but Simon enters it into the accounting records as $123 by mistake.<br><br>What type of error has Simon made?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>This is an error of transposition as Simon has entered $123 instead of $132.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Error of omission</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Error of transposition</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Error of commission</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Error of principle</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S3-20-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Andrea and Kev are in a partnership, sharing profits in the ratio 3:2. Kev is paid a salary of $5,000. Profit for the year is $64,000.<br><br>How much of the total profit is each partner entitled to?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p><table><thead><tr><th></th><th>Partnership profit</th><th>Andrea</th><th>Kev</th></tr><tr><th></th><th>$</th><th>$</th><th>$</th></tr></thead><tbody><tr><td></td><td>64,000</td><td></td><td></td></tr><tr><td>Salary</td><td>(5,000)</td><td></td><td>5,000</td></tr><tr><td>Profit share (3:2)</td><td>(59,000)</td><td>35,400</td><td>23,600</td></tr><tr><td></td><td></td><td>35,400</td><td>28,600</td></tr></tbody></table></p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Andrea $35,400 Kev $28,600</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Andrea $35,400 Kev $23,600</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Andrea $40,400 Kev $23,600</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Andrea $40,400 Kev $28,600</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-MB-S4-01-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Jay opened a bike shop last year. He sells his products at a mark-up of 35%. In the first year of trading, he bought goods for $73,700. His sales in the year were $85,900.<br><br>What is the value of Jay's closing inventory?</p><p>Answer: {1:NUMERICAL:=10070:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Jay's sales of $85,900 can be attributed to purchases of $63,630 ($85,900/1.35). Therefore, of the original $73,700 of purchases, there must be $10,070 remaining at the year-end ($73,700 – $63,630).</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-02-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The following information relates to questions 17.2 and 17.3.<br><br>Ethel's trial balance includes the following balances:<br><table><tbody><tr><td>Receivables</td><td>$136,853 debit</td></tr><tr><td>Allowance for receivables</td><td>$14,862 credit</td></tr></tbody></table><br>If no further entries are needed, how should these balances be reported on Ethel's statement of financial position?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Receivables should be reported net of the allowance. Thus:<table><tbody><tr><td>Receivables</td><td>$136,853</td><td>debit</td></tr><tr><td>Less allowance for receivables</td><td>$14,862</td><td>credit</td></tr><tr><td></td><td>$121,991</td><td></td></tr></tbody></table></p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Current asset $136,853 Current liability $14,862</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Current asset $121,991 Current liability Nil</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Current asset $14,862 Current liability $136,853</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Current asset Nil Current liability $121,991</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-03-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The following information relates to questions 17.2 and 17.3.<br><br>Ethel's trial balance includes the following balances:<br><table><tbody><tr><td>Receivables</td><td>$136,853 debit</td></tr><tr><td>Allowance for receivables</td><td>$14,862 credit</td></tr></tbody></table><br>If Ethel calculates that her allowance for receivables should be revised to $13,854, what should be reported as her allowance for receivables expense in her statement of profit or loss?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The movement in the allowance for receivables of $1,008 ($14,862 – $13,854) should be reported in the statement of profit or loss. As the allowance has reduced, this leads to a debit entry in the allowance account, and a credit in the statement of profit or loss.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A charge of $13,854</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A credit of $13,854</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A charge of $1,008</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>A credit of $1,008</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-04-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Gayle paid for office cleaning in cash. She made the following entries in her general ledger:<br>Debit Payables account<br>Credit Office cleaning expenses<br><br>Which accounts require a correcting entry?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The debit and credit entries are transposed and the credit entry should be to cash.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Office cleaning expenses and cash only</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Office cleaning expenses and payables account only</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Cash and payables account only</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Office cleaning expenses, cash and payables account</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-05-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Trevor's trial balance includes a suspense account with a debit balance of $900. He has discovered that:<br>(i) A supplier's invoice for $16,700 was posted to the correct side of the purchases account as $17,600 (the correct entry was posted to the payables account); and<br>(ii) A bank payment for $900 has not been recorded in his ledger.<br><br>What is the balance on the suspense account after these errors are corrected?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p><table><thead><tr><th colspan="2">SUSPENSE ACCOUNT</th></tr><tr><th></th><th>$</th><th></th><th>$</th></tr></thead><tbody><tr><td>Opening balance</td><td>900</td><td>Closing balance</td><td>1,800</td></tr><tr><td>Correction of purchases</td><td>900</td><td></td><td></td></tr><tr><td></td><td>1,800</td><td></td><td>1,800</td></tr></tbody></table>Note. The bank payment for $900 has not been recorded at all and so will not affect the suspense account.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Nil</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$900 debit</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$1,800 debit</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$2,700 debit</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-MB-S4-06-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The payables ledger account balance at 1 January 20X0 was $10,000.<br>In the year to 31 December 20X0 these transactions occurred:<br><table><tbody><tr><td></td><td>$</td></tr><tr><td>Credit notes received</td><td>1,500</td></tr><tr><td>Bank payment to suppliers</td><td>30,000</td></tr><tr><td>Purchases from suppliers</td><td>40,000</td></tr><tr><td>Contras with receivables ledger</td><td>1,000</td></tr></tbody></table><br>What was the balance on the payables account at 31 December 20X0?</p><p>Answer: {1:NUMERICAL:=17500:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p><table><thead><tr><th colspan="2">PAYABLES ACCOUNT</th></tr><tr><th></th><th>$</th><th></th><th>$</th></tr></thead><tbody><tr><td>Credit notes received</td><td>1,500</td><td>b/d 1.1.X0</td><td>10,000</td></tr><tr><td>Bank payment</td><td>30,000</td><td>Purchases</td><td>40,000</td></tr><tr><td>Contras</td><td>1,000</td><td></td><td></td></tr><tr><td>Balance 31.12.X0</td><td>17,500</td><td></td><td></td></tr><tr><td></td><td>50,000</td><td></td><td>50,000</td></tr></tbody></table></p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-07-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Fred correctly recorded his August sales of $2,652 (inclusive of sales tax at 20%) in his receivables account and the sales account, but forgot to make a posting to his sales tax account.<br><br>If this was his only error in the year what was the balance on his suspense account?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The sales tax on these sales is $442 which should have been credited to the sales tax account. No entry was made, so when the trial balance is drawn up the suspense account will have a credit balance of $442.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$442 credit</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$442 debit</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$884 credit</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$884 debit</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-08-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Jane sells baby clothes and accessories in her designer boutique. At 31 December 20X5, she had inventory of 15 baby sleeping bags left, each measured at their cost of $25. During the year ended 31 December 20X6, she purchased a further 75 baby sleeping bags for $25 each, and she sold a total of 65 sleeping bags, recording revenue of $2,275. There were 25 sleeping bags left in inventory at the year-end, each measured at their cost of $25.<br><br>What was Jane's gross profit for the baby sleeping bags?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Gross profit is sales less cost of sales. Cost of sales is opening inventory plus purchases less closing inventory. In this case, cost of sales is (15 x $25) + (75 × $25) – (25 x $25) = $1,625. Gross profit is therefore $2,275 - $1,625 = $650.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$150</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$650</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$1,400</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$1,275</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-09-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>How should carriage in costs be treated in the statement of profit or loss when the purchaser pays?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Carriage inwards paid by the purchaser is treated as part of the cost of the purchases figure in the statement of profit or loss.<br>If carriage outwards is paid by the reporting entity this would be treated as selling expenses in the statement of profit or loss.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>As purchases costs</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>As selling expenses</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>As sundry income</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>As discounts received</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-10-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>A business recognised its laptops as non-current assets and measures them at cost less accumulated depreciation. It depreciates some of its laptops over a useful life of three years and some of them over a useful life of five years.<br><br>What accounting principle is not being applied in this scenario?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Not depreciating all the laptops over the same period contravenes the accounting principle of consistency. The other principles are applied because:<br>• Measurement is at historical cost (cost less accumulated depreciation)<br>• Depreciation reflects accrual accounting<br>• The laptops are recognised as non-current assets so reflecting that the business is a going concern.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Historical cost</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Accrual accounting</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Going concern</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Consistency</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-11-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which TWO of the following adjustments can an adjusted trial balance be used for?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The adjusted trial balance can be used to make adjustments for depreciation and accruals.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>false</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="50.00000" format="html"><text><![CDATA[<p>Depreciation</p>]]></text></answer>
+    <answer fraction="-100" format="html"><text><![CDATA[<p>Suspense accounts</p>]]></text></answer>
+    <answer fraction="50.00000" format="html"><text><![CDATA[<p>Accruals</p>]]></text></answer>
+    <answer fraction="-100" format="html"><text><![CDATA[<p>Discounts received</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-MB-S4-12-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Vera's payables at 1 June 20X4 were $79,654. On 31 May 20X5 she had payables of $68,912. During the year, she paid her suppliers a total of $178,970.<br><br>What were Vera's purchases in the year?</p><p>Answer: {1:NUMERICAL:=168228:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Purchases in the year can be calculated by deducting the opening payables balance from the total of the cash paid in the year and the closing payables balance.<br>($178,970 + $68,912 – $79,654 = $168,228).</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-13-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Leandra recently started trading as an online designer handbag store. Her understanding is that inventory should always be valued at cost. At the year-end, she valued her inventory of handbags at $15,700, being the cost price of the bags she had left in stock. However, this included handbags costing $6,350 which were manufactured by a designer who has fallen from favour in the fashion world. Leandra subsequently decided to reduce the selling price of these to 10% of their cost price.<br><br>What was the correct value of inventory at the year-end?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Inventory should be measured at the lower of cost and net realisable value. The handbags costing $6,350, should have been measured at their net realisable value of $635 (10% of $6,350) as this is lower than their cost. Closing inventory should therefore have been $15,700 – $6,350 + $635 = $9,985.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$9,350</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$9,985</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$15,065</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$15,700</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-14-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Prisha has prepared her year-end financial statements but is unsure what to do in respect of a claim from a customer who came into her shop during the year and slipped on the floor. The customer has commenced a court case to claim damages of $5,000 from Prisha as a result of the injuries sustained from the fall. Prisha has offered to pay $250, although her lawyer thinks it is very unlikely that the claim will succeed.<br><br>What amount should Prisha include as a provision in her financial statements?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Prisha should not include any provision in her financial statements for this as it seems very unlikely that the claim will succeed and hence the conditions necessary for a provision to be recognised are not met.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$Nil</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$250</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$2,500</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$5,000</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-15-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Stuart owns a furniture shop. In June 20X6, he made the following sales and purchases of sofa beds:<br><table><tbody><tr><td>1 June 20X6</td><td>20 units in inventory at $90 each</td></tr><tr><td>3 June 20X6</td><td>Purchased 40 units at $85 each</td></tr><tr><td>17 June 20X6</td><td>Sold 30 units</td></tr><tr><td>19 June 20X6</td><td>Purchased 50 units at $75 each</td></tr><tr><td>24 June 20X6</td><td>Sold 55 units</td></tr></tbody></table><br>What was the value of closing inventory at 30 June 20X6 using the first in, first out method?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Total sofa-beds bought in June was 110, of which 85 were sold, leaving 25 unsold at the end of the month. These would have been measured at $75 each, so closing inventory would have been measured at $1,875.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$1,875</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$2,025</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$2,125</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$2,650</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-16-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Joe is registered for sales tax and has purchased goods for resale costing $567.50. This amount includes sales tax of 20%.<br><br>What debit entry should be made in the goods for resale account?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The goods for resale account should be debited with $473 ($567.50/1.20) – the amount excluding the sales tax.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$454.00</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$473.00</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$567.50</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$603.25</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-17-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>When Ed prepared his year-end financial statements, he expensed the purchase price of his new delivery van instead of capitalising it.<br><br>What effect will this error have on Ed's profit for the year and his net assets at the year-end?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The cost of the delivery van should have been debited to the non-current assets account; it should not have been expensed. The effect of this error is therefore to understate both profit and net assets.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Both profit and net assets will be understated</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Both profit and net assets will be overstated</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit will be understated and net assets will be overstated</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit will be overstated and net assets will be understated</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-MB-S4-18-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Hema opened a hair salon last year. She sells haircare products such as shampoo, conditioner and styling products as well as cutting and styling people's hair. She buys haircare products from the wholesaler and sells them at a mark-up of 25%. In the first year of trading, she bought haircare products for $2,100. Her sales in the year were $2,335.<br><br>What is Hema's closing inventory of haircare products?</p><p>Answer: {1:NUMERICAL:=232:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Hema's sales of $2,335 can be attributed to purchases of $1,868 ($2,335/1.25). Therefore, of the original $2,100 of purchases, there must be $232 remaining at the year-end ($2,100 – 1,868).</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-19-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>At 1 January 20X1, Laura's bank balance was $1,170. During the year, she issued bank payments to suppliers totalling $47,286. Her total lodgements during the year were $53,492. She incurred bank charges of $48 for going overdrawn in July 20X1.<br><br>What was Laura's balance brought forward at 1 January 20X2 as per her accounting records?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The closing bank balance can be calculated as a debit of $7,328 ($1,170 – $47,286 + $53,492 – $48).</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$4,988 credit</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$4,988 debit</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$7,328 credit</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$7,328 debit</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S4-20-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>At Deepa's year-end, the balance on the receivables account in the general ledger is $33,235. Deepa has noted two issues:<br>• A receipt for $50 was recorded as $550 in the receivables ledger<br>• A settlement discount of $200 has unexpectedly been taken by a credit customer but has not yet been recorded<br><br>What is the receivables balance to be reported on Deepa's statement of financial position at the year-end?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The opening balance of $33,235 needs to be increased to reflect the overstated receipt of $500 and decreased to take account of the settlement discount of $200 that has not yet been recorded in the accounting records.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$33,625</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$33,235</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$33,535</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$33,035</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-01-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>During the year to 30 November 20X5, Amanda bought goods for resale at a cost of $75,550. Her inventory at 1 December 20X4 was measured at its cost of $15,740. She did not count her inventory at 30 November 20X5, but she knows that her sales for the year to 30 November 20X5 were $91,800. All sales were made at a mark-up of 20%.<br><br>Based on the information above, what was the cost of Amanda's inventory at 30 November 20X5?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>All sales have a mark-up of 20%, therefore sales are 120% of cost of sales.<br><table><thead><tr><th></th><th>$</th></tr></thead><tbody><tr><td>Cost of sales (100/120 x $91,800)</td><td>76,500</td></tr><tr><td>Opening inventory</td><td>15,740</td></tr><tr><td>Purchases</td><td>75,550</td></tr><tr><td></td><td>91,290</td></tr><tr><td>Closing inventory</td><td>(14,790)</td></tr><tr><td></td><td>76,500</td></tr></tbody></table></p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$13,630</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$14,790</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$16,690</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$17,850</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-02-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Darren is a second-hand car dealer. If a car develops a fault within 30 days of a sale, Darren will repair it free of charge under warranty.<br>At 30 April 20X4 Darren had made a provision for warranty repairs of $2,500. At 30 April 20X5 he calculated that his provision should be $2,000.<br><br>What entry should be made for the provision in Darren's statement of profit or loss for the year to 30 April 20X5?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Darren needs to reduce the provision by $500, ie a credit to the statement of profit or loss.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A charge of $500</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>A credit of $500</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A charge of $2,000</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A credit of $2,000</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-03-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>In Benni's records for the year to 31 October 20X8, expenditure on a depreciable asset has been incorrectly classified as expenditure charged to profit or loss.<br><br>If the error is not corrected, what is the effect on Benni's profit for the years to 31 October 20X8 and 20X9?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>In 20X9 there will be a missing depreciation charge.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Year to 31 October 20X8: Understated, Year to 31 October 20X9: Understated</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Year to 31 October 20X8: Overstated, Year to 31 October 20X9: Overstated</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Year to 31 October 20X8: Understated, Year to 31 October 20X9: Overstated</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Year to 31 October 20X8: Overstated, Year to 31 October 20X9: Understated</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-MB-S5-04-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>In June 20X8 Laura bought goods for $12,000. She paid $11,000 of this by bank payment and agreed a 30-day credit period for the balance. She intends to buy more goods for $13,000 in July 20X8.<br><br>What is Laura's payables balance at 30 June 20X8?</p><p>Answer: {1:NUMERICAL:=1000:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>She owes $1,000 at 30 June 20X8.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-05-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Andrew's trial balance at 31 October 20X7 includes the following balances:<br><table><tbody><tr><td>Machinery at cost</td><td>$85,800</td></tr><tr><td>Accumulated depreciation on machinery</td><td>$21,750</td></tr><tr><td>Receivables</td><td>$42,650</td></tr><tr><td>Allowance for receivables</td><td>$1,570</td></tr><tr><td>Bank overdraft</td><td>$6,470</td></tr><tr><td>Inventory at 1 November 20X6</td><td>$21,650</td></tr></tbody></table><br>His inventory at 31 October 20X7 is measured at $22,300.<br><br>What is the total carrying amount of current assets in Andrew's statement of financial position at 31 October 20X7?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p><table><thead><tr><th></th><th>$</th></tr></thead><tbody><tr><td>Receivables</td><td>42,650</td></tr><tr><td>Allowance for receivables</td><td>(1,570)</td></tr><tr><td>Closing inventory</td><td>22,300</td></tr><tr><td>Current assets</td><td>63,380</td></tr></tbody></table></p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$62,730</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$63,380</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$64,950</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$69,850</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-06-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following statements about a trial balance is/are correct?<br>(i) If the total of the debit balances equals the total of the credit balances, no errors have been made in posting to the general ledger.<br>(ii) The trial balance always records non-current assets at market value.</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Neither of these are correct.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i) only</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(ii) only</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Both (i) and (ii)</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Neither (i) nor (ii)</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-07-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Kiera knows that her accounting records contain the following errors:<br>(i) A cash sale for $430 was recorded correctly in the cash account but was entered on the correct side of the sales account as $340.<br>(ii) The entry for depreciation was made correctly in the accumulated depreciation account, and was entered on the wrong side of the depreciation charge account.<br><br>Which of the errors will lead to the total of the debit balances being greater than the total of the credit balances in Kiera's trial balance?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>In (i) $430 is a debit to the cash account and this is greater than the credit entry. In (ii) both entries are credits.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>(i) only</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(ii) only</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Both (i) and (ii)</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Neither (i) nor (ii)</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-08-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following is the correct definition of net realisable value, in accordance with IAS 2 Inventories?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>IAS 2 Inventories defines net realisable value as selling price less estimated costs to completion and estimated costs necessary to make the sale.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Selling price</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Selling price less estimated cost to completion</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Selling price less selling costs</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Selling price less estimated cost to completion and selling costs</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-09-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Dot runs a retail clothing business. One of Dot's customers returned a coat that had been bought for $110 as she had changed her mind about it when she got the coat home.<br><br>What double entry should Dot make to record the return of the coat?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>When the coat was originally sold, the double entry would have been DEBIT Bank $110 and CREDIT Revenue $110. In order to record the return of the coat, the entries need to be DEBIT Sales returns $110 and CREDIT Bank $110.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Receivables account $110 CREDIT Bank $110</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Bank $110 CREDIT Receivables account $110</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Receivables account $110 CREDIT Sales returns $110</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>DEBIT Sales returns $110. CREDIT Bank $110</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-10-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Michelle runs a hair salon. She is preparing her year-end financial statements at the moment but is unsure how to treat a potential provision. Just before the year-end, one of Michelle's junior members of staff burnt a customer's hair while it was being coloured. The customer was understandably upset and is suing Michelle, for damages of $2,500. Michelle's lawyer is confident that, although the court will find in favour of the customer, Michelle will only be required to pay the customer $500.<br><br>What journal should be used to include the correct provision in Michelle's year-end financial statements?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Michelle should include a provision of $500 in her financial statements as this is the best estimate of the likely costs of the claim which she will have to pay.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Provisions for damages $500 CREDIT Provisions expense (damages) $500</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Provisions for damages $2,500 CREDIT Provisions expense (damages) $2,500</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>DEBIT Provisions expense (damages) $500 CREDIT Provisions for damages $500</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Provisions expense (damages) $2,500 CREDIT Provisions for damages $2,500</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-11-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Richard compared his bank statement with the bank account in his general ledger and found that they did not agree. He investigated further and concluded that there were two possible reasons for the discrepancy.<br>(i) A cheque from one of his customers was returned by the bank as unpaid. The customer has since filed for bankruptcy.<br>(ii) The bank charged him for going overdrawn for one day in the period.<br><br>Which of the reasons require an entry in the bank account in Richard's general ledger?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Both reasons will require Richard to make an entry in his general ledger. Lodgements from customers would already have been reflected in the general ledger, but the cheque which bounced would not have. Similarly, bank charges made by the bank would not have been reflected in the general ledger – they would only appear on Richard's bank statement, so need to be included in the general ledger.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i) only</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(ii) only</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Both (i) and (ii)</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Neither (i) nor (ii)</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-MB-S5-12-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Jamie bought a new mowing machine for his gardening business on 1 January 20X3 for $2,380. He had to pay $120 for the machine to be delivered to him. At the time of purchase, he also paid $300 insurance for the machine in the event of malfunction or theft. Jamie charges depreciation at 10% per year on the straight-line basis, with a full year's charge in the year of acquisition and none in the year of disposal.<br><br>What will be the carrying amount of the mowing machine at the 31 December 20X4?</p><p>Answer: {1:NUMERICAL:=2000:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>According to IAS 16 Property, Plant and Equipment, the costs to be included are those incurred in bringing the asset to working condition for its intended use. So in this case, the transportation costs of $120 will be capitalised along with the $2,380 purchase price. The insurance costs cannot be included and will be charged to the statement of profit or loss. The total capitalised cost is therefore $2,500. The depreciation charge each year will be 10% of this ie $250. So the closing carrying amount at 31 December 20X4 will be $2,000 ($2,500 – ($250 × 2 years)).</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-13-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>George provides his customers with a warranty on all kettles purchased from him. As a result of the warranty George will repair any kettles that develop faults within a year of their purchase. At 31 March 20X5 his warranty provision was $2,700. At 31 March 20X6 he estimated that the warranty provision should be $3,000.<br><br>What is the effect on George's statement of profit or loss for the year to 31 March 20X6 of the movement in the provision for refunds?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Only the movement in the provision is charged.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A charge of $3,000</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A credit of $3,000</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>A charge of $300</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A credit of $300</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-14-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>In a computerised accounting system, which TWO of the statements are true?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The correct answers are:<br>• The individual receivables ledgers and the receivables account are updated automatically from the same source<br>• The individual payables ledgers and the payables account are updated automatically from the same source</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>false</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="-100" format="html"><text><![CDATA[<p>There can be differences between the total of the list of individual balances in the receivables ledger and the receivables balance in the general ledger</p>]]></text></answer>
+    <answer fraction="-100" format="html"><text><![CDATA[<p>There can be differences between the total of the list of individual balances in the payables ledger and the payables balance in the general ledger</p>]]></text></answer>
+    <answer fraction="50.00000" format="html"><text><![CDATA[<p>The individual receivables ledgers and the receivables account are updated automatically from the same source</p>]]></text></answer>
+    <answer fraction="50.00000" format="html"><text><![CDATA[<p>The individual payables ledgers and the payables account are updated automatically from the same source</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-15-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Your firm's bank account in the general ledger shows a credit bank balance of $1,240 at 30 April 20X9. Upon comparison with the bank statement, you determine that there are uncleared bank payments totalling $450, and a receipt of $140 which has not yet been passed through the bank account. The bank statement shows bank charges of $75 which have not been entered in the bank general ledger account.<br><br>What is the balance on the bank statement?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p><table><thead><tr><th></th><th>$</th></tr></thead><tbody><tr><td>Balance on bank account in general ledger (credit balance)</td><td>(1,240)</td></tr><tr><td>Add uncleared bank payments</td><td>450</td></tr><tr><td>Less uncleared deposit</td><td>(140)</td></tr><tr><td>Less bank charges</td><td>(75)</td></tr><tr><td></td><td>1,005</td></tr></tbody></table></p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$1,005 overdrawn</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$930 overdrawn</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$1,475</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$1,550</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-16-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following is the correct journal entry to record a credit note issued to a customer for goods returned?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Receivables have been reduced, no cash has been paid.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Sales returns CREDIT Bank</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Bank CREDIT Sales returns</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Receivables account CREDIT Sales returns</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>DEBIT Sales returns CREDIT Receivables account</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-17-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>When extracting the trial balance for B Wright, you found that there was a difference of $90 between the totals of the debit and credit balances. You opened a suspense account for the difference. You have now discovered that an invoice for $1,560 for advertising has been posted erroneously to the advertising account as $1,650.<br><br>What entry is needed to correct the error and clear the suspense account?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The correct answer is: DEBIT Suspense $90, CREDIT Advertising $90.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Payables $90, CREDIT Suspense $90</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Advertising $90, CREDIT Suspense $90</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>DEBIT Suspense $90, CREDIT Advertising $90</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Suspense $90, CREDIT Payables $90</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-18-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following is not a qualitative characteristic of financial information?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Accrual accounting is an accounting concept rather than a qualitative characteristic.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Relevance</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Comparability</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Accrual accounting</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Understandability</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-19-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>What are the entries to partners' current accounts for appropriations of profit and drawings?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Partners' current accounts must be credited with appropriated profit and debited for any drawings.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit: DEBIT, Drawings: DEBIT</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit: DEBIT, Drawings: CREDIT</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Profit: CREDIT, Drawings: DEBIT</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Profit: CREDIT, Drawings: CREDIT</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-MB-S5-20-BPP</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Fred has a business which capitalises all items which meet the criteria under IAS 16 and which cost more than $500. A difference has been located on the trial balance and this has been posted to the suspense account. Fred has noticed that new computers purchased for $700 have been posted to the office expenses account.<br><br>What is the correction required in the accounts?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>As the business capitalises all items over $500, the computers have incorrectly been expensed. To correct this error, the statement of profit or loss will be credit by $700 and the non-current assets (SOFP) will be debited with the cost of the computers. The suspense account is not affected in this case.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Office expenses $700 CREDIT Suspense account $700</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Suspense account $700 CREDIT Office expenses $700</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>DEBIT Non-current assets $700 CREDIT Office expenses $700</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Non-current assets $700 DEBIT Suspense account $700 CREDIT Office expenses $1,400</p>]]></text></answer>
+  </question>
+</quiz>

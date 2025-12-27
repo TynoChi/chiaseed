@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S4-01-PRK13.1</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Larry, a sole trader, has calculated that his cost of sales for the year is $144,000. His sales figure for the year includes an amount of $2,016 being the amount paid by Larry himself into the business bank account for goods withdrawn for private use.<br>The figure of $2,016 was calculated by adding a mark-up of 12% to the cost of the goods. His gross profit percentage on all other goods sold was 20% of sales.<br><br>What is the total figure of sales for the year?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.This question requires calculating the total sales by separating the goods sold to customers from the goods withdrawn by the owner.<br><br>1.  **Calculate the cost of goods withdrawn:**<br>The value of goods withdrawn ($2,016) includes a 12% mark-up on their cost.<br>Sales Value = Cost × (1 + Mark-up %)<br>$2,016 = Cost × (1 + 0.12)<br>$2,016 = Cost × 1.12<br>Cost of withdrawn goods = $2,016 / 1.12 = $1,800.<br><br>2.  **Calculate the cost of goods sold to external customers:**<br>The total cost of sales includes both goods sold and goods withdrawn.<br>Cost of sales to customers = Total cost of sales - Cost of withdrawn goods<br>Cost of sales to customers = $144,000 - $1,800 = $142,200.<br><br>3.  **Calculate the sales revenue from external customers:**<br>The gross profit percentage (margin) on these sales is 20%. This means the cost of sales represents 80% (100% - 20%) of the sales value.<br>Sales to customers = Cost of sales to customers / (1 - Gross Profit Margin)<br>Sales to customers = $142,200 / 0.80 = $177,750.<br><br>4.  **Calculate the total figure for sales:**<br>The total sales figure is the sum of sales to customers and the value of goods withdrawn.<br>Total Sales = Sales to customers + Value of goods withdrawn<br>Total Sales = $177,750 + $2,016 = $179,766.<br><br>Therefore, the total figure for sales for the year is $179,766.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$172,656</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$177,750</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$179,766</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$180,000</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-Ch10-S4-02-PRK13.2</text></name>
+    <questiontext format="html"><text><![CDATA[<p>At 31 May 20X6 David's capital balance was $96,578. During the year to 31 May 20X7, his drawings were $25,764. At 31 May 20X7 his capital balance was $104,864.<br><br>What was David's profit for the year to 31 May 20X7?</p><p>Answer: {1:NUMERICAL:=34050:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.The relationship between opening capital, closing capital, profit, and drawings for a sole trader is given by the formula:<br>Closing Capital = Opening Capital + Capital Introduced + Profit – Drawings<br><br>In this case, no additional capital was introduced. We can rearrange the formula to solve for Profit:<br>Profit = Closing Capital – Opening Capital + Drawings<br><br>Substitute the given values into the formula:<br>Profit = $104,864 – $96,578 + $25,764<br>Profit = $8,286 + $25,764<br>Profit = $34,050<br><br>David's profit for the year to 31 May 20X7 was $34,050.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S4-03-PRK13.3</text></name>
+    <questiontext format="html"><text><![CDATA[<p>At 31 October 20X6 Gigi owed her suppliers $13,856. During the year to 31 October 20X7, her payments to suppliers totalled $95,886, and at 31 October 20X7 she owed $11,552.<br><br>What is the value of Gigi's credit purchases for the year to 31 October 20X7?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.To find the value of credit purchases, we can use a payables ledger control account reconciliation. The basic formula is:<br>Opening Payables + Credit Purchases – Payments to Suppliers = Closing Payables<br><br>We can rearrange this formula to solve for Credit Purchases:<br>Credit Purchases = Closing Payables – Opening Payables + Payments to Suppliers<br><br>Now, substitute the given values:<br>Opening Payables (at 31 Oct 20X6) = $13,856<br>Closing Payables (at 31 Oct 20X7) = $11,552<br>Payments to Suppliers = $95,886<br><br>Credit Purchases = $11,552 – $13,856 + $95,886<br>Credit Purchases = -$2,304 + $95,886<br>Credit Purchases = $93,582<br><br>The value of Gigi's credit purchases for the year is $93,582.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$70,478</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$93,582</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$98,190</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$121,294</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-Ch10-S4-04-PRK13.4</text></name>
+    <questiontext format="html"><text><![CDATA[<p>In the year to 30 November 20X7, Alex obtained a 25% mark up on all her sales. Her sales for the year totalled $120,600. Her opening inventory was valued at $9,340 and her closing inventory was valued at $11,855.<br><br>What was the value of Alex's purchases for the year to 30 November 20X7?</p><p>Answer: {1:NUMERICAL:=98995:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.This problem requires a two-step calculation: first find the cost of sales, then use it to find the purchases.<br><br>1.  **Calculate the Cost of Sales (COS):**<br>A mark-up of 25% means the gross profit is 25% of the cost. The relationship between sales, cost, and mark-up is:<br>Sales = Cost of Sales × (1 + Mark-up %)<br>We can rearrange this to find the Cost of Sales:<br>Cost of Sales = Sales / (1 + Mark-up %)<br>Cost of Sales = $120,600 / (1 + 0.25)<br>Cost of Sales = $120,600 / 1.25<br>Cost of Sales = $96,480<br><br>2.  **Calculate Purchases:**<br>The formula for cost of sales is:<br>Cost of Sales = Opening Inventory + Purchases – Closing Inventory<br>We can rearrange this to solve for Purchases:<br>Purchases = Cost of Sales – Opening Inventory + Closing Inventory<br>Purchases = $96,480 – $9,340 + $11,855<br>Purchases = $87,140 + $11,855<br>Purchases = $98,995<br><br>The value of Alex's purchases for the year was $98,995.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S4-05-PRK13.5</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Albert does not keep full accounting records. His last accounts show that his capital balance was $42,890. At the year-end he calculated that his assets and liabilities were:<br><table><tbody><tr><td></td><td>$</td></tr><tr><td>Non-current assets</td><td>41,700</td></tr><tr><td>Inventory</td><td>9,860</td></tr><tr><td>Receivables</td><td>7,695</td></tr><tr><td>Payables</td><td>4,174</td></tr><tr><td>Bank overdraft</td><td>5,537</td></tr></tbody></table><br>On reviewing his calculations, you note that he did not include $258 of unpaid invoices for expenses.<br><br>What is the value of Albert's closing capital?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.Closing capital is calculated using the accounting equation: Capital = Assets - Liabilities. We need to calculate the total assets and total liabilities, including the adjustment for the omitted invoice.<br><br>1.  **Calculate Total Assets:**<br>Assets are the economic resources owned by the business.<br>Total Assets = Non-current assets + Inventory + Receivables<br>Total Assets = $41,700 + $9,860 + $7,695 = $59,255<br><br>2.  **Calculate Adjusted Total Liabilities:**<br>Liabilities are the obligations of the business. Initially, the liabilities are Payables and Bank overdraft. The unpaid invoice of $258 is an additional liability (an accrual) that must be included.<br>Initial Liabilities = Payables + Bank overdraft<br>Initial Liabilities = $4,174 + $5,537 = $9,711<br>Adjusted Total Liabilities = Initial Liabilities + Unpaid invoice<br>Adjusted Total Liabilities = $9,711 + $258 = $9,969<br><br>3.  **Calculate Closing Capital:**<br>Closing Capital = Total Assets - Adjusted Total Liabilities<br>Closing Capital = $59,255 - $9,969 = $49,286<br><br>Therefore, the correct value of Albert's closing capital is $49,286.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$49,286</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$49,544</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$60,360</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$60,876</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S4-06-PRK13.6</text></name>
+    <questiontext format="html"><text><![CDATA[<p>In the last 12 months, Jenna's capital balance increased by $6,798. In the year her drawings totalled $14,600 and she introduced additional capital of $2,900.<br><br>What is Jenna's profit for the year or loss for the year?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.The change in a sole trader's capital over a period is calculated as:<br>Increase in Capital = Profit – Drawings + Capital Introduced<br><br>We are given:<br>Increase in Capital = $6,798<br>Drawings = $14,600<br>Capital Introduced = $2,900<br><br>We need to rearrange the formula to find the profit:<br>Profit = Increase in Capital + Drawings – Capital Introduced<br><br>Now, substitute the values:<br>Profit = $6,798 + $14,600 – $2,900<br>Profit = $21,398 – $2,900<br>Profit = $18,498<br><br>Since the result is a positive number, it represents a profit. Therefore, Jenna's profit for the year is $18,498.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$4,902 loss</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$18,498 loss</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$4,902 profit</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$18,498 profit</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S4-07-PRK13.7</text></name>
+    <questiontext format="html"><text><![CDATA[<p>In the year to 30 April 20X6, Peter's sales were $182,000. All of his sales were made at a mark up of 30%. His opening inventory value was $11,800 and his closing inventory value was $9,700.<br><br>What was the value of Peter's purchases in the year to 30 April 20X6?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.This problem is solved in two steps: first, calculate the cost of sales from the sales figure and mark-up, and second, use the cost of sales to calculate purchases.<br><br>1.  **Calculate Cost of Sales (COS):**<br>A mark-up of 30% on cost means that Sales = Cost × (1 + 0.30).<br>We can find the cost of sales by rearranging the formula:<br>Cost of Sales = Sales / (1 + Mark-up %)<br>Cost of Sales = $182,000 / 1.30<br>Cost of Sales = $140,000<br><br>2.  **Calculate Purchases:**<br>The cost of sales is calculated as:<br>Cost of Sales = Opening Inventory + Purchases – Closing Inventory<br>Rearranging for Purchases:<br>Purchases = Cost of Sales – Opening Inventory + Closing Inventory<br>Purchases = $140,000 – $11,800 + $9,700<br>Purchases = $128,200 + $9,700<br>Purchases = $137,900<br><br>The value of Peter's purchases for the year was $137,900.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$125,300</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$137,900</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$140,000</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$142,100</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-Ch10-S4-08-PRK13.8</text></name>
+    <questiontext format="html"><text><![CDATA[<p>In the year to 30 April 20X8, Tanya paid a total of $127,569 to her suppliers.<br>Her opening and closing balances due to suppliers and her opening and closing inventory values were:<br><table><thead><tr><th></th><th>Opening value</th><th>Closing value</th></tr></thead><tbody><tr><td>Suppliers</td><td>$11,564</td><td>$12,826</td></tr><tr><td>Inventory</td><td>$5,288</td><td>$4,184</td></tr></tbody></table><br>What was Tanya's cost of sales for the year to 30 April 20X8?</p><p>Answer: {1:NUMERICAL:=129935:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.To find the cost of sales, we first need to calculate the total purchases for the year and then use the inventory balances.<br><br>1.  **Calculate Credit Purchases:**<br>We can determine the purchases by analyzing the suppliers (payables) account.<br>Opening Payables + Purchases – Payments = Closing Payables<br>Rearranging to solve for Purchases:<br>Purchases = Closing Payables – Opening Payables + Payments<br>Purchases = $12,826 – $11,564 + $127,569<br>Purchases = $1,262 + $127,569<br>Purchases = $128,831<br><br>2.  **Calculate Cost of Sales (COS):**<br>Now we use the purchases figure and the inventory values.<br>Cost of Sales = Opening Inventory + Purchases – Closing Inventory<br>Cost of Sales = $5,288 + $128,831 – $4,184<br>Cost of Sales = $134,119 – $4,184<br>Cost of Sales = $129,935<br><br>Tanya's cost of sales for the year was $129,935.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S4-09-PRK13.9</text></name>
+    <questiontext format="html"><text><![CDATA[<p>The following scenario relates to questions 13.9, 13.10 and 13.11.<br>In the year to 31 May 20X8, Lesley's sales totalled $600,000 and her cost of sales totalled $480,000.<br><br>What are the correct figures for Lesley's mark up and margin?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.First, calculate the Gross Profit (GP).<br>Gross Profit = Sales – Cost of Sales<br>Gross Profit = $600,000 – $480,000 = $120,000<br><br>Next, calculate the margin and mark-up.<br><br>1.  **Margin (Gross Profit Margin):**<br>Margin is the gross profit expressed as a percentage of sales revenue.<br>Margin = (Gross Profit / Sales) × 100%<br>Margin = ($120,000 / $600,000) × 100%<br>Margin = 0.20 × 100% = 20%<br><br>2.  **Mark-up (Gross Profit Mark-up):**<br>Mark-up is the gross profit expressed as a percentage of the cost of sales.<br>Mark-up = (Gross Profit / Cost of Sales) × 100%<br>Mark-up = ($120,000 / $480,000) × 100%<br>Mark-up = 0.25 × 100% = 25%<br><br>Therefore, the correct figures are a mark-up of 25% and a margin of 20%.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Mark-up 20%, Margin 20%</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Mark-up 20%, Margin 25%</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Mark-up 25%, Margin 20%</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Mark-up 25%, Margin 25%</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S4-10-PRK13.10</text></name>
+    <questiontext format="html"><text><![CDATA[<p>What is the correct margin figure if the gross profit mark up is 60%?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.We can convert a mark-up percentage to a margin percentage using a formula or by assuming base figures.<br><br>**Method 1: Using Formulas**<br>The formula to convert mark-up to margin is:<br>Margin = Mark-up / (1 + Mark-up)<br><br>Given Mark-up = 60% = 0.60<br>Margin = 0.60 / (1 + 0.60)<br>Margin = 0.60 / 1.60<br>Margin = 0.375<br>As a percentage, the margin is 37.5%.<br><br>**Method 2: Assuming Base Figures**<br>Let's assume Cost of Sales (COS) = $100.<br>A mark-up of 60% means Gross Profit (GP) is 60% of the cost.<br>GP = 60% of $100 = $60.<br>Sales = COS + GP = $100 + $60 = $160.<br>Margin is GP as a percentage of Sales.<br>Margin = (GP / Sales) × 100%<br>Margin = ($60 / $160) × 100%<br>Margin = 0.375 × 100% = 37.5%.<br><br>Both methods yield the same result.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>60.0%</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>37.5%</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>66.7%</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>150.0%</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S4-11-PRK13.11</text></name>
+    <questiontext format="html"><text><![CDATA[<p>If sales were $51,000, and cost of sales was $42,500, what was the gross profit percentage?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.'Gross profit percentage' typically refers to the gross profit margin, which is gross profit calculated as a percentage of sales revenue.<br><br>1.  **Calculate Gross Profit (GP):**<br>Gross Profit = Sales – Cost of Sales<br>Gross Profit = $51,000 – $42,500 = $8,500<br><br>2.  **Calculate Gross Profit Percentage (Margin):**<br>Gross Profit % = (Gross Profit / Sales) × 100%<br>Gross Profit % = ($8,500 / $51,000) × 100%<br>Gross Profit % = 0.16666... × 100%<br>Gross Profit % ≈ 16.67%<br><br>The gross profit percentage is 16.67%.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>16.67%</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>20%</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>83.333%</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>120%</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S4-12-PRK13.12</text></name>
+    <questiontext format="html"><text><![CDATA[<p>A business has compiled the following information for the year ended 31 October 20X2:<br><table><tbody><tr><td>Opening inventory</td><td>$386,200</td></tr><tr><td>Purchases</td><td>$989,000</td></tr><tr><td>Closing inventory</td><td>$422,700</td></tr></tbody></table><br>The gross profit as a percentage of sales is always 40%<br><br>Based on these figures, what is the sales revenue for the year?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.To find the sales revenue, we first need to calculate the cost of sales (COS).<br><br>1.  **Calculate Cost of Sales (COS):**<br>The formula for cost of sales is:<br>COS = Opening Inventory + Purchases – Closing Inventory<br>COS = $386,200 + $989,000 – $422,700<br>COS = $1,375,200 – $422,700<br>COS = $952,500<br><br>2.  **Calculate Sales Revenue:**<br>The gross profit is 40% of sales. This is the gross profit margin. This means the cost of sales must be the remaining percentage of sales.<br>Cost of Sales % = 100% – Gross Profit %<br>Cost of Sales % = 100% – 40% = 60%<br><br>So, $952,500 represents 60% of the total sales revenue.<br>Sales Revenue = Cost of Sales / 60%<br>Sales Revenue = $952,500 / 0.60<br>Sales Revenue = $1,587,500<br><br>The sales revenue for the year is $1,587,500.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$1,333,500</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$1,587,500</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$2,381,250</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>The sales revenue figure cannot be calculated from this information</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S4-13-PRK13.13</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which of the following calculations could produce an acceptable figure for a sole trader's profit for the year for a period if no accounting records had been kept?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.This question relates to the accounting equation for changes in capital (net assets) over a period for a sole trader. The fundamental formula is:<br><br>Closing net assets = Opening net assets + Capital introduced + Profit for the year – Drawings<br><br>To find the profit for the year when other figures are known (a method often used with incomplete records), we need to rearrange this formula to make 'Profit for the year' the subject.<br><br>1.  Start with the base formula:<br>Closing net assets = Opening net assets + Capital introduced + Profit – Drawings<br><br>2.  Isolate Profit by moving all other terms to the other side of the equation:<br>Profit = Closing net assets – Opening net assets – Capital introduced + Drawings<br><br>3.  Reordering the terms to match the options given:<br>Profit = Closing net assets + drawings – capital introduced – opening net assets<br><br>This matches the first option exactly.<br>Let's check the other options:<br>- Option B incorrectly adds capital and subtracts drawings.<br>- Option C incorrectly subtracts both capital and drawings.<br>- Option D incorrectly adds both capital and drawings.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Closing net assets plus drawings minus capital introduced minus opening net assets</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Closing net assets minus drawings plus capital introduced minus opening net assets</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Closing net assets minus drawings minus capital introduced minus opening net assets</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Closing net assets plus drawings plus capital introduced minus opening net assets</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S4-14-PRK13.14</text></name>
+    <questiontext format="html"><text><![CDATA[<p>A business has opening inventory $30,000, achieves a mark-up of 25% on sales, sales totalled $1,000,000, purchases were $840,000. Calculate closing inventory.</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.This question requires calculating the closing inventory by first determining the cost of sales.<br><br>The phrase 'mark-up of 25% on sales' is ambiguous. A 'mark-up' is typically calculated on cost, while a percentage 'on sales' is called a 'margin'. However, if we interpret it as a standard mark-up on cost, we can find the cost of sales (COS) and then the closing inventory.<br><br>1.  **Calculate Cost of Sales (COS) assuming a 25% mark-up on cost:**<br>Sales = Cost of Sales × (1 + Mark-up %)<br>$1,000,000 = COS × (1 + 0.25)<br>$1,000,000 = COS × 1.25<br>COS = $1,000,000 / 1.25<br>COS = $800,000<br><br>2.  **Calculate Closing Inventory:**<br>The formula for cost of sales is:<br>COS = Opening Inventory + Purchases – Closing Inventory<br>We can rearrange this to solve for Closing Inventory:<br>Closing Inventory = Opening Inventory + Purchases – COS<br>Closing Inventory = $30,000 + $840,000 – $800,000<br>Closing Inventory = $870,000 – $800,000<br>Closing Inventory = $70,000<br><br>This calculation leads to one of the given options and is the standard interpretation in the absence of clarity.</p>]]></text></generalfeedback>
+    <defaultgrade>1.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$30,000</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$40,000</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$120,000</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$70,000</p>]]></text></answer>
+  </question>
+</quiz>

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>ChiaSeed - Focused Practice</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#8b5cf6">
+    <style>
+        /* ChiaSeed Specific Styles */
+        :root {
+            --primary: #8b5cf6; /* Purple override for ChiaSeed */
+            --primary-hover: #7c3aed;
+            --primary-light: #f3e8ff;
+        }
+        .concept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem; }
+        .concept-checkbox { display: none; }
+        .concept-label { 
+            display: block; padding: 0.5rem 0.75rem; border: 1px solid var(--border); border-radius: 0.5rem; 
+            cursor: pointer; font-size: 0.9rem; text-align: center; transition: all 0.2s; background: var(--bg-card); color: var(--text-main);
+        }
+        .concept-checkbox:checked + .concept-label { background: var(--primary-light); border-color: var(--primary); color: var(--primary); font-weight: 600; }
+        
+        .filter-group { margin-bottom: 1.5rem; }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo" style="text-decoration: none;">
+            <span>🌱 ChiaSeed</span>
+            <span style="color: var(--text-main); font-weight: 400;">Focused Practice</span>
+        </a>
+        <div class="flex items-center gap-4">
+             <a href="index.html" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">&larr; Dashboard</a>
+             <button class="btn-icon" id="theme-toggle" title="Toggle Dark Mode">
+                <svg class="hidden" fill="none" height="24" id="icon-sun" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+                <svg fill="none" height="24" id="icon-moon" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- SETUP VIEW -->
+    <div id="view-setup">
+        <div class="text-center mb-4">
+            <h2 style="font-size: 1.75rem; font-weight: 800;">Target Your Weaknesses</h2>
+            <p style="color: var(--text-muted);">Select specific topics to generate a custom practice set.</p>
+        </div>
+
+        <div class="card">
+            <div class="selection-grid">
+                <div class="input-group full-width">
+                    <label>Tag Set</label>
+                    <select id="chia-category-select">
+                        <option value="passion">PassionFruit (By Chapter)</option>
+                        <option value="syllabus">PerSyllabus (By Area)</option>
+                    </select>
+                </div>
+
+                <div class="input-group full-width">
+                    <label id="chia-primary-label">Chapter</label>
+                    <select id="chapter-select"></select>
+                </div>
+
+                <div class="input-group full-width hidden" id="group-container">
+                    <label>Topic Group</label>
+                    <select id="group-select"></select>
+                </div>
+
+                <div class="input-group full-width hidden" id="concept-container">
+                    <label>Specific Concepts (Optional)</label>
+                    <div id="concept-grid" class="concept-grid"></div>
+                </div>
+            </div>
+
+            <div class="flex items-center mt-4 mb-4" style="justify-content: space-between; gap: 1rem;">
+                 <div id="question-count-preview" style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;"></div>
+                 
+                 <div class="flex items-center">
+                    <input id="mal-mode" style="width: auto; margin-bottom: 0; margin-right: 0.5rem;" type="checkbox"/>
+                    <label for="mal-mode" style="margin-bottom: 0; display: inline;">Instant Feedback</label>
+                </div>
+            </div>
+
+            <button id="btn-start" class="btn btn-primary" disabled>Start Practice 🚀</button>
+        </div>
+    </div>
+
+    <!-- LOADING VIEW -->
+    <div class="hidden text-center" id="view-loading" style="padding: 3rem;">
+        <div class="spinner"></div>
+        <h3>Preparing Practice Set</h3>
+        <p style="color: var(--text-muted);">Filtering questions...</p>
+    </div>
+
+    <!-- QUIZ VIEW (Reusing structure from index.html for compatibility) -->
+    <div class="hidden" id="view-quiz">
+        <div class="stats-bar">
+            <div>
+                <span class="stat-label">Question</span>
+                <span class="stat-value" id="quiz-progress">1 / 50</span>
+            </div>
+            <div class="text-center">
+                <span class="stat-label">Time Remaining</span>
+                <span class="stat-value timer-value" id="quiz-timer">00:00</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="flex justify-between mb-4">
+                <span class="badge" id="quiz-q-id">ID: 000</span>
+                <span class="badge timer-value" id="quiz-q-timer">00:00</span>
+            </div>
+            <div class="question-text" id="quiz-question-text"></div>
+            <div id="quiz-options"></div>
+            <div class="hidden explanation-box" id="quiz-instant-explanation" style="background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary);">
+                <h4 style="margin-bottom: 0.5rem;">Explanation</h4>
+                <div id="quiz-instant-explanation-text"></div>
+            </div>
+        </div>
+        <div class="flex justify-between gap-4 mb-4">
+            <button class="btn btn-secondary" id="btn-prev" style="width: auto;">Previous</button>
+            <button class="btn btn-primary" id="btn-next" style="width: auto;">Next</button>
+            <button class="btn btn-primary hidden" id="btn-submit" style="background-color: var(--success); width: auto;">Submit Quiz</button>
+        </div>
+        <div class="card">
+            <h4 class="stat-label mb-4">Question Navigator</h4>
+            <div class="nav-grid" id="quiz-nav-grid"></div>
+        </div>
+    </div>
+
+    <!-- RESULTS VIEW -->
+    <div class="hidden" id="view-results">
+        <div class="text-center mb-4">
+            <h2>Practice Completed!</h2>
+            <p class="stat-value" id="result-score-summary"></p>
+            <p id="result-question-id-summary" style="color: var(--text-muted);"></p>
+            <p id="result-time-summary" style="color: var(--text-muted);"></p>
+        </div>
+        <div class="card">
+            <h4 class="stat-label mb-4 text-center">Review Navigation</h4>
+            <div class="flex justify-center gap-4 mb-4">
+                <button class="btn" id="filter-all" style="width: auto; padding: 0.5rem 1rem; font-size: 0.9rem;">Show All</button>
+                <button class="btn" id="filter-wrong" style="width: auto; padding: 0.5rem 1rem; font-size: 0.9rem;">Wrong Only</button>
+            </div>
+            <div class="nav-grid" id="result-nav-grid"></div>
+        </div>
+        <div id="results-list"></div>
+        <div class="text-center mt-4">
+            <button class="btn btn-primary" id="btn-retake" style="width: auto;">New Practice</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- MODALS -->
+<div class="modal" id="modal-ai">
+    <div class="modal-content">
+        <div class="flex justify-between items-center mb-4" style="border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">
+            <h3 style="color: var(--primary);">AI Explanation ✨</h3>
+            <button class="modal-close" onclick="ChiaSeedUI.closeModal('modal-ai')">×</button>
+        </div>
+        <div id="ai-content" style="line-height: 1.6; font-size: 0.95rem;"></div>
+    </div>
+</div>
+
+<div class="modal" id="modal-tags">
+    <div class="modal-content">
+        <div class="flex justify-between items-center mb-4" style="border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">
+            <h3 style="color: var(--primary);">Question Tags</h3>
+            <button class="modal-close" onclick="ChiaSeedUI.closeModal('modal-tags')">×</button>
+        </div>
+        <div id="tags-content" style="line-height: 1.6; font-size: 0.95rem;"></div>
+    </div>
+</div>
+
+<div class="modal" id="modal-timeup">
+    <div class="modal-content text-center">
+        <h3 style="color: var(--error);">Time's Up!</h3>
+        <p style="margin: 1rem 0;">Pencils down! Your quiz is being submitted automatically.</p>
+        <button class="btn btn-primary" onclick="ChiaSeedUI.closeModal('modal-timeup')">See Results</button>
+    </div>
+</div>
+<!-- Login Modal (Minimal) -->
+<div class="modal" id="modal-login">
+    <div class="modal-content">
+        <h3>Select Your Name</h3>
+        <div class="name-list" id="name-list"></div>
+    </div>
+</div>
+
+
+<script type="module">
+    import { Utils } from './assets/js/utils.js';
+    import { QuizEngine } from './assets/js/engine.js';
+    import { QuestionRenderer } from './assets/js/ui/question_renderer.js';
+    import { ResultRenderer } from './assets/js/ui/result_renderer.js';
+    import { AIHelper } from './assets/js/ui/ai_helper.js';
+    import { showModal, closeModal } from './assets/js/modal.js';
+    import { UserTracker, renderLoginStatus, showLoginModal, handleNameSelection, studentNames } from './assets/js/auth.js';
+    import { CONFIG } from './assets/js/config.js';
+
+    class ChiaSeedUI {
+        constructor() {
+            // Map DOM elements to what QuizEngine/Renderers expect
+            this.els = {
+                views: {
+                    setup: document.getElementById('view-setup'),
+                    loading: document.getElementById('view-loading'),
+                    quiz: document.getElementById('view-quiz'),
+                    results: document.getElementById('view-results')
+                },
+                inputs: {
+                    // ChiaSeed inputs
+                    chapter: document.getElementById('chapter-select'),
+                    group: document.getElementById('group-select'),
+                    malMode: document.getElementById('mal-mode'),
+                    // Dummy inputs to prevent errors if renderers try to access them
+                    subject: { value: 'ARF' } 
+                },
+                quiz: {
+                    text: document.getElementById('quiz-question-text'),
+                    options: document.getElementById('quiz-options'),
+                    navGrid: document.getElementById('quiz-nav-grid'),
+                    timer: document.getElementById('quiz-timer'),
+                    qTimer: document.getElementById('quiz-q-timer'),
+                    progress: document.getElementById('quiz-progress'),
+                    qId: document.getElementById('quiz-q-id'),
+                    explanation: document.getElementById('quiz-instant-explanation'),
+                    explanationText: document.getElementById('quiz-instant-explanation-text'),
+                    btnPrev: document.getElementById('btn-prev'),
+                    btnNext: document.getElementById('btn-next'),
+                    btnSubmit: document.getElementById('btn-submit')
+                }
+            };
+
+            this.engine = new QuizEngine(this);
+            this.questionRenderer = new QuestionRenderer(this.els, this.engine);
+            this.resultRenderer = new ResultRenderer(this);
+            this.aiHelper = new AIHelper(this.engine);
+            
+            // State
+            this.allQuestions = [];
+            this.filteredQuestions = [];
+            this.tagDatabase = {}; // Dynamic tag DB
+
+            this.init();
+        }
+
+        async init() {
+            this.setupTheme();
+            this.setupListeners();
+            await this.loadQuestions();
+            this.initFilters();
+            
+            // Check URL params for auto-setup (Weak Spots)
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('tags')) {
+                const tags = urlParams.get('tags').split(',');
+                const chapter = urlParams.get('chapter');
+                // Auto-filter
+                this.autoFilter(chapter, tags);
+            }
+            
+            window.ChiaSeedUI = { closeModal }; // Expose for HTML onclicks
+        }
+
+        setupTheme() {
+            const toggle = document.getElementById('theme-toggle');
+            const applyTheme = (isDark) => {
+                document.documentElement.classList.toggle('dark', isDark);
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                document.getElementById('icon-sun').classList.toggle('hidden', !isDark);
+                document.getElementById('icon-moon').classList.toggle('hidden', isDark);
+            };
+            const saved = localStorage.getItem('theme');
+            applyTheme(saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches));
+            toggle.onclick = () => applyTheme(!document.documentElement.classList.contains('dark'));
+        }
+
+        async loadQuestions() {
+            try {
+                this.switchView('loading');
+                document.querySelector('#view-loading p').textContent = "Loading Question Bank & AI Sets...";
+
+                // Load both sets in parallel
+                const [qbRes, aiRes] = await Promise.allSettled([
+                    fetch('json/combined/combined-set-qb.json'),
+                    fetch('json/combined/combined-set-ai.json')
+                ]);
+
+                let qbData = [], aiData = [];
+
+                if (qbRes.status === 'fulfilled' && qbRes.value.ok) {
+                    const json = await qbRes.value.json();
+                    qbData = json.entries || [];
+                } else {
+                    console.error("Failed to load QB:", qbRes.reason || qbRes.value.statusText);
+                }
+
+                if (aiRes.status === 'fulfilled' && aiRes.value.ok) {
+                    const json = await aiRes.value.json();
+                    aiData = json.entries || [];
+                } else {
+                    console.error("Failed to load AI:", aiRes.reason || aiRes.value.statusText);
+                }
+
+                this.allQuestions = [...qbData, ...aiData];
+                
+                if (this.allQuestions.length === 0) {
+                    throw new Error("No questions could be loaded from either source.");
+                }
+
+                console.log(`Loaded ${this.allQuestions.length} questions (QB: ${qbData.length}, AI: ${aiData.length}).`);
+                
+                // Build dynamic tag database
+                this.processTags(this.allQuestions);
+                this.switchView('setup'); // Switch back to setup when done
+                
+            } catch (e) {
+                console.error(e);
+                alert("Error loading questions: " + e.message);
+                this.switchView('setup');
+            }
+        }
+
+        processTags(questions) {
+            const db = {};
+            questions.forEach(q => {
+                if (!q.tags || !Array.isArray(q.tags)) return;
+                
+                // Regex for standard format
+                const chapters = q.tags.filter(t => /^C\d{2}_/.test(t));
+                const groups = q.tags.filter(t => t.startsWith('#'));
+                const concepts = q.tags.filter(t => !/^C\d{2}_/.test(t) && !t.startsWith('#'));
+                
+                if (chapters.length === 0) return; // Must have a chapter to fit in this UI
+                
+                chapters.forEach(chap => {
+                    if (!db[chap]) db[chap] = {};
+                    
+                    if (groups.length === 0) {
+                        // Handle cases with no group (Optional: skip or assign #General)
+                    } else {
+                        groups.forEach(grp => {
+                            if (!db[chap][grp]) db[chap][grp] = new Set();
+                            concepts.forEach(c => db[chap][grp].add(c));
+                        });
+                    }
+                });
+            });
+
+            // Sort and store
+            const sortedDB = {};
+            Object.keys(db).sort().forEach(chap => {
+                sortedDB[chap] = {};
+                Object.keys(db[chap]).sort().forEach(grp => {
+                    sortedDB[chap][grp] = Array.from(db[chap][grp]).sort();
+                });
+            });
+            this.tagDatabase = sortedDB;
+            console.log("Dynamic Tag DB Built:", this.tagDatabase);
+        }
+
+        initFilters() {
+            const chapSel = this.els.inputs.chapter;
+            chapSel.innerHTML = '<option value="">Select Chapter...</option>';
+            
+            Object.keys(this.tagDatabase).forEach(chapter => {
+                const opt = document.createElement('option');
+                opt.value = chapter;
+                opt.textContent = chapter.replace(/_/g, ' ');
+                chapSel.appendChild(opt);
+            });
+
+            chapSel.onchange = () => this.onChapterChange();
+            this.els.inputs.group.onchange = () => this.onGroupChange();
+        }
+
+        onChapterChange() {
+            const chapter = this.els.inputs.chapter.value;
+            const groupSelect = this.els.inputs.group;
+            const groupContainer = document.getElementById('group-container');
+            const conceptContainer = document.getElementById('concept-container');
+            
+            groupSelect.innerHTML = '<option value="">Select a Group...</option>';
+            document.getElementById('concept-grid').innerHTML = '';
+            groupContainer.classList.add('hidden');
+            conceptContainer.classList.add('hidden');
+            document.getElementById('btn-start').disabled = true;
+            this.updatePreview();
+
+            if (!chapter || !this.tagDatabase[chapter]) return;
+
+            const groups = Object.keys(this.tagDatabase[chapter]);
+            groups.forEach(group => {
+                const opt = document.createElement('option');
+                opt.value = group;
+                opt.textContent = group.replace('#', '');
+                groupSelect.appendChild(opt);
+            });
+            groupContainer.classList.remove('hidden');
+        }
+
+        onGroupChange() {
+            const chapter = this.els.inputs.chapter.value;
+            const group = this.els.inputs.group.value;
+            const conceptGrid = document.getElementById('concept-grid');
+            const conceptContainer = document.getElementById('concept-container');
+
+            conceptGrid.innerHTML = '';
+            conceptContainer.classList.add('hidden');
+            document.getElementById('btn-start').disabled = true;
+
+            if (!chapter || !group || !this.tagDatabase[chapter] || !this.tagDatabase[chapter][group]) {
+                this.updatePreview();
+                return;
+            }
+
+            const concepts = this.tagDatabase[chapter][group];
+            concepts.forEach(concept => {
+                const wrapper = document.createElement('div');
+                
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `c-${concept}`;
+                checkbox.value = concept;
+                checkbox.className = 'concept-checkbox';
+                checkbox.onchange = () => this.updatePreview();
+
+                const label = document.createElement('label');
+                label.htmlFor = `c-${concept}`;
+                label.className = 'concept-label';
+                label.textContent = concept.replace(/_/g, ' ');
+
+                wrapper.appendChild(checkbox);
+                wrapper.appendChild(label);
+                conceptGrid.appendChild(wrapper);
+            });
+            conceptContainer.classList.remove('hidden');
+            this.updatePreview();
+        }
+
+        updatePreview() {
+            const chapter = this.els.inputs.chapter.value;
+            const group = this.els.inputs.group.value;
+            const previewText = document.getElementById('question-count-preview');
+
+            if (!chapter || !group) {
+                previewText.textContent = '';
+                document.getElementById('btn-start').disabled = true;
+                return;
+            }
+
+            const selectedConcepts = Array.from(document.querySelectorAll('.concept-checkbox:checked')).map(cb => cb.value);
+
+            const matches = this.allQuestions.filter(q => {
+                if (!q.tags) return false;
+                const hasChapter = q.tags.includes(chapter);
+                const hasGroup = q.tags.includes(group);
+                if (!hasChapter || !hasGroup) return false;
+                if (selectedConcepts.length > 0) return selectedConcepts.some(c => q.tags.includes(c));
+                return true;
+            });
+
+            const count = matches.length;
+            previewText.textContent = `${count} question${count !== 1 ? 's' : ''} found.`;
+            document.getElementById('btn-start').disabled = count === 0;
+            this.filteredQuestions = matches;
+        }
+
+        autoFilter(chapter, tags) {
+            // Find which group these tags belong to (assuming mostly same group for simplicity, or just filter all)
+            // For robustness, ignore Group UI and just filter by tags
+            console.log("Auto-filtering for tags:", tags);
+            const matches = this.allQuestions.filter(q => {
+                if(!q.tags) return false;
+                return tags.some(t => q.tags.includes(t));
+            });
+            
+            if(matches.length > 0) {
+                this.filteredQuestions = matches;
+                // Pre-fill UI just for visual if possible, else just start
+                document.getElementById('question-count-preview').textContent = `Auto-selected ${matches.length} questions based on weak spots.`;
+                document.getElementById('btn-start').disabled = false;
+                // Highlight
+                document.getElementById('btn-start').classList.add('btn-primary');
+            }
+        }
+
+        setupListeners() {
+            document.getElementById('btn-start').onclick = () => this.startQuiz();
+            
+            // Quiz Nav
+            this.els.quiz.btnPrev.onclick = () => this.engine.goToQuestion(this.engine.currentIndex - 1);
+            this.els.quiz.btnNext.onclick = () => {
+                if (this.engine.instantMode) {
+                    if (!this.engine.checkedQuestions.includes(this.engine.currentIndex)) {
+                        this.engine.checkInstant();
+                    } else if (this.engine.currentIndex === this.engine.questions.length - 1) {
+                        this.engine.finish();
+                    } else {
+                        this.engine.goToQuestion(this.engine.currentIndex + 1);
+                    }
+                } else {
+                    this.engine.goToQuestion(this.engine.currentIndex + 1);
+                }
+            };
+            this.els.quiz.btnSubmit.onclick = () => this.engine.finish();
+            document.getElementById('btn-retake').onclick = () => {
+                this.switchView('setup');
+            };
+        }
+
+        startQuiz() {
+            this.switchView('loading');
+            
+            // Randomize order
+            const questions = Utils.shuffle([...this.filteredQuestions]);
+            const isInstant = this.els.inputs.malMode.checked;
+            
+            // Calculate time (1.5 min per q)
+            const timeLimit = questions.length * 1.5;
+
+            setTimeout(() => {
+                this.engine.start(questions, timeLimit, isInstant, {
+                    subject: 'ARF',
+                    chapter: 'CHIASEED',
+                    set: 'Focused',
+                    platform: 'chiaseed'
+                });
+            }, 500);
+        }
+
+        // --- Engine Delegates ---
+        switchView(name) {
+            Object.values(this.els.views).forEach(v => v.classList.add('hidden'));
+            this.els.views[name].classList.remove('hidden');
+        }
+        showQuizView() { this.switchView('quiz'); }
+        
+        // Re-implement methods used by engine that call UI methods
+        renderQuestion(q, i, total, ua, checked) {
+            this.els.quiz.progress.textContent = `${i+1} / ${total}`;
+            this.els.quiz.qId.textContent = `ID: ${q.id}`;
+            this.updateButtonVisibility(i, total, checked, ua);
+            this.questionRenderer.render(q, ua, checked);
+        }
+        
+        updateButtonVisibility(index, total, isChecked, userAnswer) {
+             this.els.quiz.btnPrev.disabled = index === 0;
+             const isLast = index === total - 1;
+             
+             if (this.engine.instantMode) {
+                if (!isChecked) {
+                    this.els.quiz.btnNext.textContent = "Check Answer";
+                    this.els.quiz.btnNext.classList.remove('hidden');
+                    this.els.quiz.btnSubmit.classList.add('hidden');
+                    const hasAnswer = userAnswer && (Array.isArray(userAnswer) ? userAnswer.filter(x=>x!==null).length>0 : userAnswer !== null);
+                    this.els.quiz.btnNext.disabled = !hasAnswer;
+                } else {
+                    this.els.quiz.btnNext.textContent = isLast ? "Finish Practice" : "Next Question";
+                    this.els.quiz.btnNext.classList.remove('hidden');
+                    this.els.quiz.btnSubmit.classList.add('hidden');
+                }
+            } else {
+                this.els.quiz.btnNext.textContent = "Next";
+                this.els.quiz.btnNext.classList.toggle('hidden', isLast);
+                this.els.quiz.btnSubmit.classList.toggle('hidden', !isLast);
+            }
+        }
+
+        renderNavGrid(total, current, answers, checked, questions, instant) {
+            const grid = this.els.quiz.navGrid; grid.innerHTML = '';
+            for(let i=0; i<total; i++) {
+                const btn = document.createElement('div'); 
+                btn.className = 'nav-cell'; 
+                btn.textContent = i+1;
+                if (i === current) btn.classList.add('active');
+                
+                const ua = answers[i];
+                let hasAns = false;
+                if (ua) {
+                    if (Array.isArray(ua)) hasAns = ua.filter(x => x !== null && x !== undefined).length > 0;
+                    else hasAns = true;
+                }
+
+                if (hasAns) {
+                    if (instant && checked.includes(i)) {
+                        const isCorrect = this.engine.isAnswerCorrect(questions[i], ua);
+                        btn.classList.add(isCorrect ? 'answered-correct' : 'answered-incorrect');
+                    } else {
+                        btn.classList.add('answered');
+                    }
+                }
+                btn.onclick = () => this.engine.goToQuestion(i);
+                grid.appendChild(btn);
+            }
+        }
+        
+        updateNavState(i, ans) { if(ans) this.els.quiz.navGrid.children[i]?.classList.add('answered'); }
+        
+        updateButtonState() {
+             if (this.engine.instantMode && !this.engine.checkedQuestions.includes(this.engine.currentIndex)) {
+                 const ua = this.engine.answers[this.engine.currentIndex];
+                 let hasAnswer = false;
+                 if (Array.isArray(ua)) hasAnswer = ua.some(x => x !== null && x !== undefined && x !== "");
+                 else hasAnswer = ua !== null && ua !== undefined && ua !== "";
+                 this.els.quiz.btnNext.disabled = !hasAnswer;
+            }
+        }
+
+        updateTimer(ms, warn) {
+            this.els.quiz.timer.textContent = Utils.formatTime(ms);
+            this.els.quiz.timer.style.color = warn ? 'var(--error)' : 'var(--primary)';
+        }
+        updateQuestionTimer(ms) { this.els.quiz.qTimer.textContent = Utils.formatTime(ms); }
+        
+        showResults(res, time) {
+             this.resultRenderer.show(res, time);
+        }
+
+        showTags(tags) {
+             const container = document.getElementById('tags-content');
+             container.innerHTML = '';
+             if (!tags || tags.length === 0) {
+                container.textContent = "No tags available.";
+             } else {
+                tags.forEach(tag => {
+                    const div = document.createElement('div');
+                    div.style.marginBottom = '0.5rem';
+                    div.innerHTML = `<span style="background:var(--primary-light); color:var(--primary); padding:2px 8px; border-radius:12px; font-weight:500;">${tag}</span>`;
+                    container.appendChild(div);
+                });
+             }
+             showModal('modal-tags');
+        }
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+        window.app = new ChiaSeedUI();
+        UserTracker.init();
+    });
+</script>
+</body>
+</html>

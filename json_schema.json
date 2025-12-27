@@ -1,0 +1,68 @@
+{
+  "name": "question_bank",
+  "strict": true,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "entries": {
+        "type": "array",
+        "description": "List of question bank entries",
+        "items": {
+          "$ref": "#/$defs/question_bank_entry"
+        },
+        "minItems": 1
+      }
+    },
+    "required": [
+      "entries"
+    ],
+    "additionalProperties": false,
+    "$defs": {
+      "question_bank_entry": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string",
+            "description": "Question identifier based on prompts request"
+          },
+          "questions": {
+            "type": "string",
+            "description": "Text content of the question with context/story behind the question(ie before and after Requirement)(Use html element <br>)"
+          },
+          "options": {
+            "type": "array",
+            "description": "List of possible answer options (between 4 and 9 per question)",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 4,
+            "maxItems": 6
+          },
+          "answer": {
+            "type": "array",
+            "description": "Indices of the correct answer options (up to 4, 0-based index for options)",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5
+            },
+            "minItems": 1,
+            "maxItems": 3
+          },
+          "answer_explanation": {
+            "type": "string",
+            "description": "Explanation why these options are the correct answer(s). Use original answer explaination"
+          }
+        },
+        "required": [
+          "number",
+          "questions",
+          "options",
+          "answer",
+          "answer_explanation"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}

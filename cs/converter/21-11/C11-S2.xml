@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-2-1-K418</text></name>
+    <questiontext format="html"><text><![CDATA[Which of the following statements relating to accounting for a partnership is true?]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[The following is GenAI explanations, use with caution.<br>Option C is correct because in a partnership maintaining fixed capital accounts, the capital account balance remains constant and only changes when capital is introduced or withdrawn (retirement). Share of profits, interest on capital, and drawings are recorded in the Current Accounts, not Capital Accounts (making A and D incorrect). A loan from a partner is treated as a liability (loan account), not capital (making B incorrect).]]></text></generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <shuffleanswers>true</shuffleanswers>
+    <single>true</single>
+    <answer fraction="0" format="html"><text><![CDATA[The partners' capital accounts reflect each partner's share of profit from the appropriation account]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[If a partner makes a loan to the partnership, this is classified as an increase in the capital account of that partner.]]></text></answer>
+    <answer fraction="100" format="html"><text><![CDATA[The capital account of each partner is normally fixed and will change when a partner introduces additional capital into the business or retires from the partnership.]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[The capital account of each partner is debited with drawings made during the accounting year.]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-2-2-K419</text></name>
+    <questiontext format="html"><text><![CDATA[Which of the following statements relating to accounting for a partnership is true?]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[The following is GenAI explanations, use with caution.<br>Option A is correct because the share of residual profit determined in the appropriation account is credited to the partners' current accounts. Option B is incorrect because partnership salaries are an appropriation of profit, not an expense in the P&L. Option C is incorrect because interest on capital is credited to the current account, not the fixed capital account. Option D is incorrect because partners can contribute different amounts of capital.]]></text></generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <shuffleanswers>true</shuffleanswers>
+    <single>true</single>
+    <answer fraction="100" format="html"><text><![CDATA[The respective share of profit from the appropriation account is recorded in the current account of each partner.]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[If a partner has a salary from the partnership, this is accounted for as an expense in the statement of profit or loss.]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[If interest is earned on capital account balances, the interest earned is credited to the capital account of each partner.]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[The capital account balances of each partner must have identical account balances.]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-2-3-K420</text></name>
+    <questiontext format="html"><text><![CDATA[Which of the following statements provides the definition of a partnership?]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[The following is GenAI explanations, use with caution.<br>Option B is correct as it captures the essence of a partnership: a relationship between persons carrying on a business in common with a view of profit. Option A is incorrect as partnerships can have more than three partners. Options C and D describe employees or separate sole traders, not a partnership entity.]]></text></generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <shuffleanswers>true</shuffleanswers>
+    <single>true</single>
+    <answer fraction="0" format="html"><text><![CDATA[A maximum of three people in business together]]></text></answer>
+    <answer fraction="100" format="html"><text><![CDATA[Persons in business together with the intention of sharing profits and losses]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[Two work colleagues who are employed by the same business]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[Two persons who each have their own business as a sole proprietor]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-2-4-K421</text></name>
+    <questiontext format="html"><text><![CDATA[What is the purpose of a partnership agreement?]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[The following is GenAI explanations, use with caution.<br>Option C is the best description; the agreement is a contract governing the internal relationship, rights, and duties of partners. Option A is incorrect because a written agreement is not strictly legally required (partnerships can exist under general partnership acts). Option B is incorrect as it is an internal document. Option D is partially true but too narrow compared to C, which encompasses all rights and responsibilities.]]></text></generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <shuffleanswers>true</shuffleanswers>
+    <single>true</single>
+    <answer fraction="0" format="html"><text><![CDATA[It is a legal requirement for all partnerships to have a partnership agreement.]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[It enables customers to understand how the partnership operates.]]></text></answer>
+    <answer fraction="100" format="html"><text><![CDATA[It is a contract between the partners that sets out their rights and responsibilities to each other.]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[It is a contract between the partners that sets out the profit and loss sharing arrangements between the partners.]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-2-5-K422</text></name>
+    <questiontext format="html"><text><![CDATA[Which of the following items would not normally be included within a partnership agreement?]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[The following is GenAI explanations, use with caution.<br>Option D is correct. The names of customers and suppliers are operational business data, not constitutional details required in the partnership agreement. The agreement focuses on the partners' relationship (A, B) and the firm's identity (C).]]></text></generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <shuffleanswers>true</shuffleanswers>
+    <single>true</single>
+    <answer fraction="0" format="html"><text><![CDATA[The names of the partners]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[The arrangements for sharing residual profits and losses between the partners]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[The name and business location of the partnership]]></text></answer>
+    <answer fraction="100" format="html"><text><![CDATA[The names of the principal customers and suppliers of the business]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-2-6-K423</text></name>
+    <questiontext format="html"><text><![CDATA[Viv and Bao are in partnership, sharing profits and losses in a ratio of 3:2. The business maintains current accounts and fixed capital accounts for the partners. In the last year, the profit before appropriations was $27,800. Bao is entitled to an annual salary of $3,800.<br>During the year Viv and Bao made cash drawings of $12,000 each.<br><br>What is Viv's share of the profit?]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[The following is GenAI explanations, use with caution.<br>Net Profit: $27,800<br>Less Bao's Salary: ($3,800)<br>Residual Profit: $24,000<br>Viv's Share (3/5 of $24,000): $14,400.]]></text></generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <shuffleanswers>true</shuffleanswers>
+    <single>true</single>
+    <answer fraction="0" format="html"><text><![CDATA[$2,280]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[$9,600]]></text></answer>
+    <answer fraction="100" format="html"><text><![CDATA[$14,400]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[$16,680]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-2-7-K424</text></name>
+    <questiontext format="html"><text><![CDATA[The correct entry for the partners' drawings has been made in the cash account. What entry is needed to complete the posting for the partners' drawings?]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[The following is GenAI explanations, use with caution.<br>Drawings represent a reduction in the partners' equity and are recorded by debiting the partners' current accounts (since capital accounts are fixed). The corresponding credit is to cash (which is already done).]]></text></generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <shuffleanswers>true</shuffleanswers>
+    <single>true</single>
+    <answer fraction="0" format="html"><text><![CDATA[A debit entry in the partners' capital accounts]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[A credit entry in the partners' capital accounts]]></text></answer>
+    <answer fraction="100" format="html"><text><![CDATA[A debit entry in the partners' current accounts]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[A credit entry in the partners' current accounts]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-Ch10-2-7-K425</text></name>
+    <questiontext format="html"><text><![CDATA[Ali and Dai are in partnership, sharing profits and losses in the ratio 3:2. Under the terms of the partnership agreement, Dai is entitled to a salary of $8,000. The partnership statement of profit or loss for the year to 30 November reported a profit of $16,000.<br>What is Ali's share of the profit?<p>Answer: {2:NUMERICAL:=4800:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[The following is GenAI explanations, use with caution.<br>Profit: $16,000<br>Less Dai's Salary: ($8,000)<br>Residual Profit: $8,000<br>Ali's Share (3/5 of $8,000): $4,800.]]></text></generalfeedback>
+    <defaultgrade>2</defaultgrade>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-Ch10-2-8-K426</text></name>
+    <questiontext format="html"><text><![CDATA[Alex and Kim are in partnership. In the year to 31 October 20X6, Alex's drawings were $18,000 and the following entries have been made in the partnership appropriation account for Alex:<br>Salary 6,500<br>Interest on drawings 1,800<br>Share of profit 12,750<br>At 1 November 20X5, the balance on Alex's current account was $24,800 (credit).<br>What was the balance on Alex's current account at 31 October 20X6?<p>Answer: {2:NUMERICAL:=24250:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[The following is GenAI explanations, use with caution.<br>Opening Balance: $24,800 (Cr)<br>Add: Salary: $6,500<br>Add: Share of Profit: $12,750<br>Less: Interest on Drawings: ($1,800)<br>Less: Drawings: ($18,000)<br>Closing Balance: 24,800 + 6,500 + 12,750 - 1,800 - 18,000 = $24,250.]]></text></generalfeedback>
+    <defaultgrade>2</defaultgrade>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-Ch10-2-9_11-K427_429</text></name>
+    <questiontext format="html"><text><![CDATA[<p><strong>Hub Design has three partners: M, J and A. The three share profits equally after interest on capital at 5% and J's partnership salary of $8,000. The partners' account balances are shown below:<br><table><tr><td></td><td>M</td><td>J</td><td>A</td><td>Total</td></tr><tr><td>Capital</td><td>$20,000</td><td>$15,000</td><td>$40,000</td><td>$75,000</td></tr><tr><td>Current</td><td>$100,000</td><td>$80,000</td><td>$110,000</td><td>$290,000</td></tr><tr><td>Drawings</td><td>$30,000</td><td>$35,000</td><td>$40,000</td><td>$105,000</td></tr></table><br>No interest is paid on current account balances.<br>The net profit for the year ended 31 December 20X6 is $170,000.</strong></p><br/><table class="table table-bordered" style="width:100%"><tr><td style="width:70%">What will the statement of financial position as at 31 December 20X6 show as the total for owners' equity?</td><td>{2:NUMERICAL:=430000:0}</td></tr><tr><td style="width:70%">What will each partner receive as a share of residual profit?</td><td>{2:NUMERICAL:=52750:0}</td></tr><tr><td style="width:70%">What total profit will J receive for the year ended 31 December 20X6?</td><td>{2:NUMERICAL:=61500:0}</td></tr></table>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[The following is GenAI explanations, use with caution.<br><strong>Owners' Equity:</strong> Opening Capital ($75,000) + Opening Current ($290,000) + Profit ($170,000) - Drawings ($105,000) = $430,000.<br><strong>Residual Profit:</strong> Net Profit $170,000 - J's Salary $8,000 - Interest on Capital (5% of 75,000 = 3,750) = $158,250. Share per partner (equal split): 158,250 / 3 = $52,750.<br><strong>J's Total Profit:</strong> Salary $8,000 + Interest on Capital (5% of 15,000 = $750) + Share of Residual $52,750 = $61,500.]]></text></generalfeedback>
+    <defaultgrade>6</defaultgrade>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-Ch10-2-12-K430</text></name>
+    <questiontext format="html"><text><![CDATA[Jo and Sam are in partnership sharing profits and losses in the ratio 3:4. The statement of profit or loss for the year to 31 May reported a net profit of $30,709. Jo is entitled to a salary of $14,000 per annum. What was Sam's share of the profit for the year to 31 May 20x6<p>Answer: {2:NUMERICAL:=9548:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[The following is GenAI explanations, use with caution.<br>Net Profit: $30,709<br>Less Jo's Salary: ($14,000)<br>Residual Profit: $16,709<br>Sam's Share (4/7 of $16,709): $9,548.]]></text></generalfeedback>
+    <defaultgrade>2</defaultgrade>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-2-13-K431</text></name>
+    <questiontext format="html"><text><![CDATA[Kranti and Lazim are in partnership sharing profits and losses in the ratio 2:3. The statement of profit or loss for the year ended 31 August reported a net profit of $73,540. Kranti is entitled to a salary of $18,000 per annum.<br>What was Kranti's total share of the profit for the year to 31 August 20X3?]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[The following is GenAI explanations, use with caution.<br>The answer provided ($51,324) is calculated as Salary ($18,000) + $33,324. Note that $33,324 corresponds to 3/5 of the residual profit ($73,540 - $18,000 = $55,540). The question text states Kranti's ratio is 2:3 (implying 2/5 share), but the key matches a 3/5 share calculation.]]></text></generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <shuffleanswers>true</shuffleanswers>
+    <single>true</single>
+    <answer fraction="0" format="html"><text><![CDATA[$40,216]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[$22,216]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[$33,324]]></text></answer>
+    <answer fraction="100" format="html"><text><![CDATA[$51,324]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-2-14-K432</text></name>
+    <questiontext format="html"><text><![CDATA[Manvi and Nartan are in partnership sharing profits and losses in the ratio 6:4. The statement of profit or loss for the year ended 31 January 20X8 reported a net profit of $24,680. Nartan is entitled to a salary of $5,000 per annum.<br>What was Nartan's total share of the profit for the year to 31 January 20x8]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[The following is GenAI explanations, use with caution.<br>Net Profit: $24,680<br>Less Nartan's Salary: ($5,000)<br>Residual Profit: $19,680<br>Nartan's Share of Residual (4/10 or 0.4 of $19,680): $7,872<br>Nartan's Total Share: $5,000 (Salary) + $7,872 (Share) = $12,872.]]></text></generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <shuffleanswers>true</shuffleanswers>
+    <single>true</single>
+    <answer fraction="0" format="html"><text><![CDATA[$11,808]]></text></answer>
+    <answer fraction="100" format="html"><text><![CDATA[$12,872]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[$7,872]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[$9,872]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-Ch10-2-15-K433</text></name>
+    <questiontext format="html"><text><![CDATA[Pahal and Parul are in partnership sharing profits and losses in the ratio 7:3. The statement of profit or loss for the year ended 31 July 20X7 reported a net profit of $52,900. Pahal is entitled to an annual salary of $14,000 and Parul is entitled to an annual salary of $6,000.<br>What was Parul's total share of the profit for the year ended 31 July 20X7?<p>Answer: {2:NUMERICAL:=15870:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[The following is GenAI explanations, use with caution.<br>Net Profit: $52,900<br>Less Salaries (14,000 + 6,000): ($20,000)<br>Residual Profit: $32,900<br>Parul's Share of Residual (3/10 of $32,900): $9,870<br>Parul's Total Share: $6,000 (Salary) + $9,870 = $15,870.]]></text></generalfeedback>
+    <defaultgrade>2</defaultgrade>
+  </question>
+</quiz>

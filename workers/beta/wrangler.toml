@@ -1,0 +1,17 @@
+name = "api-x-data"
+main = "index.js"
+compatibility_date = "2024-11-27"
+workers_dev = false
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[[d1_databases]]
+binding = "DB" 
+database_name = "next-gen-db" 
+database_id = "5b7b9020-70d3-4620-ac23-4d42fe53f7f3"
+
+[[routes]]
+pattern = "api-x-data.fayempire.com"
+custom_domain = true

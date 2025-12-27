@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chiaseed Prototype</title>
+  <link rel="icon" href="https://tymbaedu.com/wp-content/uploads/2025/01/cropped-Untitled-design-192x192.png"/>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="static/calculator/calculator.css"> <!-- Calculator CSS -->
+</head>
+<body>
+  <a href="#exam-container" class="skip-link">Skip to main content</a>
+
+  <header>
+    <img src="https://tymbaedu.com/wp-content/uploads/2023/02/TYMBA-Horizontal-Orange-New.png" alt="ICAEW Logo" class="logo" />
+
+    <span id="exam-timer" class="timer" style="display: none;">00:00:00</span>
+
+    <div class="theme-switcher" role="group" aria-label="Color theme">
+      <span class="theme-switcher-label" id="theme-switcher-label">Theme</span>
+      <div class="theme-switcher-group" role="radiogroup" aria-labelledby="theme-switcher-label">
+        <input type="radio" id="theme-default" name="theme" value="default" aria-label="Standard theme" />
+        <label for="theme-default" class="theme-option" title="Standard">Standard</label>
+
+        <input type="radio" id="theme-white" name="theme" value="hc-white" aria-label="White text on black background theme" />
+        <label for="theme-white" class="theme-option" title="White on Black">White on Black</label>
+
+        <input type="radio" id="theme-yellow" name="theme" value="hc-yellow" aria-label="Yellow text on black background theme" />
+        <label for="theme-yellow" class="theme-option" title="Yellow on Black">Yellow on Black</label>
+      </div>
+    </div>
+  </header>
+
+  <main id="exam-container"></main>
+
+  <!-- This container will hold the calculator widget -->
+  <div id="calculator-container"></div>
+
+  <footer id="footer-nav" style="display: none;">
+    <div class="utility-buttons">
+      <!-- Calculator button is enabled -->
+      <button id="calculator-btn" title="Calculator">Calculator</button>
+      <button disabled aria-disabled="true" title="Note Pad (coming soon)">Note Pad</button>
+      <button disabled aria-disabled="true" title="Flag (coming soon)">Flag</button>
+    </div>
+    <div class="navigation-buttons">
+      <button id="back-btn" class="nav-btn" aria-label="Go to previous question">&lt;&lt; Back</button>
+      <button id="next-btn" class="nav-btn" aria-label="Go to next question">Next &gt;</button>
+      <button id="mark-btn" class="nav-btn mark-btn" style="display: none;" aria-label="Mark exam">Mark Exam</button>
+    </div>
+  </footer>
+
+<script>
+    /* Theme switcher: apply, persist, and initialize */
+    (function initTheme() {
+      const THEME_KEY = 'icaew_theme_pref';
+      const body = document.body;
+      const radios = [
+        document.getElementById('theme-default'),
+        document.getElementById('theme-white'),
+        document.getElementById('theme-yellow')
+      ];
+
+      function applyTheme(value) {
+        body.classList.remove('theme-hc-white', 'theme-hc-yellow');
+        if (value === 'hc-white') body.classList.add('theme-hc-white');
+        if (value === 'hc-yellow') body.classList.add('theme-hc-yellow');
+      }
+
+      function setChecked(value) {
+        radios.forEach(r => { r.checked = (r.value === value); });
+      }
+
+      const saved = localStorage.getItem(THEME_KEY) || 'default';
+      applyTheme(saved);
+      setChecked(saved);
+
+      radios.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          const value = e.target.value;
+          applyTheme(value);
+          localStorage.setItem(THEME_KEY, value);
+        });
+      });
+    })();
+</script>
+
+<script>
+    /* Main App Logic */
+    document.addEventListener('DOMContentLoaded', () => {
+      const examContainer = document.getElementById('exam-container');
+      const footerNav = document.getElementById('footer-nav');
+      const examTimerDisplay = document.getElementById('exam-timer');
+      const body = document.body;
+
+      const availableExams = [
+        { name: "Pilot Exam", file: "pilot.json" },
+        { name: "Mock Exam", file: "mock.json" }
+      ];
+      const examFilesPath = 'mat/json/';
+
+      let examData;
+      let currentQuestionIndex = 0;
+      let userAnswers = {};
+      let timeLeft = 120 * 60;
+      let timerInterval = null;
+      let logData = [];
+      // Disable right-click context menu for the entire document
+      document.addEventListener('contextmenu', (event) => {
+          event.preventDefault();
+          console.log("[ACTION LOG] Right-click attempt prevented.");
+          // Optionally, you can add a toast message here if needed:
+          // showToast('Right-click is disabled.', 2000); 
+      });
+      // --- Calculator Widget Logic ---
+      function initCalculatorWidget() {
+          const container = document.getElementById('calculator-container');
+          fetch('static/calculator/calculator.html')
+              .then(response => response.text())
+              .then(html => {
+                  container.innerHTML = html;
+                  const widget = document.getElementById('calculator-widget');
+                  const header = document.getElementById('calculator-drag-header');
+                  const closeBtn = document.getElementById('calculator-close-btn');
+                  const openBtn = document.getElementById('calculator-btn');
+
+                  // Instantiate the calculator logic after its HTML is loaded
+                  window.calc = new Calculator("sciOutPut");
+                  
+                  // Global wrapper for HTML onclicks
+                  window.r = function(key) {
+                      window.calc.press(key.toString());
+                  }
+
+                  // Show/Hide logic
+                  openBtn.addEventListener('click', () => widget.classList.toggle('show'));
+                  closeBtn.addEventListener('click', () => widget.classList.remove('show'));
+
+                  // Drag logic
+                  let isDragging = false;
+                  let offsetX, offsetY;
+                  header.addEventListener('mousedown', (e) => {
+                      isDragging = true;
+                      offsetX = e.clientX - widget.offsetLeft;
+                      offsetY = e.clientY - widget.offsetTop;
+                      header.style.cursor = 'grabbing';
+                      document.addEventListener('mousemove', onMouseMove);
+                      document.addEventListener('mouseup', onMouseUp);
+                  });
+
+                  function onMouseMove(e) {
+                      if (!isDragging) return;
+                      widget.style.left = `${e.clientX - offsetX}px`;
+                      widget.style.top = `${e.clientY - offsetY}px`;
+                  }
+
+                  function onMouseUp() {
+                      isDragging = false;
+                      header.style.cursor = 'move';
+                      document.removeEventListener('mousemove', onMouseMove);
+                      document.removeEventListener('mouseup', onMouseUp);
+                  }
+
+                  // Keyboard support logic
+                  function handleKeyboardInput(event) {
+                    // If calculator isn't shown, do nothing.
+                    if (!widget.classList.contains('show')) { return; }
+                    
+                    // If user is actively typing in a quiz answer field, let them.
+                    const activeEl = document.activeElement;
+                    const isTypingInAnswer = activeEl && activeEl.tagName === 'INPUT' && activeEl.closest('#exam-container');
+                    if (isTypingInAnswer) { return; }
+
+                    let keyProcessed = true;
+                    const key = event.key;
+                    const code = event.code;
+                    
+                    // Handle Numbers (main keyboard and numpad)
+                    if (key >= '0' && key <= '9') {
+                      window.calc.press(key);
+                    } else if (code.startsWith('Numpad') && !isNaN(parseInt(key))) { // Handles Numpad digits
+                      window.calc.press(key);
+                    } 
+                    // Handle Operators and special keys
+                    else {
+                      switch (key) {
+                        case '.': case ',': window.calc.press('.'); break;
+                        case '+': window.calc.press('+'); break;
+                        case '-': window.calc.press('-'); break;
+                        case '*': window.calc.press('*'); break;
+                        case '/': window.calc.press('/'); break;
+                        case 'Enter': 
+                          window.calc.press('='); 
+                          break;
+                        case 'Escape':
+                          // Escape closes the calculator widget.
+                          widget.classList.remove('show');
+                          break;
+                        case 'c': case 'C': 
+                        case 'Backspace':
+                        case 'Delete':
+                          // Backspace or Delete will clear the calculator's input.
+                          window.calc.press('C'); 
+                          break;
+                        default: 
+                          // Handle Numpad operators via event.code for reliability, as event.key can vary.
+                          switch (code) {
+                            case 'NumpadDecimal': window.calc.press('.'); break;
+                            case 'NumpadAdd': window.calc.press('+'); break;
+                            case 'NumpadSubtract': window.calc.press('-'); break;
+                            case 'NumpadMultiply': window.calc.press('*'); break;
+                            case 'NumpadDivide': window.calc.press('/'); break;
+                            case 'NumpadEnter': window.calc.press('='); break;
+                            default: keyProcessed = false; break;
+                          }
+                          break;
+                      }
+                    }
+                    
+                    if (keyProcessed) { 
+                      event.preventDefault(); 
+                    }
+                  }
+                  document.addEventListener('keydown', handleKeyboardInput);
+              })
+              .catch(err => console.error('Failed to load calculator widget:', err));
+      }
+
+
+      // --- CHEATING/ANALYSIS LOGIC ---
+      function logUserAction(type, data) {
+        const timestamp = new Date().toISOString();
+        const logEntry = {
+          timestamp,
+          type,
+          questionIndex: currentQuestionIndex,
+          data
+        };
+        console.log(`[ACTION LOG] ${timestamp} - Q${currentQuestionIndex + 1}: ${type}`, data);
+        logData.push(logEntry);
+      }
+
+      function setupCheatingDetection() {
+        document.addEventListener('mouseout', (e) => {
+          if (e.relatedTarget === null && e.toElement === null) {
+            logUserAction('MOUSE_OFF_SCREEN', { detail: 'Cursor left the browser window/document boundary.' });
+          }
+        });
+        window.addEventListener('blur', () => logUserAction('WINDOW_FOCUS_CHANGE', { detail: 'Window lost focus (tab/app switch).' }));
+        window.addEventListener('focus', () => logUserAction('WINDOW_FOCUS_CHANGE', { detail: 'Window regained focus.' }));
+        console.log("[DEBUG] Cheating detection (mouse/focus) initialized.");
+      }
+      
+      // --- UI UTILITY: TOAST NOTIFICATION ---
+      function showToast(message, duration = 3000) {
+          const existingToast = document.getElementById('input-toast');
+          if (existingToast) {
+              clearTimeout(existingToast.timeoutId);
+              existingToast.remove();
+          }
+          const toast = document.createElement('div');
+          toast.id = 'input-toast';
+          toast.textContent = message;
+          toast.style.cssText = `
+              position: fixed; bottom: 20px; right: 20px; background-color: #f44336; color: white;
+              padding: 12px 20px; border-radius: 5px; z-index: 1000; opacity: 0;
+              transition: opacity 0.5s; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); font-family: Arial, sans-serif;
+          `;
+          body.appendChild(toast);
+          setTimeout(() => { toast.style.opacity = '1'; }, 10);
+          const timeoutId = setTimeout(() => {
+              toast.style.opacity = '0';
+              setTimeout(() => toast.remove(), 500);
+          }, duration);
+          toast.timeoutId = timeoutId;
+      }
+      
+      // --- HELPER FUNCTIONS ---
+      function formatTime(seconds) {
+        const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
+        const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+        const s = String(seconds % 60).padStart(2, '0');
+        return `${h}:${m}:${s}`;
+      }
+
+      function formatNumberForDisplay(numStr) {
+        if (!numStr || isNaN(parseFloat(numStr.replace(/,/g, '')))) return numStr;
+        const number = parseFloat(numStr.replace(/,/g, ''));
+        return number < 0 ? `(${Math.abs(number).toLocaleString('en-US')})` : Math.abs(number).toLocaleString('en-US');
+      }
+	  // --- Disable right-click (context menu) ---
+document.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+    console.log("[ACTION LOG] Right-click attempt prevented.");
+});
+
+      // --- TIMER FUNCTIONS ---
+      function startTimer() {
+        if (timerInterval) clearInterval(timerInterval);
+        examTimerDisplay.style.display = 'inline-block';
+        examTimerDisplay.textContent = formatTime(timeLeft);
+        timerInterval = setInterval(() => {
+          if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            examTimerDisplay.textContent = "00:00:00";
+            logUserAction('EXAM_END', { reason: 'Time Up' });
+            markExam();
+          } else {
+            timeLeft--;
+            examTimerDisplay.textContent = formatTime(timeLeft);
+          }
+        }, 1000);
+      }
+
+      // --- EXAM LOADING & RENDERING ---
+      async function renderExamSelectionPage() {
+        footerNav.style.display = 'none';
+        examTimerDisplay.style.display = 'none';
+        examContainer.innerHTML = `<div class="landing-container"><h1>Welcome to the Chiaseed Platform</h1><p>Loading exam sets...</p></div>`; // Add a loading message
+
+        let availableExams = [];
+        try {
+            // New logic: Fetch the list of exams from sets.json
+            const response = await fetch(`${examFilesPath}sets.json`);
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status} for file sets.json`);
+            const setsData = await response.json();
+            
+            // Map the fetched data to the structure the old code expected (name and file)
+            availableExams = setsData.map(set => ({
+                name: set.name,
+                // The old code appended '.json', so we'll do the same for compatibility
+                file: `${set.filename}.json` 
+            }));
+
+        } catch (error) {
+            console.error('Failed to load exam sets from sets.json:', error);
+            examContainer.innerHTML = `<div class="landing-container"><h1>Error Loading Sets</h1><p>Could not load exam set data. Check console for details.</p><button class="start-button" onclick="location.reload()">Reload</button></div>`;
+            logUserAction('ERROR', { detail: `Failed to load sets.json`, error: error.message });
+            return;
+        }
+
+        // Existing logic for rendering the buttons
+        const selectionHtml = `
+          <div class="landing-container">
+            <h1>Welcome to the Chiaseed Platform</h1>
+            <p>Please choose which set you would like to attempt.</p>
+            <div class="exam-selection-list">
+              ${availableExams.map(exam => `<button class="exam-select-btn" data-file="${exam.file}">${exam.name}</button>`).join('')}
+            </div>
+          </div>`;
+        examContainer.innerHTML = selectionHtml;
+        document.querySelectorAll('.exam-select-btn').forEach(button => {
+          button.addEventListener('click', (event) => {
+            const fileName = event.target.getAttribute('data-file');
+            logUserAction('EXAM_SELECT', { fileName: fileName, name: event.target.textContent });
+            loadExam(fileName);
+          });
+        });
+      }
+
+      async function loadExam(fileName) {
+        try {
+          const response = await fetch(`${examFilesPath}${fileName}`);
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status} for file ${fileName}`);
+          examData = await response.json();
+          logUserAction('EXAM_LOADED', { title: examData.examTitle, questions: examData.questions.length });
+          renderLandingPage();
+        } catch (error) {
+          examContainer.innerHTML = `<div class="landing-container"><h1>Error Loading Exam</h1><p>Could not load exam data. Check console for details.</p><button class="start-button" onclick="location.reload()">Back to Selection</button></div>`;
+          console.error('Failed to load exam JSON:', error);
+          logUserAction('ERROR', { detail: `Failed to load exam: ${fileName}`, error: error.message });
+        }
+      }
+
+      function renderLandingPage() {
+        footerNav.style.display = 'none';
+        examTimerDisplay.style.display = 'none';
+        examContainer.innerHTML = `
+          <div class="landing-container">
+            <h1>${examData.examTitle}</h1>
+            ${examData.instructions.map(p => `<p>${p}</p>`).join('')}
+            <button class="start-button">Start &gt;</button>
+          </div>`;
+        document.querySelector('.start-button').addEventListener('click', startExam);
+      }
+
+      function startExam() {
+        const elem = document.documentElement;
+        if (elem.requestFullscreen) { elem.requestFullscreen().catch(err => console.warn(`Fullscreen request failed: ${err.message}`));
+        } else if (elem.webkitRequestFullscreen) { elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { elem.msRequestFullscreen(); }
+
+        setupCheatingDetection();
+        logUserAction('EXAM_START', { detail: 'Exam started and fullscreen requested.' });
+        startTimer();
+        footerNav.style.display = 'flex';
+        renderQuestion(currentQuestionIndex);
+      }
+
+      // --- QUESTION & ANSWER HANDLING ---
+      function renderQuestion(index) {
+        const question = examData.questions[index];
+        const contentHtml = `
+          <div class="question-container">
+            <div class="question-header">${question.title} (${question.marks} Marks)</div>
+            <div class="question-content">
+              <div class="question-details">
+                ${question.scenario ? `<div class="question-section"><p>${question.scenario}</p></div>` : ''}
+                ${question.dataTables ? question.dataTables.map(table => `
+                  <div class="question-section"><h3>${table.title}</h3><table class="data-table"><thead><tr>${table.headers.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${table.rows.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('')}${table.totals ? `<tr>${table.totals.map(total => `<td><strong>${total}</strong></td>`).join('')}</tr>` : ''}</tbody></table></div>`).join('') : ''}
+                ${question.additionalInfo ? `<div class="question-section"><h3>Additional Information</h3><ol>${question.additionalInfo.map(info => `<li>${info}</li>`).join('')}</ol></div>` : ''}
+                <div class="question-section"><h3>Requirement</h3><p>${question.requirement}</p></div>
+              </div>
+              <div class="question-proforma">
+                ${question.proformas ? question.proformas.map(proforma => `<div class="question-section"><h3>${proforma.title}</h3><table class="proforma-table">${proforma.rows.map(row => {
+                  const rowClass = row.isBold ? 'bold-row' : (row.isHeader ? 'header-row' : (row.isSubHeader ? 'subheader-row' : ''));
+                  if (row.isInput) {
+                    const userAnswer = userAnswers[row.inputId] || '';
+                    return `<tr class="${rowClass}"><td>${row.label}</td><td><input type="text" id="${row.inputId}" value="${userAnswer}" aria-label="${row.label}" pattern="^-?\\d{1,3}(,\\d{3})*$" inputmode="numeric"></td></tr>`;
+                  } else { return `<tr class="${rowClass}"><td colspan="2">${row.label}</td></tr>`; }
+                }).join('')}</table></div>`).join('') : ''}
+              </div>
+            </div>
+          </div>`;
+        examContainer.innerHTML = contentHtml;
+        updateNavButtons();
+        addInputListeners();
+      }
+      
+      function saveAnswers(e) {
+        const input = e ? e.target : null;
+        examContainer.querySelectorAll('input[type="text"]').forEach(i => {
+          if (i.id) {
+            let value = i.value.trim();
+            let cleanedValue = value.replace(/,/g, '');
+            if (cleanedValue.startsWith('(') && cleanedValue.endsWith(')')) {
+                cleanedValue = '-' + cleanedValue.substring(1, cleanedValue.length - 1);
+            }
+            if (!(cleanedValue === '' || /^-?\d+$/.test(cleanedValue))) {
+                if (i === input) {
+                    showToast('Only whole numbers are allowed.', 3000);
+                    i.value = userAnswers[i.id] || '';
+                    i.focus();
+                }
+                return;
+            }
+            if (i === input) {
+                logUserAction('INPUT_CHANGE', { inputId: i.id, newValue: value, oldValue: userAnswers[i.id] || '', question: currentQuestionIndex + 1 });
+            }
+            userAnswers[i.id] = value;
+          }
+        });
+      }
+
+      function addInputListeners() {
+        examContainer.querySelectorAll('input[type="text"]').forEach(input => {
+          input.addEventListener('change', saveAnswers);
+        });
+      }
+
+      function updateNavButtons() {
+        document.getElementById('back-btn').disabled = currentQuestionIndex === 0;
+        document.getElementById('next-btn').style.display = (currentQuestionIndex < examData.questions.length - 1) ? 'inline-block' : 'none';
+        document.getElementById('mark-btn').style.display = (currentQuestionIndex === examData.questions.length - 1) ? 'inline-block' : 'none';
+      }
+
+      // --- MARKING AND RESULTS DISPLAY (FIXED VERSION) ---
+      function markExam() {
+        if (timerInterval) clearInterval(timerInterval);
+        saveAnswers(null);
+        logUserAction('EXAM_MARK', { detail: 'Exam marking initiated.' });
+        
+        let grandTotalScore = 0;
+        let grandTotalMarksAvailable = 0;
+
+        examData.questions.forEach(question => {
+          if (question.proformas) {
+            question.proformas.forEach(proforma => {
+              proforma.rows.forEach(row => {
+                if (row.isInput) {
+                  let userAnswer = (userAnswers[row.inputId] || '').replace(/,/g, '').trim().replace(/^\((.*)\)$/, '-$1');
+                  const correctAnswer = String(examData.markScheme[row.inputId]);
+                  const marksForInput = row.marks || 0;
+                  grandTotalMarksAvailable += marksForInput;
+                  if (userAnswer === correctAnswer) {
+                    grandTotalScore += marksForInput;
+                  }
+                }
+              });
+            });
+          }
+        });
+
+        const percentage = grandTotalMarksAvailable > 0 ? ((grandTotalScore / grandTotalMarksAvailable) * 100).toFixed(0) : 0;
+        const passStatus = percentage >= 55 ? "Pass" : "Fail";
+
+        let resultsHtml = `<div class="results-page-container">
+          <div class="results-summary">
+            <h1>${examData.examTitle}</h1>
+            <h2>Overview</h2>
+            <table class="summary-table">
+              <tr><th>Student</th><td>Anonymous User</td></tr>
+              <tr><th>Test Date</th><td>${new Date().toLocaleDateString('en-GB')}</td></tr>
+              <tr><th>Time Taken</th><td>${formatTime(120 * 60 - timeLeft)}</td></tr>
+              <tr><th>Score</th><td><span class="${passStatus.toLowerCase()}">${percentage}% (${grandTotalScore}/${grandTotalMarksAvailable}) ${passStatus}</span></td></tr>
+            </table>
+          </div>
+          <h2>Question Analysis</h2>
+          <p class="analysis-subtitle">(select a question to review your answer and see the model solution)</p>
+          <div class="accordion-container">
+        `;
+
+        examData.questions.forEach((question, index) => {
+          let questionScore = 0;
+          let questionMarksAvailable = 0;
+          let userAnswersHtml = '';
+
+          const questionDetailsReviewHtml = `
+            <div class="question-details-review">
+              ${question.scenario ? `<div class="question-section"><p>${question.scenario}</p></div>` : ''}
+              ${question.dataTables ? question.dataTables.map(table => `
+                <div class="question-section">
+                  <h4>${table.title}</h4>
+                  <table class="data-table">
+                    <thead><tr>${table.headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+                    <tbody>
+                      ${table.rows.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('')}
+                      ${table.totals ? `<tr>${table.totals.map(total => `<td><strong>${total}</strong></td>`).join('')}</tr>` : ''}
+                    </tbody>
+                  </table>
+                </div>
+              `).join('') : ''}
+              ${question.additionalInfo ? `
+                <div class="question-section">
+                  <h4>Additional Information</h4>
+                  <ul>${question.additionalInfo.map(info => `<li>${info}</li>`).join('')}</ul>
+                </div>
+              ` : ''}
+              <div class="question-section"><h4>Requirement</h4><p>${question.requirement}</p></div>
+            </div>`;
+
+          const modelAnswerHtml = `
+            ${question.finalStatements ? question.finalStatements.map(statement => `
+              <h4>${statement.title}</h4>
+              <table class="statement-table">
+                <thead><tr>${statement.headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+                <tbody>${statement.rows.map(row => `<tr>${row.map((cell, i) => `<td style="${i > 0 ? 'text-align: right;' : ''}">${cell}</td>`).join('')}</tr>`).join('')}</tbody>
+              </table>
+            `).join('') : ''}
+            ${question.workings ? question.workings.map(working => `
+              <div class="working-section" style="margin-top: 20px;">
+                <h4>${working.title}</h4>
+                ${working.explanation ? `<p>${working.explanation}</p>` : ''}
+                ${working.table ? `
+                  <table class="working-table">
+                    <thead><tr>${working.table.headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+                    <tbody>${working.table.rows.map(row => `<tr>${row.map((cell, i) => `<td style="${i > 0 ? 'text-align: right;' : ''}">${cell}</td>`).join('')}</tr>`).join('')}</tbody>
+                  </table>
+                ` : ''}
+              </div>
+            `).join('') : ''}`;
+
+          if (question.proformas) {
+            question.proformas.forEach(proforma => {
+              userAnswersHtml += `<h4>${proforma.title}</h4><table class="proforma-table">`;
+              proforma.rows.forEach(row => {
+                if (row.isInput) {
+                  let userAnswerCleaned = (userAnswers[row.inputId] || '').replace(/,/g, '').trim().replace(/^\((.*)\)$/, '-$1');
+                  const correctAnswer = String(examData.markScheme[row.inputId]);
+                  const marks = row.marks || 0;
+                  let feedbackHtml = '', inputClass = 'incorrect';
+                  questionMarksAvailable += marks;
+                  if (userAnswerCleaned === correctAnswer) {
+                    inputClass = 'correct';
+                    feedbackHtml = `<span class="feedback">✓ Correct (+${marks})</span>`;
+                    questionScore += marks;
+                  } else {
+                    feedbackHtml = `<span class="feedback">✘ Incorrect. Should be: <span>${formatNumberForDisplay(correctAnswer)}</span></span>`;
+                  }
+                  userAnswersHtml += `<tr><td>${row.label}</td><td><input type="text" value="${userAnswers[row.inputId] || ''}" disabled class="${inputClass}">${feedbackHtml}</td></tr>`;
+                } else if (row.isHeader || row.isSubHeader) {
+                  userAnswersHtml += `<tr class="${row.isHeader ? 'header-row' : 'subheader-row'}"><td colspan="2">${row.label}</td></tr>`;
+                }
+              });
+              userAnswersHtml += '</table>';
+            });
+          }
+
+          resultsHtml += `
+            <button type="button" class="accordion-button ${questionScore === question.marks ? 'green' : ''}">
+              <div class="accordion-title"><span class="sectionname">Question ${index + 1} - ${question.title}</span><span class="section-marks">You scored ${questionScore} / ${question.marks}</span></div>
+              <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="panel">
+              <div class="panel-content">
+                <div class="panel-review-layout">
+                  <div class="panel-column-left">
+                    <h2>Question Details</h2>
+                    ${questionDetailsReviewHtml}
+                  </div>
+                  <div class="panel-column-right">
+                    <h2>Your Answer</h2>
+                    ${userAnswersHtml}
+                  </div>
+                </div>
+                <div class="feedback-section">
+                  <h3>Model Answer & Explanation</h3>
+                  ${modelAnswerHtml}
+                </div>
+              </div>
+            </div>`;
+        });
+        resultsHtml += `</div></div>`;
+        examContainer.innerHTML = resultsHtml;
+        footerNav.style.display = 'none';
+        examTimerDisplay.style.display = 'none';
+        document.querySelectorAll('.accordion-button').forEach(button => {
+          button.addEventListener('click', () => {
+            button.classList.toggle('active');
+            const panel = button.nextElementSibling;
+            panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
+          });
+        });
+      }
+
+      // --- NAVIGATION EVENT LISTENERS ---
+      document.getElementById('next-btn').addEventListener('click', () => {
+        saveAnswers(null); if (currentQuestionIndex < examData.questions.length - 1) { currentQuestionIndex++; logUserAction('NAVIGATE', { direction: 'Next', question: currentQuestionIndex + 1 }); renderQuestion(currentQuestionIndex); }
+      });
+      document.getElementById('back-btn').addEventListener('click', () => {
+        saveAnswers(null); if (currentQuestionIndex > 0) { currentQuestionIndex--; logUserAction('NAVIGATE', { direction: 'Back', question: currentQuestionIndex + 1 }); renderQuestion(currentQuestionIndex); }
+      });
+      document.getElementById('mark-btn').addEventListener('click', markExam);
+
+      // --- INITIALIZE THE APP ---
+      renderExamSelectionPage();
+      initCalculatorWidget(); // Initialize the calculator widget
+    });
+</script>
+<!-- Calculator JS -->
+<script src="static/calculator/calculator.js" defer></script>
+</body>
+</html>

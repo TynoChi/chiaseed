@@ -1,0 +1,475 @@
+[
+  {
+    "id": "FA2-K418",
+    "questionType": "mcq",
+    "marks": 2,
+    "questionText": "Which of the following statements relating to accounting for a partnership is true?",
+    "options": [
+      "The partners' capital accounts reflect each partner's share of profit from the appropriation account",
+      "If a partner makes a loan to the partnership, this is classified as an increase in the capital account of that partner.",
+      "The capital account of each partner is normally fixed and will change when a partner introduces additional capital into the business or retires from the partnership.",
+      "The capital account of each partner is debited with drawings made during the accounting year."
+    ],
+    "correctOptions": [
+      2
+    ],
+    "explanation": "Option C is correct. In a partnership maintaining fixed capital accounts, the capital account balance remains constant and only changes when capital is introduced or withdrawn (retirement). Share of profits, interest on capital, and drawings are recorded in the Current Accounts."
+  },
+  {
+    "id": "FA2-K419",
+    "questionType": "mcq",
+    "marks": 2,
+    "questionText": "Which of the following statements relating to accounting for a partnership is true?",
+    "options": [
+      "The respective share of profit from the appropriation account is recorded in the current account of each partner.",
+      "If a partner has a salary from the partnership, this is accounted for as an expense in the statement of profit or loss.",
+      "If interest is earned on capital account balances, the interest earned is credited to the capital account of each partner.",
+      "The capital account balances of each partner must have identical account balances."
+    ],
+    "correctOptions": [
+      0
+    ],
+    "explanation": "Option A is correct. The share of residual profit determined in the appropriation account is credited to the partners' current accounts. Partner salaries are an appropriation of profit, not an expense."
+  },
+  {
+    "id": "FA2-K420",
+    "questionType": "mcq",
+    "marks": 2,
+    "questionText": "Which of the following statements provides the definition of a partnership?",
+    "options": [
+      "A maximum of three people in business together",
+      "Persons in business together with the intention of sharing profits and losses",
+      "Two work colleagues who are employed by the same business",
+      "Two persons who each have their own business as a sole proprietor"
+    ],
+    "correctOptions": [
+      1
+    ],
+    "explanation": "Option B is correct as it captures the essence of a partnership: a relationship between persons carrying on a business in common with a view of profit."
+  },
+  {
+    "id": "FA2-K421",
+    "questionType": "mcq",
+    "marks": 2,
+    "questionText": "What is the purpose of a partnership agreement?",
+    "options": [
+      "It is a legal requirement for all partnerships to have a partnership agreement.",
+      "It enables customers to understand how the partnership operates.",
+      "It is a contract between the partners that sets out their rights and responsibilities to each other.",
+      "It is a contract between the partners that sets out the profit and loss sharing arrangements between the partners."
+    ],
+    "correctOptions": [
+      2
+    ],
+    "explanation": "Option C is the best description; the agreement is a contract governing the internal relationship, rights, and duties of partners. While it includes profit sharing (Option D), Option C encompasses all rights and responsibilities."
+  },
+  {
+    "id": "FA2-K422",
+    "questionType": "mcq",
+    "marks": 2,
+    "questionText": "Which of the following items would not normally be included within a partnership agreement?",
+    "options": [
+      "The names of the partners",
+      "The arrangements for sharing residual profits and losses between the partners",
+      "The name and business location of the partnership",
+      "The names of the principal customers and suppliers of the business"
+    ],
+    "correctOptions": [
+      3
+    ],
+    "explanation": "Option D is correct. The names of customers and suppliers are operational business data, not constitutional details required in the partnership agreement."
+  },
+  {
+    "id": "FA2-K423-424",
+    "questionType": "nested",
+    "marks": 4,
+    "questionText": "Viv and Bao are in partnership, sharing profits and losses in a ratio of 3:2. The business maintains current accounts and fixed capital accounts for the partners. In the last year, the profit before appropriations was $27,800. Bao is entitled to an annual salary of $3,800.<br>During the year Viv and Bao made cash drawings of $12,000 each.",
+    "subQuestions": [
+      {
+        "type": "numerical",
+        "text": "What is Viv's share of the profit?",
+        "answer": 14400,
+        "marks": 2
+      },
+      {
+        "type": "mcq",
+        "text": "The correct entry for the partners' drawings has been made in the cash account. What entry is needed to complete the posting for the partners' drawings?",
+        "options": [
+          "A debit entry in the partners' capital accounts",
+          "A credit entry in the partners' capital accounts",
+          "A debit entry in the partners' current accounts",
+          "A credit entry in the partners' current accounts"
+        ],
+        "answer": "A debit entry in the partners' current accounts",
+        "marks": 2
+      }
+    ],
+    "explanation": "1. Residual Profit: $27,800 - $3,800 (Salary) = $24,000. Viv's Share (3/5) = $14,400.<br>2. Drawings reduce equity. Since capital accounts are fixed, the debit goes to the Current Accounts."
+  },
+  {
+    "id": "FA2-K425",
+    "questionType": "numerical",
+    "marks": 2,
+    "questionText": "Ali and Dai are in partnership, sharing profits and losses in the ratio 3:2. Under the terms of the partnership agreement, Dai is entitled to a salary of $8,000. The partnership statement of profit or loss for the year to 30 November reported a profit of $16,000.<br>What is Ali's share of the profit?",
+    "correctAnswer": 4800,
+    "explanation": "Profit: $16,000. Less Salary: ($8,000). Residual: $8,000. Ali's Share (3/5) = $4,800."
+  },
+  {
+    "id": "FA2-K426",
+    "questionType": "numerical",
+    "marks": 2,
+    "questionText": "Alex and Kim are in partnership. In the year to 31 October 20X6, Alex's drawings were $18,000 and the following entries have been made in the partnership appropriation account for Alex:<br>Salary 6,500<br>Interest on drawings 1,800<br>Share of profit 12,750<br>At 1 November 20X5, the balance on Alex's current account was $24,800 (credit).<br>What was the balance on Alex's current account at 31 October 20X6?",
+    "correctAnswer": 24250,
+    "explanation": "Opening ($24,800) + Salary ($6,500) + Profit Share ($12,750) - Interest on Drawings ($1,800) - Drawings ($18,000) = $24,250."
+  },
+  {
+    "id": "FA2-K427-429",
+    "questionType": "nested",
+    "marks": 6,
+    "questionText": "Hub Design has three partners: M, J and A. The three share profits equally after interest on capital at 5% and J's partnership salary of $8,000. The partners' account balances are shown below:<br>Capital: M $20k, J $15k, A $40k (Total $75k)<br>Current: M $100k, J $80k, A $110k (Total $290k)<br>Drawings: M $30k, J $35k, A $40k (Total $105k)<br>No interest is paid on current account balances. The net profit for the year ended 31 December 20X6 is $170,000.",
+    "subQuestions": [
+      {
+        "type": "numerical",
+        "text": "What will the statement of financial position as at 31 December 20X6 show as the total for owners' equity?",
+        "answer": 430000,
+        "marks": 2
+      },
+      {
+        "type": "numerical",
+        "text": "What will each partner receive as a share of residual profit?",
+        "answer": 52750,
+        "marks": 2
+      },
+      {
+        "type": "numerical",
+        "text": "What total profit will J receive for the year ended 31 December 20X6?",
+        "answer": 61500,
+        "marks": 2
+      }
+    ],
+    "explanation": "1. Equity: Opening Cap ($75k) + Opening Cur ($290k) + Profit ($170k) - Drawings ($105k) = $430,000.<br>2. Residual: $170,000 - $8,000 (Sal) - $3,750 (5% Int on $75k) = $158,250. Share (1/3) = $52,750.<br>3. J's Total: Sal ($8,000) + Int ($750) + Share ($52,750) = $61,500."
+  },
+  {
+    "id": "FA2-K430",
+    "questionType": "numerical",
+    "marks": 2,
+    "questionText": "Jo and Sam are in partnership sharing profits and losses in the ratio 3:4. The statement of profit or loss for the year to 31 May reported a net profit of $30,709. Jo is entitled to a salary of $14,000 per annum.<br>What was Sam's share of the profit for the year to 31 May 20x6?",
+    "correctAnswer": 9548,
+    "explanation": "Residual: $30,709 - $14,000 = $16,709. Sam's share (4/7) = $9,548."
+  },
+  {
+    "id": "FA2-K431",
+    "questionType": "mcq",
+    "marks": 2,
+    "questionText": "Kranti and Lazim are in partnership sharing profits and losses in the ratio 2:3. The statement of profit or loss for the year ended 31 August reported a net profit of $73,540. Kranti is entitled to a salary of $18,000 per annum.<br>What was Kranti's total share of the profit for the year to 31 August 20X3?",
+    "options": [
+      "$40,216",
+      "$22,216",
+      "$33,324",
+      "$51,324"
+    ],
+    "correctOptions": [
+      3
+    ],
+    "explanation": "Note: Mathematically, based on the 2:3 ratio in the text, the answer should be $40,216 (Salary $18k + 2/5 of $55,540). However, the source key marks $51,324 (Option D) as correct, which corresponds to a 3/5 profit share."
+  },
+  {
+    "id": "FA2-K432",
+    "questionType": "mcq",
+    "marks": 2,
+    "questionText": "Manvi and Nartan are in partnership sharing profits and losses in the ratio 6:4. The statement of profit or loss for the year ended 31 January 20X8 reported a net profit of $24,680. Nartan is entitled to a salary of $5,000 per annum.<br>What was Nartan's total share of the profit for the year to 31 January 20x8?",
+    "options": [
+      "$11,808",
+      "$12,872",
+      "$7,872",
+      "$9,872"
+    ],
+    "correctOptions": [
+      1
+    ],
+    "explanation": "Residual: $24,680 - $5,000 = $19,680. Nartan's Share (4/10) = $7,872. Total: $5,000 + $7,872 = $12,872."
+  },
+  {
+    "id": "FA2-K433",
+    "questionType": "numerical",
+    "marks": 2,
+    "questionText": "Pahal and Parul are in partnership sharing profits and losses in the ratio 7:3. The statement of profit or loss for the year ended 31 July 20X7 reported a net profit of $52,900. Pahal is entitled to an annual salary of $14,000 and Parul is entitled to an annual salary of $6,000.<br>What was Parul's total share of the profit for the year ended 31 July 20X7?",
+    "correctAnswer": 15870,
+    "explanation": "Residual: $52,900 - $14,000 - $6,000 = $32,900. Parul's share (3/10) = $9,870. Total: $6,000 + $9,870 = $15,870."
+  },
+  {
+    "id": "FA2-K434",
+    "questionType": "mcq",
+    "marks": 2,
+    "questionText": "Pavi and Razz and are in partnership sharing profits and losses in the ratio 90:10. The statement of profit or loss for the year ended 28 February reported a net profit of $36,600. Razz is entitled to an annual salary of $12,500.<br>What is Razz's total share of the profit for the year to 28 February 20x4?",
+    "options": [
+      "$3,660",
+      "$34,190",
+      "$21,690",
+      "$14,910"
+    ],
+    "correctOptions": [
+      3
+    ],
+    "explanation": "Residual: $36,600 - $12,500 = $24,100. Razz Share (10%) = $2,410. Total: $12,500 + $2,410 = $14,910."
+  },
+  {
+    "id": "FA2-K435-436",
+    "questionType": "nested",
+    "marks": 4,
+    "questionText": "Reema and Rimple are in partnership sharing profits and losses in the ratio 3:5. Reema is also entitled to a salary of $5,000. At 1 June the business had the following credit balances on the capital and current accounts of the partners:<br>Capital: Reema $80,000, Rimple $60,000<br>Current: Reema $21,735, Rimple $14,876<br>During the year ended 30 June 20X6, Reema and Rimple made drawings of $27,500 and $26,500 respectively. For the year ended 31 May 20X6, the statement of profit or loss for the partnership disclosed a profit of $60,000.",
+    "subQuestions": [
+      {
+        "type": "mcq",
+        "text": "What is the balance on Rimple's current account at 31 May 20X6?",
+        "options": [
+          "$19,860",
+          "$22,751",
+          "$7,875",
+          "$25,876"
+        ],
+        "answer": "$22,751",
+        "marks": 2
+      },
+      {
+        "type": "numerical",
+        "text": "What is the balance on Reema's current account at 31 May 20X6?",
+        "answer": 19860,
+        "marks": 2
+      }
+    ],
+    "explanation": "Residual: $55,000.<br>Rimple: Op $14,876 + Share ($55k * 5/8 = $34,375) - Draw $26,500 = $22,751.<br>Reema: Op $21,735 + Sal $5,000 + Share ($55k * 3/8 = $20,625) - Draw $27,500 = $19,860."
+  },
+  {
+    "id": "FA2-K437",
+    "questionType": "numerical",
+    "marks": 2,
+    "questionText": "Kia and Ali are in partnership sharing profits and losses in the ratio 2:3. Kia is entitled to a salary of $3,500 and Ali is entitled to a salary of $2,500. At 1 September 20X6, the business had the following credit balances on the partners' capital and current accounts:<br>Capital: Kia $80k, Ali $60k. Current: Kia $14,769, Ali $13,748.<br>During the year ended 31 August Kia and Ali made drawings of $38,775 and $43,915 respectively. For the year ended 31 August the statement of profit or loss for the partnership disclosed a profit of $80,000.<br>What was the balance on Kia's current account at 31 August 20X7?",
+    "correctAnswer": 9094,
+    "explanation": "Residual: $80,000 - $6,000 = $74,000. Kia Share (2/5) = $29,600.<br>Kia Total Inc: $3,500 + $29,600 = $33,100.<br>Closing: $14,769 + $33,100 - $38,775 = $9,094."
+  },
+  {
+    "id": "FA2-K438-442",
+    "questionType": "nested",
+    "marks": 10,
+    "questionText": "Three's A Crowd has three partners: Sai, Taran and Veda. The three partners share profits equally after interest on capital at 5% and Sai's partnership salary of $12,500. The partners' account balances at 31 July 20X4 are shown below:<br>Capital: Sai $20k, Taran $20k, Veda $10k<br>Current: Sai $7k, Taran $5,250, Veda $8,375<br>Drawings: Sai $13,750, Taran $11,250, Veda $9,500<br>No interest is paid on current account balances. The net profit for the year ended 31 July 20x4 was $150,000.",
+    "subQuestions": [
+      {
+        "type": "mcq",
+        "text": "What will the statement of financial position as at 31 July show as the total for owners' equity?",
+        "options": [
+          "$186,125",
+          "$255,125",
+          "$36,125",
+          "$165,500"
+        ],
+        "answer": "$186,125",
+        "marks": 2
+      },
+      {
+        "type": "mcq",
+        "text": "What will each partner receive as a share of residual profit?",
+        "options": [
+          "$50,000",
+          "$45,000",
+          "$49,167",
+          "$45,833"
+        ],
+        "answer": "$45,000",
+        "marks": 2
+      },
+      {
+        "type": "mcq",
+        "text": "What total profit will Sai receive for the year ended 31 July 20X4?",
+        "options": [
+          "$46,000",
+          "$57,500",
+          "$58,500",
+          "$60,000"
+        ],
+        "answer": "$58,500",
+        "marks": 2
+      },
+      {
+        "type": "mcq",
+        "text": "What will Sai's current account balance be after accounting for the profit share for the year ended 31 July?",
+        "options": [
+          "$50,750",
+          "$65,500",
+          "$44,750",
+          "$51,750"
+        ],
+        "answer": "$51,750",
+        "marks": 2
+      },
+      {
+        "type": "mcq",
+        "text": "What will the total of the partners' current account balances at 31 July 20X4?",
+        "options": [
+          "$136,125",
+          "$170,625",
+          "$205,125",
+          "$115,500"
+        ],
+        "answer": "$136,125",
+        "marks": 2
+      }
+    ],
+    "explanation": "Equity: Total Op Capital ($50k) + Op Current ($20,625) + Profit ($150k) - Drawings ($34,500) = $186,125.<br>Residual: $150k - $12.5k - $2.5k (Int) = $135k. Share = $45k.<br>Sai Total: $12.5k + $1k (Int) + $45k = $58,500.<br>Sai Cur: $7k + $58.5k - $13.75k = $51,750.<br>Total Cur: Total Equity $186,125 - Fixed Capital $50,000 = $136,125."
+  },
+  {
+    "id": "FA2-K443-444",
+    "questionType": "nested",
+    "marks": 4,
+    "questionText": "'Three's Two Much' has three partners: Tulli, Vishva and Sam. The three partners share profits and losses equally after interest on capital at 10% and partnership salaries of $8,000 for Tulli, $10,000 for Vishva and $12,000 for Sam. The partners' capital account balances are: Tulli $50,000, Vishva $50,000, Sam $20,000.<br>The net profit for the year ended 31 July 20X4 was $45,000.",
+    "subQuestions": [
+      {
+        "type": "mcq",
+        "text": "What will each partner receive as a share of residual profit or loss for the year?",
+        "options": [
+          "$1,000 profit",
+          "$15,000 profit",
+          "$1,000 loss",
+          "$5,000 profit"
+        ],
+        "answer": "$1,000 profit",
+        "marks": 2
+      },
+      {
+        "type": "mcq",
+        "text": "What total profit share will Tulli receive for the year ended 31 July 20X4?",
+        "options": [
+          "$7,000",
+          "$12,000",
+          "$13,000",
+          "$14,000"
+        ],
+        "answer": "$14,000",
+        "marks": 2
+      }
+    ],
+    "explanation": "Salaries ($30k) + Interest (10% of $120k = $12k) = $42k.<br>Residual: $45k - $42k = $3,000. Share = $1,000 profit.<br>Tulli: Sal $8k + Int $5k + Share $1k = $14,000."
+  },
+  {
+    "id": "FA2-K445",
+    "questionType": "nested",
+    "marks": 4,
+    "questionText": "How should each of the following be accounted for?",
+    "subQuestions": [
+      {
+        "type": "mcq",
+        "text": "Salary paid to an employee",
+        "options": [
+          "Business expense",
+          "Profit appropriation"
+        ],
+        "answer": "Business expense",
+        "marks": 2
+      },
+      {
+        "type": "mcq",
+        "text": "Salary paid to a partner",
+        "options": [
+          "Business expense",
+          "Profit appropriation"
+        ],
+        "answer": "Profit appropriation",
+        "marks": 2
+      }
+    ],
+    "explanation": "Employee salaries are expenses. Partner salaries are appropriations of profit."
+  },
+  {
+    "id": "FA2-K446",
+    "questionType": "mcq",
+    "marks": 2,
+    "questionText": "Which of the following items would normally be accounted for in the capital account of a partner?",
+    "options": [
+      "Cash introduced upon joining a partnership",
+      "Cash drawings from the business for personal use",
+      "Their share of profit or loss for the year",
+      "Goods withdrawn from the business for personal use"
+    ],
+    "correctOptions": [
+      0
+    ],
+    "explanation": "The capital account records the fixed investment. Recurring items like drawings and profit shares are recorded in the current account."
+  },
+  {
+    "id": "FA2-K447",
+    "questionType": "mcq",
+    "marks": 2,
+    "questionText": "Which of the following items would not be accounted for in the current account of a partner?",
+    "options": [
+      "The share of residual profit or loss for the year that the partner is entitled to",
+      "Accounting for goodwill upon retirement of a partner",
+      "Interest on capital",
+      "Interest charged on overdrawn current account balances"
+    ],
+    "correctOptions": [
+      1
+    ],
+    "explanation": "Goodwill adjustments alter the value of the partner's stake in the business and are adjusted through the Capital accounts."
+  },
+  {
+    "id": "FA2-K451",
+    "questionType": "nested",
+    "marks": 4,
+    "questionText": "When accounting for goodwill upon admission of a partner, and having accounted for goodwill as an asset, what accounting entries are then required to remove goodwill from the partnership accounting records?",
+    "subQuestions": [
+      {
+        "type": "mcq",
+        "text": "Partners' capital accounts",
+        "options": [
+          "Debit",
+          "Credit"
+        ],
+        "answer": "Debit",
+        "marks": 2
+      },
+      {
+        "type": "mcq",
+        "text": "Goodwill",
+        "options": [
+          "Debit",
+          "Credit"
+        ],
+        "answer": "Credit",
+        "marks": 2
+      }
+    ],
+    "explanation": "To write off goodwill, you credit the Goodwill asset to reduce it to zero and debit the partners' capital accounts."
+  },
+  {
+    "id": "FA2-K452",
+    "questionType": "numerical",
+    "marks": 2,
+    "questionText": "Nuwa and Suyin are in partnership and share profits and losses equally. On 1 January 20X8, Maz is admitted to the partnership and it was agreed that, from that date, profits and losses would be shared equally between the three partners. Goodwill was valued at $60,000. A goodwill account is not maintained in the books of the partnership.<br>How much is Maz required to contribute to have a capital account credit balance of $10,000 immediately after joining the partnership?",
+    "correctAnswer": 30000,
+    "explanation": "Maz's share of goodwill write-off (1/3) = $20,000 (Debit). To have a balance of $10,000 (Credit), Cash - $20,000 = $10,000. Cash = $30,000."
+  },
+  {
+    "id": "FA2-K453",
+    "questionType": "numerical",
+    "marks": 2,
+    "questionText": "Ali, Chris and Mai are in partnership and share profits and losses equally. Ali decided to retire with effect from 31 December and it was agreed that Ali would withdraw cash for the full amount due on the capital and current account balances at that date. Goodwill was valued at $60,000 at 31 December.<br>Ali had the following credit balances prior to accounting for retirement: Capital $60,000, Current $15,000.<br>How much will Ali withdraw from the partnership at the date of retirement?",
+    "correctAnswer": 95000,
+    "explanation": "Ali receives: Capital $60k + Current $15k + Share of Goodwill (1/3 of $60k = $20k). Total = $95,000."
+  },
+  {
+    "id": "FA2-K454",
+    "questionType": "numerical",
+    "marks": 2,
+    "questionText": "Jo and Terri are in partnership and share profits and losses in the proportion 4:2. On 1 January 20X8, Maz was admitted to the partnership and it was agreed that, from that date, profits and losses would be shared equally between the three partners. Goodwill was valued at $75,000. A goodwill account is not maintained in the books of the partnership.<br>How much is required to be contributed if Maz is to have a capital account credit balance of $5,000 immediately after joining the partnership?",
+    "correctAnswer": 30000,
+    "explanation": "Maz's share of goodwill write-off (1/3) = $25,000. Contribution - $25,000 = $5,000. Contribution = $30,000."
+  },
+  {
+    "id": "FA2-K455",
+    "questionType": "numerical",
+    "marks": 2,
+    "questionText": "Vic, Em and Lou are in partnership and share profits and losses equally. Vic decided to retire with effect from 31 December and it was agreed that Vic would withdraw cash for the full amount due to the capital and current account balances at that date. Goodwill was valued at $90,000 at 31 December.<br>Vic had the following credit balances immediately prior to accounting for retirement: Capital $25,000, Current $5,000.<br>How much will Vic withdraw from the partnership at the date of retirement?",
+    "correctAnswer": 60000,
+    "explanation": "Vic receives: Capital $25k + Current $5k + Share of Goodwill (1/3 of $90k = $30k). Total = $60,000."
+  }
+]

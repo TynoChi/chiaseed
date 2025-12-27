@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChiaSeed - Question Editor (Universal)</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <h1>🌱 ChiaSeed Editor</h1>
+            <p>Universal Question Bank Editor (JSON & XML)</p>
+        </div>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <div class="main-grid">
+            
+            <!-- Sidebar: Controls -->
+            <div class="sidebar">
+                <div class="card">
+                    <h2 class="card-title">File Operations</h2>
+                    <div class="form-group">
+                        <div class="file-upload-area" id="fileDropZone">
+                            <p style="margin-bottom: 0.5rem;">Drag & drop file here</p>
+                            <label for="fileInput" class="btn btn-light btn-sm">Browse Files</label>
+                            <input type="file" id="fileInput" accept=".json, .txt, .xml" style="display: none;">
+                        </div>
+                    </div>
+
+                    <div id="dataPreview" style="display: none; margin: 1rem 0; padding: 1rem; background: var(--light); border-radius: 0.5rem;">
+                        <h4 style="margin-bottom:0.5rem;">Preview</h4>
+                        <div id="previewContent" style="font-size: 0.9rem; margin-bottom:0.5rem;"></div>
+                        <button class="btn btn-primary" id="confirmLoadBtn" style="width: 100%;">Confirm Load</button>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 1.5rem;">
+                        <label class="form-label">Or Paste Content</label>
+                        <textarea id="jsonPasteArea" class="textarea-control" rows="3" placeholder="Paste JSON or XML..."></textarea>
+                    </div>
+                    <button class="btn btn-secondary" id="loadPasteBtn" style="width: 100%;">Load Text</button>
+                    
+                    <div class="form-group" style="margin-top: 1.5rem;">
+                        <label class="form-label">Export</label>
+                        <div class="btn-group">
+                            <button class="btn btn-success" id="downloadJsonBtn" disabled>JSON</button>
+                            <button class="btn btn-info" id="downloadXmlBtn" disabled>XML</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" id="bulk-ops-card" style="display: none;">
+                    <h2 class="card-title">Bulk Edit</h2>
+                    <div class="form-group">
+                        <label class="form-label">Question Type</label>
+                        <select id="bulk-edit-type" class="form-control">
+                            <option value="all">All Types</option>
+                            <option value="mcq">MCQ</option>
+                            <option value="numerical">Numerical</option>
+                            <option value="nested">Nested</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Set Marks To</label>
+                        <input type="number" id="bulk-edit-marks" class="form-control" value="1" min="0">
+                    </div>
+                    <button class="btn btn-warning" id="bulk-edit-apply-btn" style="width: 100%;">Apply Marks</button>
+                </div>
+            </div>
+            
+            <!-- Content: Workspace -->
+            <div class="content">
+                <div class="card" id="welcome-card">
+                    <h2 class="card-title">Welcome</h2>
+                    <p>This tool supports:</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--secondary);">
+                        <li><strong>Old JSON:</strong> Automatically converts `msq` and `multi_numerical` to `nested`.</li>
+                        <li><strong>New JSON:</strong> Full support for `mcq`, `numerical`, and `nested`.</li>
+                        <li><strong>Moodle XML:</strong> Import and Export support.</li>
+                    </ul>
+                </div>
+
+                <div class="card" id="results-card" style="display: none;">
+                    <h2 class="card-title" id="workspace-title">Workspace</h2>
+                    <div class="stats-grid" id="stats-grid"></div>
+                    <div class="tabs">
+                        <button class="tab active" data-tab="preview">Preview & Edit</button>
+                        <button class="tab" data-tab="raw">Raw Output</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="preview-tab">
+                        <div id="questions-container"></div>
+                    </div>
+
+                    <div class="tab-content" id="raw-tab">
+                        <div class="btn-group" style="margin-bottom: 1rem;">
+                             <button class="btn btn-warning" id="convertBtn">Switch Format (JSON/XML)</button>
+                            <button class="btn btn-info" id="copyRawBtn">Copy Code</button>
+                        </div>
+                        <div class="code-output" id="raw-output"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="edit-modal" id="edit-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Edit Question</h3>
+                <button class="btn btn-icon btn-light" id="modalCloseBtn">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="edit-form">
+                    <input type="hidden" id="edit-index">
+                    <input type="hidden" id="edit-type">
+                    <div class="form-group">
+                        <label class="form-label">Question Text</label>
+                        <textarea class="textarea-control" id="edit-question" rows="3"></textarea>
+                    </div>
+                    
+                    <div id="mcq-editor-fields" style="display:none;">
+                        <label class="form-label">Options</label>
+                        <div id="edit-options"></div>
+                        <button type="button" class="btn btn-light btn-sm" id="addOptionBtn" style="margin-top:0.5rem;">+ Add Option</button>
+                    </div>
+
+                    <div id="numerical-editor-fields" style="display:none;">
+                        <div class="form-group">
+                            <label class="form-label">Correct Answer (Number)</label>
+                            <input type="number" step="any" class="form-control" id="edit-correct-answer">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Entry Instructions</label>
+                            <input type="text" class="form-control" id="edit-entry-instructions">
+                        </div>
+                    </div>
+
+                    <div id="nested-editor-fields" style="display:none;">
+                        <label class="form-label">Sub-Questions</label>
+                        <div id="nested-subquestions-container"></div>
+                        <button type="button" class="btn btn-light btn-sm" id="addSubQBtn" style="margin-top:0.5rem;">+ Add Sub-Question</button>
+                    </div>
+
+                    <div class="form-group" style="margin-top:1rem;">
+                        <label class="form-label">Marks</label>
+                        <input type="number" class="form-control" id="edit-marks" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Explanation</label>
+                        <textarea class="textarea-control" id="edit-explanation" rows="2"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-light" id="modalCancelBtn">Cancel</button>
+                <button class="btn btn-primary" id="saveEditBtn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alerts -->
+    <div id="alert-container"></div>
+
+    <!-- JS Modules -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2nd Semester Quiz Platform</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4f46e5">
+</head>
+<body>
+<header class="header">
+<div class="header-inner">
+<div class="logo" style="display: flex; align-items: center; gap: 10px;">
+<img alt="Chiaseed Question" src="assets/img/logo.png" style="height: 40px;"/>
+<span style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">Chiaseed<span style="color: var(--text-main);"> Quiz Platform</span></span>
+</div>
+<div class="flex items-center gap-4">
+<div id="user-info"></div>
+<button class="btn-icon" id="btn-stats" title="View Statistics">📈</button>
+<button class="btn-icon" id="btn-cost" title="Check Usage">💰</button>
+<button class="btn-icon" id="theme-toggle" title="Toggle Dark Mode">
+<svg class="hidden" fill="none" height="24" id="icon-sun" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+<svg fill="none" height="24" id="icon-moon" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+</div>
+</div>
+</header>
+<div class="container">
+<!-- Global Navigation Tabs -->
+<div class="card" id="main-tabs" style="margin-bottom: 2rem;">
+<div class="tabs" style="margin-bottom: 0;">
+<button class="tab-btn active" data-tab="study">Study Mode (Chapters)</button>
+<button class="tab-btn" data-tab="dam">Question Bank (DAM)</button>
+<button class="tab-btn" data-tab="chiaseed">ChiaSeed (Tags/Weakness)</button>
+</div>
+</div>
+<div id="view-selector">
+<div class="text-center mb-4">
+<h2 style="font-size: 1.75rem; font-weight: 800;">Welcome Back!</h2>
+<p style="color: var(--text-muted);">Choose your preferred way to practice.</p>
+</div>
+<div class="card">
+    <div class="selection-grid">
+        <div class="input-group full-width">
+            <label>Subject</label>
+            <select id="input-subject"></select>
+        </div>
+
+        <div id="options-study" class="sub-grid full-width">
+            <div class="input-group">
+                <label>Chapter</label>
+                <select id="input-chapter"></select>
+            </div>
+            <div class="input-group">
+                <label>Set</label>
+                <select id="input-set">
+                    <option value="00">Standard (00)</option>
+                    <option value="10">AI Set 1 (10)</option>
+                    <option value="02">Set 02 (02)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="hidden full-width" id="options-dam">
+            <div class="input-group mb-4">
+                <label>Quiz Type</label>
+                <select id="input-dam-mode">
+                    <option value="qb_random">Random 50 (Standard Exam)</option>
+                    <option value="ai_random">AI Questions (Random 50)</option>
+                    <option value="iz_mixed">Iz Mode (All Questions Shuffled)</option>
+                    <option value="customise">Custom Selection</option>
+                </select>
+            </div>
+            
+            <div class="hidden" id="dam-custom-settings" style="border-top: 1px solid var(--border); padding-top: 1rem;">
+                <div class="input-group mb-2">
+                    <label>Chapter List Source</label>
+                    <select id="dam-chapter-source">
+                        <option value="00">Standard (00)</option>
+                        <option value="02">Set 02 (Independent)</option>
+                    </select>
+                </div>
+                <div class="flex justify-between items-center mb-2">
+                    <label style="margin-bottom:0;">Select Chapters</label>
+                    <button class="btn btn-secondary" id="btn-toggle-chapters" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">Select All</button>
+                </div>
+                <div class="checkbox-grid mb-4" id="chapter-checkboxes"></div>
+                
+                <label>Select Sets</label>
+                <div class="flex gap-4 mb-4" style="flex-wrap: wrap;">
+                    <label class="checkbox-item" style="margin-bottom:0; width: auto;">
+                        <input checked="" name="dam-set" type="checkbox" value="00"/> Standard (00)
+                    </label>
+                    <label class="checkbox-item" style="margin-bottom:0; width: auto;">
+                        <input name="dam-set" type="checkbox" value="10"/> AI Set 1 (10)
+                    </label>
+                    <label class="checkbox-item" style="margin-bottom:0; width: auto;">
+                        <input name="dam-set" type="checkbox" value="02"/> Set 02 (02)
+                    </label>
+                </div>
+                
+                <div class="sub-grid">
+                    <div class="input-group">
+                        <label>Count</label>
+                        <input id="input-dam-count" max="100" min="5" type="number" value="20"/>
+                    </div>
+                    <div class="input-group">
+                        <label>Mins/Q</label>
+                        <input id="input-dam-time" step="0.1" type="number" value="1.5"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden full-width" id="options-chiaseed">
+            <div class="input-group mb-4">
+                <label>Tag Set</label>
+                <select id="chia-category-select">
+                    <option value="passion">PassionFruit (By Chapter)</option>
+                    <option value="syllabus">PerSyllabus (By Area)</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-4">
+                <label id="chia-primary-label">Chapter</label>
+                <select id="chia-chapter-select"></select>
+            </div>
+
+            <div class="input-group mb-4 hidden" id="chia-group-container">
+                <label>Topic Group</label>
+                <select id="chia-group-select"></select>
+            </div>
+
+            <div class="input-group mb-4 hidden" id="chia-concept-container">
+                <label>Specific Concepts (Optional)</label>
+                <div id="chia-concept-grid" class="concept-grid"></div>
+            </div>
+            
+            <div id="chia-preview" style="text-align: center; color: var(--text-muted); font-weight: 600; margin-bottom: 1rem;"></div>
+        </div>
+    </div>
+
+    <div class="flex items-center mt-4 mb-4" style="justify-content: flex-end;">
+        <input id="mal-mode" style="width: auto; margin-bottom: 0; margin-right: 0.5rem;" type="checkbox"/>
+        <label for="mal-mode" style="margin-bottom: 0; display: inline; font-weight: normal;">Instant Feedback (mal mode)</label>
+    </div>
+    
+    <button class="btn btn-primary" id="btn-start" style="font-size: 1.1rem; padding: 1rem;">Start Quiz 🚀</button>
+</div>
+</div>
+<div class="hidden text-center" id="view-loading" style="padding: 3rem;">
+<div class="spinner"></div>
+<h3>Preparing Quiz</h3>
+<p id="loading-text" style="color: var(--text-muted);">Fetching questions...</p>
+</div>
+<div class="hidden" id="view-quiz">
+<div class="stats-bar">
+<div>
+<span class="stat-label">Question</span>
+<span class="stat-value" id="quiz-progress">1 / 50</span>
+</div>
+<div class="text-center">
+<span class="stat-label">Time Remaining</span>
+<span class="stat-value timer-value" id="quiz-timer">00:00</span>
+</div>
+</div>
+<div class="card">
+<div class="flex justify-between mb-4">
+<span class="badge" id="quiz-q-id">ID: 000</span>
+<span class="badge timer-value" id="quiz-q-timer">00:00</span>
+</div>
+<div class="question-text" id="quiz-question-text"></div>
+<div id="quiz-options"></div>
+<div class="hidden explanation-box" id="quiz-instant-explanation" style="background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary);">
+<h4 style="margin-bottom: 0.5rem;">Explanation</h4>
+<div id="quiz-instant-explanation-text"></div>
+</div>
+</div>
+<div class="flex justify-between gap-4 mb-4">
+<button class="btn btn-secondary" id="btn-prev" style="width: auto;">Previous</button>
+<button class="btn btn-primary" id="btn-next" style="width: auto;">Next</button>
+<button class="btn btn-primary hidden" id="btn-submit" style="background-color: var(--success); width: auto;">Submit Quiz</button>
+</div>
+<div class="card">
+<h4 class="stat-label mb-4">Question Navigator</h4>
+<div class="nav-grid" id="quiz-nav-grid"></div>
+</div>
+</div>
+<div class="hidden" id="view-results">
+<div class="text-center mb-4">
+<h2>Quiz Completed!</h2>
+<p class="stat-value" id="result-score-summary"></p>
+<p id="result-question-id-summary" style="color: var(--text-muted);"></p>
+<p id="result-time-summary" style="color: var(--text-muted);"></p>
+</div>
+<div class="card">
+<h4 class="stat-label mb-4 text-center">Review Navigation</h4>
+<div class="flex justify-center gap-4 mb-4">
+<button class="btn" id="filter-all" style="width: auto; padding: 0.5rem 1rem; font-size: 0.9rem;">Show All</button>
+<button class="btn" id="filter-wrong" style="width: auto; padding: 0.5rem 1rem; font-size: 0.9rem;">Wrong Only</button>
+</div>
+<div class="nav-grid" id="result-nav-grid"></div>
+</div>
+<div id="results-list"></div>
+<div class="text-center mt-4">
+<button class="btn btn-primary" id="btn-retake" style="width: auto;">Start New Quiz</button>
+</div>
+</div>
+<div class="hidden" id="view-statistic">
+<div class="text-center mb-4">
+<h2>Statistic</h2>
+<p style="color: var(--text-muted);">Your personal progress and top performers.</p>
+<!-- Placeholder for Personal Statistics -->
+<div class="card" id="personal-statistics" style="margin-top: 1.5rem;">
+<h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Your Performance Summary</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+<div style="background: var(--bg-body); padding: 1rem; border-radius: 0.5rem; text-align: left;">
+<span class="stat-label">Total Attempts</span>
+<span class="stat-value" id="stat-attempts">0</span>
+</div>
+<div style="background: var(--bg-body); padding: 1rem; border-radius: 0.5rem; text-align: left;">
+<span class="stat-label">Questions Answered</span>
+<span class="stat-value" id="stat-total-questions">0</span>
+</div>
+<div style="background: var(--bg-body); padding: 1rem; border-radius: 0.5rem; text-align: left;">
+<span class="stat-label">Correct Answers</span>
+<span class="stat-value" id="stat-correct-answers">0</span>
+</div>
+<div style="background: var(--bg-body); padding: 1rem; border-radius: 0.5rem; text-align: left;">
+<span class="stat-label">Accuracy Rate</span>
+<span class="stat-value" id="stat-accuracy">0%</span>
+</div>
+</div>
+<p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">(Detailed statistics and wrong answers will appear here after you complete quizzes.)</p>
+</div>
+<div id="user-progress-map" class="chapters-progress-container" style="margin-top: 1.5rem;"></div>
+<button class="btn btn-secondary" id="btn-refresh-leaderboard" style="margin-top: 0.5rem; padding: 0.4rem 1rem; font-size: 0.8rem;">🔄 Refresh Data</button>
+</div>
+<div class="podium-container">
+<div class="podium-spot second" id="podium-second">
+<span class="rank-badge">2nd</span>
+<img alt="Profile" class="profile-picture" src="assets/img/profile-placeholder.svg"/>
+<h4>-</h4>
+</div>
+<div class="podium-spot first" id="podium-first">
+<span class="rank-badge">1st</span>
+<img alt="Profile" class="profile-picture" src="assets/img/profile-placeholder.svg"/>
+<h4>-</h4>
+</div>
+<div class="podium-spot third" id="podium-third">
+<span class="rank-badge">3rd</span>
+<img alt="Profile" class="profile-picture" src="assets/img/profile-placeholder.svg"/>
+<h4>-</h4>
+</div>
+</div>
+<div class="card" style="overflow-x: auto;">
+<table class="leaderboard-table">
+<thead>
+<tr>
+<th>Rank</th>
+<th>User</th>
+<th>Score</th>
+<th>Time</th>
+<th>Accuracy</th>
+</tr>
+</thead>
+<tbody id="leaderboard-body">
+<tr><td class="loading-row" colspan="5">Loading data...</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<footer>
+<p>Developed by Tyno Chi &amp; code002xcode016</p>
+    <p style="opacity: 0.7; font-size: 0.75rem;">Special Thanks to Our Amazing Lecturers</p>
+    <div style="text-align: center; font-size: 0.7rem; color: #888; margin-top: 5px;">v2.3.4</div></footer>
+
+<div class="modal" id="modal-exit-confirm">
+<div class="modal-content text-center">
+    <div style="font-size: 3rem; margin-bottom: 1rem;">⚠️</div>
+    <h3>Exit Active Quiz?</h3>
+    <p style="color: var(--text-muted); margin: 1rem 0;">You have an active quiz. What would you like to do with your progress?</p>
+    <div class="flex flex-col gap-2">
+        <button class="btn btn-primary" id="btn-exit-submit">Submit Progress & Exit</button>
+        <button class="btn btn-secondary" id="btn-exit-discard" style="color: var(--error);">Discard & Exit</button>
+        <button class="btn" onclick="QuizUI.closeModal('modal-exit-confirm')">Keep Practicing</button>
+    </div>
+</div>
+</div>
+
+<div class="modal" id="modal-donation">
+<div class="modal-content text-center">
+<button class="modal-close" onclick="QuizUI.closeModal('modal-donation')">×</button>
+<img alt="Donation Image" class="donation-image" id="donation-image" src="assets/img/donation.png"/>
+<h3>Support Our Work</h3>
+<p style="color: var(--text-muted); margin: 1rem 0;">This study tool is completely free. If you find it useful, please consider a small donation to help us cover AI costs!</p>
+<button class="btn btn-secondary" onclick="QuizUI.closeModal('modal-donation')">Maybe Later</button>
+</div>
+</div>
+<div class="modal" id="modal-manual-upload">
+<div class="modal-content text-center">
+<button class="modal-close" onclick="QuizUI.closeModal('modal-manual-upload')">×</button>
+<div style="font-size: 3rem; margin-bottom: 1rem;">📂</div>
+<h3>Load Quiz Manually</h3>
+<p style="color: var(--text-muted); margin: 1rem 0; font-size: 0.9rem;">
+                We couldn't automatically load the quiz data. Please verify you have the <b>json</b> folder and select the file manually.
+            </p>
+<div style="background: var(--bg-body); padding: 0.5rem; border-radius: 0.5rem; margin-bottom: 1rem; font-family: monospace; font-size: 0.8rem;">
+                Looking for: <span id="manual-filename" style="color: var(--primary); font-weight: bold;"></span>
+</div>
+<label class="btn btn-primary" style="display: inline-block; width: auto;">
+                Select File
+                <input accept=".json" class="hidden" id="file-input-manual" type="file"/>
+</label>
+</div>
+</div>
+<div class="modal" id="modal-ai">
+<div class="modal-content">
+<div class="flex justify-between items-center mb-4" style="border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">
+<h3 style="color: var(--primary);">AI Explanation ✨</h3>
+<button class="btn-icon" onclick="QuizUI.closeModal('modal-ai')">×</button>
+</div>
+<div id="ai-content" style="line-height: 1.6; font-size: 0.95rem;"></div>
+</div>
+</div>
+<div class="modal" id="modal-tags">
+<div class="modal-content">
+<div class="flex justify-between items-center mb-4" style="border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">
+<h3 style="color: var(--primary);">Question Tags</h3>
+<button class="btn-icon" onclick="QuizUI.closeModal('modal-tags')">×</button>
+</div>
+<div id="tags-content" style="line-height: 1.6; font-size: 0.95rem;"></div>
+</div>
+</div>
+<div class="modal" id="modal-timeup">
+<div class="modal-content text-center">
+<h3 style="color: var(--error);">Time's Up!</h3>
+<p style="margin: 1rem 0;">Pencils down! Your quiz is being submitted automatically.</p>
+<button class="btn btn-primary" onclick="QuizUI.closeModal('modal-timeup')">See Results</button>
+</div>
+</div>
+<div class="modal" id="modal-login">
+<div class="modal-content">
+<h3>Select Your Name</h3>
+<p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Who is taking the quiz today?</p>
+<div class="name-list" id="name-list"></div>
+</div>
+</div>
+
+<div class="modal" id="modal-usage">
+<div class="modal-content text-center">
+<button class="modal-close" onclick="QuizUI.closeModal('modal-usage')">×</button>
+<h3 style="margin-bottom: 1rem;">💰 AI Usage &amp; Cost</h3>
+<div id="usage-content">
+<div class="spinner"></div>
+</div>
+</div>
+</div>
+
+<script src="assets/js/app.js" type="module"></script>
+<script>
+  if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.protocol === 'http:' || window.location.hostname === 'localhost')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => {
+          console.log('SW registered!', reg.scope);
+          reg.addEventListener('updatefound', () => {
+            const newWorker = reg.installing;
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                // New update available, reload page
+                window.location.reload();
+              }
+            });
+          });
+        })
+        .catch(err => console.log('SW failed:', err));
+    });
+  }
+</script>
+</body>
+</html>

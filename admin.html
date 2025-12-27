@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Student Progress Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Layout Overrides for Full Width */
+        body { overflow-y: hidden; }
+        .header { position: sticky; top: 0; z-index: 20; }
+        
+        .admin-container { 
+            width: 100%; 
+            height: calc(100vh - 73px);
+            display: grid; 
+            grid-template-columns: 350px 1fr; 
+            background-color: var(--bg-body);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: var(--bg-card);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .sidebar-header {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            background: rgba(var(--bg-card-rgb), 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .mode-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .mode-btn {
+            flex: 1;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            border: 1px solid var(--border);
+            background: var(--bg-body);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+        }
+        .mode-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+        .mode-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+        }
+
+        .user-list-container { flex: 1; overflow-y: auto; scrollbar-width: thin; }
+
+        .user-item { 
+            padding: 1rem; 
+            border-bottom: 1px solid var(--border); 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            transition: all 0.2s;
+        }
+        .user-item:hover { background-color: var(--primary-light); }
+        .user-item.active { background-color: var(--primary-light); border-left: 4px solid var(--primary); }
+        .user-item.active .sub-text { color: var(--text-muted); opacity: 1; }
+        
+        /* Main Content */
+        .main-content {
+            padding: 2rem;
+            overflow-y: auto;
+            background-color: var(--bg-body);
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+        }
+
+        .dashboard-header { margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: flex-end; }
+        
+        /* Glassmorphism Cards */
+        .chapter-section { 
+            width: 100%;
+            background: rgba(var(--bg-card-rgb), 0.7); 
+            padding: 1.5rem; 
+            border-radius: 1rem; 
+            border: 1px solid var(--border); 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        .chapter-section:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .q-box {
+            width: 100%; aspect-ratio: 1;
+            border: 1px solid var(--border); border-radius: 0.5rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85rem; font-weight: 700; color: var(--text-muted);
+            cursor: pointer; position: relative;
+            background-color: var(--bg-body);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .q-box:hover { 
+            transform: scale(1.15) rotate(2deg); 
+            border-color: var(--primary); 
+            z-index: 2; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }        
+        /* Individual Status Colors */
+        .q-box.correct { background-color: var(--success); color: white; border-color: var(--success); }
+        .q-box.incorrect { background-color: var(--error); color: white; border-color: var(--error); }
+        
+        /* Heatmap Colors */
+        .q-box.heat-high { background-color: #22c55e; color: white; border-color: #16a34a; } /* > 80% */
+        .q-box.heat-mid { background-color: #eab308; color: white; border-color: #ca8a04; } /* 50-80% */
+        .q-box.heat-low { background-color: #ef4444; color: white; border-color: #dc2626; } /* < 50% */
+        
+        .sub-text { font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 0.2rem; }
+        .badge { padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; background: var(--border); color: var(--text-main); margin-left: 0.5rem; }
+
+        /* Modal */
+        .modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.2s;
+        }
+        .modal.active { opacity: 1; pointer-events: all; }
+        .modal-content {
+            background: var(--bg-card);
+            width: 95%; max-width: 800px;
+            max-height: 85vh; overflow-y: auto;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .modal-close {
+            position: absolute; top: 1rem; right: 1rem;
+            background: none; border: none; font-size: 1.5rem;
+            cursor: pointer; color: var(--text-muted);
+        }
+        .detail-row { margin-bottom: 1rem; }
+        .detail-label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; }
+        .detail-text { font-size: 1rem; color: var(--text-main); line-height: 1.5; white-space: pre-wrap; }
+        .status-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; font-weight: 600; font-size: 0.85rem; }
+        .status-correct { background: var(--success-bg); color: var(--success); }
+        .status-incorrect { background: var(--error-bg); color: var(--error); }
+        
+        footer {
+            margin-top: 3rem;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner" style="max-width: 100%; padding: 0 2rem;">
+            <div class="logo">
+                <span style="color: var(--primary);">Chiaseed</span> Admin
+            </div>
+            <div class="flex gap-4 items-center">
+                <span id="global-stats" style="font-size: 0.85rem; color: var(--text-muted);"></span>
+                <button class="btn-icon" id="theme-toggle" title="Toggle Theme">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3 style="font-size: 1rem;">Dashboard</h3>
+                <div class="mode-tabs" style="flex-direction: column; margin-top: 1rem;">
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="mode-btn active" id="tab-individual">Students</button>
+                        <button class="mode-btn" id="tab-consolidated">Consolidated</button>
+                    </div>
+                    <button class="mode-btn" id="tab-leaderboard" style="margin-top: 0.5rem;">🏆 Leaderboard</button>
+                    <button class="mode-btn" id="tab-overall" style="margin-top: 0.5rem;">🌍 Overall Progress</button>
+                    <button class="mode-btn" id="tab-genai" style="margin-top: 0.5rem;">🤖 GenAI Usage</button>
+                </div>
+                <input type="text" id="user-search" placeholder="Search students..." style="width: 100%; margin-top: 1rem; padding: 0.5rem; font-size: 0.85rem; border: 1px solid var(--border); border-radius: 0.25rem; background: var(--bg-body); color: var(--text-main);">
+            </div>
+            <div class="user-list-container" id="user-list">
+                <div class="text-center p-4"><div class="spinner"></div></div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" id="progress-view">
+            <div class="dashboard-header">
+                <div>
+                    <h2 id="selected-user-name" style="font-size: 1.75rem;">Select a Student</h2>
+                    <p id="selected-user-stats" class="sub-text" style="font-size: 0.9rem;">Select a student from the sidebar to view their progress.</p>
+                </div>
+                <div class="flex gap-2" id="admin-view-controls" style="flex-direction: column; align-items: flex-end;">
+                    <div class="source-toggle">
+                        <select id="time-filter" class="source-select" title="Filter by Time">
+                            <option value="all">All Time</option>
+                            <option value="1">Last Hour</option>
+                            <option value="24">Last 24 Hours</option>
+                            <option value="168">Last 7 Days</option>
+                            <option value="720">Last 30 Days</option>
+                        </select>
+                    </div>
+                    <div class="source-toggle">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; cursor: pointer; font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">
+                            <input type="checkbox" id="chk-answered-only"> Answered Only
+                        </label>
+                    </div>
+                    <div class="source-toggle">
+                        <button class="source-btn active" id="btn-view-chapter">Chapters</button>
+                        <button class="source-btn" id="btn-view-tag">Tags</button>
+                    </div>
+                    <div class="source-toggle hidden" id="tag-set-toggle">
+                        <button class="source-btn active" id="btn-tag-passion">PassionFruit</button>
+                        <button class="source-btn" id="btn-tag-syllabus">PerSyllabus</button>
+                    </div>
+                    <div class="source-toggle">
+                        <button class="source-btn active" id="btn-source-qb">QB</button>
+                        <button class="source-btn" id="btn-source-ai">AI</button>
+                        <button class="source-btn" id="btn-source-all">All</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="leaderboard-view" class="hidden">
+                <div class="podium-container" style="margin-top: 0;">
+                    <div class="podium-spot second" id="podium-second">
+                        <span class="rank-badge">2nd</span>
+                        <img alt="Profile" class="profile-picture" src="assets/img/profile-placeholder.svg"/>
+                        <h4>-</h4>
+                    </div>
+                    <div class="podium-spot first" id="podium-first">
+                        <span class="rank-badge">1st</span>
+                        <img alt="Profile" class="profile-picture" src="assets/img/profile-placeholder.svg"/>
+                        <h4>-</h4>
+                    </div>
+                    <div class="podium-spot third" id="podium-third">
+                        <span class="rank-badge">3rd</span>
+                        <img alt="Profile" class="profile-picture" src="assets/img/profile-placeholder.svg"/>
+                        <h4>-</h4>
+                    </div>
+                </div>
+                <div class="card" style="overflow-x: auto;">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>User</th>
+                                <th>Score</th>
+                                <th>Time</th>
+                                <th>Accuracy</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-body">
+                            <tr><td class="loading-row" colspan="5">Loading data...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Hidden elements required by LeaderboardManager to avoid errors -->
+                <div class="hidden">
+                    <span id="stat-attempts">0</span>
+                    <span id="stat-total-questions">0</span>
+                    <span id="stat-correct-answers">0</span>
+                    <span id="stat-accuracy">0%</span>
+                    <div id="personal-statistics"></div>
+                    <div id="user-progress-map"></div>
+                </div>
+            </div>
+
+            <div id="student-summary-card" class="hidden">
+                <div class="card" style="margin-bottom: 2rem; background: var(--primary-light); border-color: var(--primary); display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                    <div style="padding: 0.5rem;">
+                        <span class="stat-label">Accuracy Rate</span>
+                        <span class="stat-value" id="summary-accuracy">0%</span>
+                    </div>
+                    <div style="padding: 0.5rem;">
+                        <span class="stat-label">Total Attempts</span>
+                        <span class="stat-value" id="summary-attempts">0</span>
+                    </div>
+                    <div style="padding: 0.5rem;">
+                        <span class="stat-label">Correct Answers</span>
+                        <span class="stat-value" id="summary-correct">0</span>
+                    </div>
+                    <div style="padding: 0.5rem;">
+                        <span class="stat-label">Last Active</span>
+                        <span class="stat-value" id="summary-last-date" style="font-size: 1rem;">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="chapters-container"></div>
+
+            <footer>
+                <p>Developed by Tyno Chi &amp; code002xcode016</p>
+                <p style="opacity: 0.7; font-size: 0.75rem;">Special Thanks to Our Amazing Lecturers</p>
+                <div style="text-align: center; font-size: 0.7rem; color: #888; margin-top: 5px;">v2.3.4</div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Question Detail Modal -->
+    <div id="modal-detail" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="document.getElementById('modal-detail').classList.remove('active')">&times;</button>
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modal-title">Question Details</h3>
+                <span id="modal-status" class="status-badge"></span>
+            </div>
+            
+            <div class="detail-row">
+                <div class="detail-label">Question</div>
+                <div id="modal-question" class="detail-text"></div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Attempt Info</div>
+                <div id="modal-attempt-info" class="detail-text" style="font-size: 0.9rem;"></div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Correct Answer</div>
+                <div id="modal-answer" class="detail-text" style="color: var(--success); font-weight: 600;"></div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Explanation</div>
+                <div id="modal-explanation" class="detail-text" style="font-size: 0.9rem; color: var(--text-muted);"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { CONFIG } from './assets/js/config.js';
+        import { Utils } from './assets/js/utils.js';
+        import { LeaderboardManager } from './assets/js/ui/leaderboard.js';
+        
+        // STRICT TAG DEFINITIONS
+        const TAG_SETS = {
+            syllabus: {
+                areas: ['#AREA1', '#AREA2', '#AREA3', '#AREA4', '#TECH_MODERN'],
+                concepts: [] 
+            },
+            passion: {
+                groups: ['#ASSURANCE_CORE', '#SUSTAINABILITY', '#ENGAGEMENT_ACCEPT', '#RISK_PLANNING', '#MATERIALITY', '#AUDIT_RISK', '#EVIDENCE_PROCEDURES', '#ASSERTIONS', '#REPORTING', '#IC_COMPONENTS', '#IC_CONTROLS', '#IT_CONTROLS', '#AUDIT_CYCLES', '#INTERNAL_AUDIT', '#DOCUMENTATION', '#SAMPLING', '#REPRESENTATIONS', '#SUBSTANTIVE_ACCOUNTS', '#ETHICS_FUNDAMENTALS', '#ETHICAL_THREATS', '#INDEPENDENCE', '#CONFIDENTIALITY']
+            }
+        };
+
+        const state = {
+            rawUsers: [], 
+            consolidatedUsers: [], 
+            genaiLogs: [],
+            viewMode: 'overall', 
+            sourceMode: 'QB',
+            groupMode: 'chapter',
+            tagCategory: 'passion',
+            filterAnswered: false,
+            timeFilter: 'all', 
+            allQuestions: {}, 
+            userAttempts: {}, 
+            allUserAttempts: {}, 
+            overallStats: {}, 
+            currentUser: null,
+            isDataLoaded: false
+        };
+
+        let leaderboardManager = null;
+
+        // --- Core Functions ---
+
+        async function init() {
+            setupTheme();
+            setupEventListeners();
+            
+            leaderboardManager = new LeaderboardManager({ switchView: () => {} });
+
+            try {
+                await fetchQuestionStructure();
+                await fetchUsers();
+                switchView('overall');
+            } catch(e) {
+                console.error("Init failed:", e);
+            }
+        }
+
+        function setupTheme() {
+            const toggle = document.getElementById('theme-toggle');
+            const applyTheme = (isDark) => {
+                document.documentElement.classList.toggle('dark', isDark);
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                toggle.textContent = isDark ? '☀️' : '🌙';
+            };
+            const saved = localStorage.getItem('theme');
+            applyTheme(saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches));
+            toggle.onclick = () => applyTheme(!document.documentElement.classList.contains('dark'));
+        }
+
+        function setupEventListeners() {
+            document.getElementById('tab-individual').onclick = () => switchView('individual');
+            document.getElementById('tab-consolidated').onclick = () => switchView('consolidated');
+            document.getElementById('tab-leaderboard').onclick = () => switchView('leaderboard');
+            document.getElementById('tab-genai').onclick = () => switchView('genai');
+            document.getElementById('tab-overall').onclick = () => switchView('overall');
+            
+            document.getElementById('btn-source-qb').onclick = () => switchSource('QB');
+            document.getElementById('btn-source-ai').onclick = () => switchSource('AI');
+            document.getElementById('btn-source-all').onclick = () => switchSource('ALL');
+
+            document.getElementById('btn-view-chapter').onclick = () => switchGroup('chapter');
+            document.getElementById('btn-view-tag').onclick = () => switchGroup('tag');
+
+            document.getElementById('btn-tag-passion').onclick = () => switchTagCategory('passion');
+            document.getElementById('btn-tag-syllabus').onclick = () => switchTagCategory('syllabus');
+            
+            document.getElementById('chk-answered-only').onchange = (e) => {
+                state.filterAnswered = e.target.checked;
+                renderProgressMap();
+            };
+
+            document.getElementById('time-filter').onchange = (e) => {
+                state.timeFilter = e.target.value;
+                if (state.viewMode === 'overall') {
+                    aggregateOverallStats();
+                } else if (state.viewMode === 'individual' && state.currentUser) {
+                    selectUser(state.currentUser);
+                } else {
+                    renderProgressMap();
+                }
+            };
+
+            document.getElementById('user-search').oninput = (e) => {
+                const term = e.target.value.toLowerCase();
+                if (state.viewMode === 'genai') renderGenAILogs(term);
+                else renderUserList(term);
+            };
+        }
+
+        // --- View Logic ---
+
+        function switchView(mode) {
+            state.viewMode = mode;
+            document.getElementById('tab-individual').classList.toggle('active', mode === 'individual');
+            document.getElementById('tab-consolidated').classList.toggle('active', mode === 'consolidated');
+            document.getElementById('tab-leaderboard').classList.toggle('active', mode === 'leaderboard');
+            document.getElementById('tab-genai').classList.toggle('active', mode === 'genai');
+            document.getElementById('tab-overall').classList.toggle('active', mode === 'overall');
+            
+            const search = document.getElementById('user-search');
+            search.value = '';
+            
+            const header = document.getElementById('selected-user-name');
+            const sub = document.getElementById('selected-user-stats');
+            const container = document.getElementById('chapters-container');
+            const lbView = document.getElementById('leaderboard-view');
+            const controls = document.getElementById('admin-view-controls');
+
+            lbView.classList.add('hidden');
+            container.classList.remove('hidden');
+            controls.classList.remove('hidden');
+            document.getElementById('student-summary-card').classList.add('hidden');
+
+            if (mode === 'genai') {
+                search.placeholder = "Search logs...";
+                document.getElementById('user-list').innerHTML = ''; 
+                header.textContent = "GenAI Audit Log";
+                sub.textContent = "Review recent AI generation requests and costs.";
+                container.innerHTML = '<div class="text-center p-8"><div class="spinner"></div></div>';
+                fetchGenAILogs();
+            } else if (mode === 'leaderboard') {
+                search.placeholder = "Search students...";
+                renderUserList();
+                header.textContent = "Leaderboard";
+                sub.textContent = "Ranking based on correct answers and total accuracy.";
+                container.classList.add('hidden');
+                controls.classList.add('hidden');
+                lbView.classList.remove('hidden');
+                leaderboardManager.fetchAndRender();
+            } else if (mode === 'overall') {
+                search.placeholder = "Search students...";
+                document.getElementById('user-list').innerHTML = '<div class="p-4 text-center text-muted">Aggregating data...</div>';
+                header.textContent = "Overall Progress";
+                sub.textContent = "Heatmap of question performance across all students.";
+                container.innerHTML = '<div class="text-center p-8"><div class="spinner"></div><p>Fetching and aggregating data...</p></div>';
+                fetchOverallStats();
+            } else {
+                search.placeholder = "Search students...";
+                renderUserList();
+                header.textContent = "Select a Student";
+                sub.textContent = "Select a student from the sidebar to view their progress.";
+                container.innerHTML = '';
+            }
+        }
+
+        function switchSource(mode) {
+            state.sourceMode = mode;
+            document.getElementById('btn-source-qb').classList.toggle('active', mode === 'QB');
+            document.getElementById('btn-source-ai').classList.toggle('active', mode === 'AI');
+            document.getElementById('btn-source-all').classList.toggle('active', mode === 'ALL');
+            renderProgressMap();
+        }
+
+        function switchGroup(mode) {
+            state.groupMode = mode;
+            document.getElementById('btn-view-chapter').classList.toggle('active', mode === 'chapter');
+            document.getElementById('btn-view-tag').classList.toggle('active', mode === 'tag');
+            document.getElementById('tag-set-toggle').classList.toggle('hidden', mode !== 'tag');
+            renderProgressMap();
+        }
+
+        function switchTagCategory(cat) {
+            state.tagCategory = cat;
+            document.getElementById('btn-tag-passion').classList.toggle('active', cat === 'passion');
+            document.getElementById('btn-tag-syllabus').classList.toggle('active', cat === 'syllabus');
+            renderProgressMap();
+        }
+
+        // --- API Helpers ---
+
+        async function fetchQuestionStructure() {
+            try {
+                // Load Standard, AI, and Independent Sets
+                const [qbRes, aiRes, s2Res] = await Promise.allSettled([
+                    fetch('json/combined/combined-set-qb.json'),
+                    fetch('json/combined/combined-set-ai.json'),
+                    fetch('json/combined/combined-set-02.json')
+                ]);
+
+                const processData = async (res, source) => {
+                    if (res.status === 'fulfilled' && res.value.ok) {
+                        const data = await res.value.json();
+                        (data.entries || []).forEach(q => {
+                            if (!q.source) q.source = source; 
+                            if (!state.allQuestions[q.chapter]) state.allQuestions[q.chapter] = [];
+                            if (!state.allQuestions[q.chapter].find(ex => ex.id === q.id)) {
+                                state.allQuestions[q.chapter].push(q);
+                            }
+                        });
+                    }
+                };
+
+                await processData(qbRes, 'QB');
+                await processData(aiRes, 'AI');
+                await processData(s2Res, 'Set 02');
+
+            } catch (e) {
+                console.error("Error fetching question structure", e);
+                document.getElementById('chapters-container').innerHTML = `<p style="color:var(--error)">Warning: Partial data load.</p>`;
+            }
+        }
+
+        async function fetchUsers() {
+            try {
+                const res = await fetch(CONFIG.endpoints.data + '/admin/users', { credentials: 'include' });
+                if (!res.ok) throw new Error("API Error");
+                const rawData = await res.json();
+                state.rawUsers = rawData.filter(u => u.name && u.name.toLowerCase() !== 'anonymous');
+
+                const map = new Map();
+                state.rawUsers.forEach(u => {
+                    if (!map.has(u.name)) map.set(u.name, { name: u.name, ids: [], total_visits: 0, last_active: 0 });
+                    const entry = map.get(u.name);
+                    entry.ids.push(u.id);
+                    entry.total_visits += u.visit_count;
+                    if (u.last_visit_at > entry.last_active) entry.last_active = u.last_visit_at;
+                });
+                state.consolidatedUsers = Array.from(map.values()).sort((a,b) => b.last_active - a.last_active);
+                document.getElementById('global-stats').textContent = `${state.rawUsers.length} Sessions | ${state.consolidatedUsers.length} Students`;
+            } catch (e) { console.error(e); }
+        }
+
+        async function fetchOverallStats() {
+            if (Object.keys(state.allUserAttempts).length > 0 && state.isDataLoaded) {
+                aggregateOverallStats();
+                return;
+            }
+
+            const users = state.consolidatedUsers;
+            if (users.length === 0) {
+                document.getElementById('chapters-container').innerHTML = '<div class="card p-4">No student data available.</div>';
+                return;
+            }
+
+            const batchSize = 5;
+            for (let i = 0; i < users.length; i += batchSize) {
+                const batch = users.slice(i, i + batchSize);
+                const promises = batch.map(async (u) => {
+                    const idPromises = u.ids.map(id => 
+                        fetch(`${CONFIG.endpoints.data}/admin/attempts?userId=${id}`, { credentials: 'include' })
+                            .then(r => r.json())
+                            .catch(() => [])
+                    );
+                    const results = await Promise.all(idPromises);
+                    // Inject the student name into the attempt object for easier lookup
+                    state.allUserAttempts[u.name] = results.flat().map(a => ({ ...a, studentName: u.name })); 
+                });
+                await Promise.all(promises);
+            }
+            
+            state.isDataLoaded = true;
+            aggregateOverallStats();
+        }
+
+        async function selectUser(user, itemEl) {
+            // Determine mode based on user object to prevent mismatches
+            const isConsolidated = user.ids && Array.isArray(user.ids);
+            const targetMode = isConsolidated ? 'consolidated' : 'individual';
+
+            // Switch view mode if necessary (e.g. clicking user in Leaderboard/Overall view)
+            if (state.viewMode !== targetMode) {
+                state.viewMode = targetMode;
+                // Update Tabs
+                document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                document.getElementById(isConsolidated ? 'tab-consolidated' : 'tab-individual').classList.add('active');
+                
+                // Update Visibility
+                document.getElementById('leaderboard-view').classList.add('hidden');
+                document.getElementById('chapters-container').classList.remove('hidden');
+                document.getElementById('admin-view-controls').classList.remove('hidden');
+                document.getElementById('student-summary-card').classList.add('hidden'); // hidden until loaded
+                
+                // Note: We do NOT call switchView() to avoid reloading the user list
+            }
+
+            state.currentUser = user;
+            if(itemEl) {
+                document.querySelectorAll('.user-item').forEach(el => el.classList.remove('active'));
+                itemEl.classList.add('active');
+            }
+            document.getElementById('selected-user-name').textContent = user.name || 'Anonymous';
+            document.getElementById('selected-user-stats').textContent = isConsolidated ? `Consolidated (${user.ids.length} Sessions)` : `ID: ${user.id}`;
+            document.getElementById('chapters-container').innerHTML = '<div class="text-center p-8"><div class="spinner"></div></div>';
+            
+            try {
+                let attempts = [];
+                if (!isConsolidated) {
+                    const res = await fetch(`${CONFIG.endpoints.data}/admin/attempts?userId=${user.id}`, { credentials: 'include' });
+                    attempts = await res.json();
+                } else {
+                    const promises = user.ids.map(id => fetch(`${CONFIG.endpoints.data}/admin/attempts?userId=${id}`, { credentials: 'include' }).then(r => r.json()).catch(()=>[]));
+                    const results = await Promise.all(promises);
+                    attempts = results.flat();
+                }
+                
+                // Update Summary Card
+                const total = attempts.length;
+                const correct = attempts.filter(a => a.is_correct).length;
+                const acc = total > 0 ? Math.round((correct / total) * 100) : 0;
+                const lastDate = total > 0 ? new Date(Math.max(...attempts.map(a => a.attempted_at)) * 1000).toLocaleDateString() : '-';
+                
+                document.getElementById('summary-accuracy').textContent = acc + '%';
+                document.getElementById('summary-attempts').textContent = total;
+                document.getElementById('summary-correct').textContent = correct;
+                document.getElementById('summary-last-date').textContent = lastDate;
+                document.getElementById('student-summary-card').classList.remove('hidden');
+
+                state.userAttempts = {};
+                attempts.forEach(a => {
+                    if (!state.userAttempts[a.question_id]) state.userAttempts[a.question_id] = [];
+                    state.userAttempts[a.question_id].push(a);
+                });
+                renderProgressMap();
+            } catch (e) { document.getElementById('chapters-container').innerHTML = `<p style="color:var(--error)">Error loading attempts.</p>`; }
+        }
+
+        async function fetchGenAILogs() {
+            try {
+                const res = await fetch(CONFIG.endpoints.data + '/admin/genai', { credentials: 'include' });
+                if (!res.ok) throw new Error("Failed");
+                const data = await res.json();
+                state.genaiLogs = Array.isArray(data) ? data : (data.logs || []);
+                renderGenAILogs();
+            } catch (e) { document.getElementById('chapters-container').innerHTML = `<p style="color:var(--error)">Error: ${e.message}</p>`; }
+        }
+
+        // --- Logic & Rendering ---
+
+        function aggregateOverallStats() {
+            state.overallStats = {};
+            const timeLimit = getTimestampLimit();
+
+            Object.values(state.allUserAttempts).forEach(attempts => {
+                attempts.forEach(a => {
+                    if (timeLimit > 0 && a.attempted_at < timeLimit) return;
+
+                    if (!state.overallStats[a.question_id]) {
+                        state.overallStats[a.question_id] = { total: 0, correct: 0, students: new Set() };
+                    }
+                    const stat = state.overallStats[a.question_id];
+                    stat.total++;
+                    if (a.is_correct) stat.correct++;
+                    stat.students.add(a.user_id);
+                });
+            });
+
+            renderProgressMap();
+        }
+
+        function getTimestampLimit() {
+            if (state.timeFilter === 'all') return 0;
+            const hours = parseInt(state.timeFilter);
+            return (Date.now() / 1000) - (hours * 3600);
+        }
+
+        function renderUserList(filter = '') {
+            const listEl = document.getElementById('user-list');
+            listEl.innerHTML = '';
+            const source = state.viewMode === 'consolidated' ? state.consolidatedUsers : state.rawUsers;
+            const filtered = source.filter(u => (u.name).toLowerCase().includes(filter) || (u.id && u.id.includes(filter)));
+
+            if (filtered.length === 0) { listEl.innerHTML = '<div class="p-4 text-center text-muted">No matches.</div>'; return; }
+
+            filtered.forEach(u => {
+                const div = document.createElement('div');
+                div.className = 'user-item';
+                const dateStr = new Date((u.last_visit_at || u.last_active) * 1000).toLocaleString();
+                
+                let subHTML = "";
+                if (u.ids) {
+                    subHTML = `<span class="sub-text">Sessions: <span class="badge">${u.ids.length}</span> • Last: ${dateStr}</span>`;
+                } else {
+                    subHTML = `<span class="sub-text">ID: ${u.id ? u.id.substring(0,8) : '??'}... • Last: ${dateStr}</span>`;
+                }
+
+                div.innerHTML = `<div><div style="font-weight:600; font-size: 0.95rem;">${u.name}</div>${subHTML}</div><div style="color: var(--text-muted);">›</div>`;
+                if (state.currentUser && state.currentUser === u) div.classList.add('active');
+                div.onclick = () => selectUser(u, div);
+                listEl.appendChild(div);
+            });
+        }
+
+        function renderProgressMap() {
+            const container = document.getElementById('chapters-container');
+            container.innerHTML = '';
+            
+            const allQs = Object.values(state.allQuestions).flat();
+            const filteredQs = allQs.filter(q => {
+                 const qSource = q.source || 'QB'; 
+                 return state.sourceMode === 'ALL' || qSource === state.sourceMode;
+            });
+
+            if (filteredQs.length === 0) {
+                container.innerHTML = `<div class="card p-8 text-center"><h3>No Questions</h3><p class="sub-text">No questions found for this source.</p></div>`;
+                return;
+            }
+
+            const grouped = {};
+            const areaLabels = { '#AREA1': 'Area 1: Concept, Process & Need', '#AREA2': 'Area 2: Risk, Controls & Info Flows', '#AREA3': 'Area 3: Evidence & Reporting', '#AREA4': 'Area 4: Ethics & Regulation', '#TECH_MODERN': 'Specialized: Tech & Modernization' };
+            
+            filteredQs.forEach(q => {
+                if (state.groupMode === 'tag') {
+                    const tags = q.tags || [];
+                    const targets = state.tagCategory === 'syllabus' ? TAG_SETS.syllabus.areas : TAG_SETS.passion.groups;
+                    tags.filter(t => targets.includes(t)).forEach(g => {
+                        if (!grouped[g]) grouped[g] = [];
+                        grouped[g].push(q);
+                    });
+                } else {
+                    if (!grouped[q.chapter]) grouped[q.chapter] = [];
+                    grouped[q.chapter].push(q);
+                }
+            });
+
+            const keys = Object.keys(grouped).sort((a, b) => {
+                const isNumA = !isNaN(parseInt(a)), isNumB = !isNaN(parseInt(b));
+                if (isNumA && isNumB) return parseInt(a) - parseInt(b);
+                if (isNumA) return -1;
+                if (isNumB) return 1;
+                return a.localeCompare(b);
+            });
+            
+            let hasVisibleSections = false;
+            const timeLimit = getTimestampLimit();
+
+            keys.forEach(key => {
+                let questions = grouped[key];
+                let activeQs = [];
+                if (state.viewMode === 'overall') {
+                    activeQs = questions.filter(q => state.overallStats[q.id]);
+                } else {
+                    activeQs = questions.filter(q => {
+                        const attempts = state.userAttempts[q.id];
+                        if (!attempts) return false;
+                        if (timeLimit > 0) return attempts.some(a => a.attempted_at >= timeLimit);
+                        return true;
+                    });
+                }
+
+                if (state.filterAnswered) {
+                    if (activeQs.length === 0) return;
+                    questions = activeQs;
+                }
+
+                hasVisibleSections = true;
+                const percent = questions.length > 0 ? Math.round((activeQs.length / grouped[key].length) * 100) : 0;
+                
+                const section = document.createElement('div');
+                section.className = 'chapter-section';
+                
+                let displayKey = state.groupMode === 'tag' ? (areaLabels[key] || key.replace('#', '').replace(/_/g, ' ')) : `Chapter ${key}`;
+                
+                section.innerHTML = `
+                    <div class="chapter-title">
+                        <span>${displayKey}</span>
+                        <span>${activeQs.length} / ${grouped[key].length} (${percent}%)</span>
+                    </div>
+                    <div class="question-grid" id="grid-${key.replace(/[^a-zA-Z0-9]/g, '-')}"></div>
+                `;
+                container.appendChild(section);
+                
+                const grid = section.querySelector('.question-grid');
+                
+                questions.forEach((q, idx) => {
+                    const box = document.createElement('div');
+                    box.className = 'q-box';
+                    box.textContent = grouped[key].findIndex(gx => gx.id === q.id) + 1;
+                    
+                    if (state.viewMode === 'overall') {
+                        const stat = state.overallStats[q.id];
+                        if (stat) {
+                            const accuracy = (stat.correct / stat.total) * 100;
+                            if (accuracy >= 80) box.classList.add('heat-high');
+                            else if (accuracy >= 50) box.classList.add('heat-mid');
+                            else box.classList.add('heat-low');
+                            
+                            box.title = `${stat.total} attempts (${Math.round(accuracy)}% correct)`;
+                            
+                            // Enable click in overall mode to see breakdown
+                            box.onclick = () => {
+                                const allAt = Object.values(state.allUserAttempts).flat();
+                                const qAttempts = allAt.filter(a => a.question_id === q.id);
+                                if (state.timeFilter !== 'all') {
+                                    const limit = getTimestampLimit();
+                                    const filtered = qAttempts.filter(a => a.attempted_at >= limit);
+                                    showQuestionDetail(q, filtered);
+                                } else {
+                                    showQuestionDetail(q, qAttempts);
+                                }
+                            };
+                        } else {
+                            box.style.opacity = '0.2'; box.style.borderStyle = 'dashed'; box.style.cursor = 'default';
+                        }
+                    } else {
+                        let attempts = state.userAttempts[q.id] || [];
+                        if (timeLimit > 0) attempts = attempts.filter(a => a.attempted_at >= timeLimit);
+
+                        if (attempts.length > 0) {
+                            attempts.sort((a, b) => b.attempted_at - a.attempted_at);
+                            const latest = attempts[0];
+                            const isCorrect = latest.is_correct === 1;
+                            
+                            box.classList.add(isCorrect ? 'correct' : 'incorrect');
+                            box.title = `Latest: ${new Date(latest.attempted_at * 1000).toLocaleDateString()}`;
+                            box.onclick = () => showQuestionDetail(q, attempts); 
+                        } else {
+                            box.style.opacity = '0.2'; box.style.borderStyle = 'dashed'; box.style.cursor = 'default';
+                        }
+                    }
+                    grid.appendChild(box);
+                });
+            });
+
+            if (!hasVisibleSections) {
+                container.innerHTML = `<div class="card p-8 text-center"><h3>No Data</h3><p class="sub-text">No data found for this filter/period.</p></div>`;
+            }
+        }
+
+        function renderGenAILogs(filter = '') {
+            const container = document.getElementById('chapters-container'); container.innerHTML = '';
+            if (!state.genaiLogs || state.genaiLogs.length === 0) { container.innerHTML = '<div class="card p-4 text-center">No logs found.</div>'; return; }
+            const filtered = state.genaiLogs.filter(l => (l.name || 'Anonymous').toLowerCase().includes(filter));
+            
+            const table = document.createElement('table');
+            table.style.width = '100%'; table.style.borderCollapse = 'collapse'; table.style.fontSize = '0.9rem';
+            table.innerHTML = `<thead><tr style="background:var(--bg-card); text-align:left; border-bottom:2px solid var(--border);"><th style="padding:1rem;">Time</th><th style="padding:1rem;">User</th><th style="padding:1rem;">Model</th><th style="padding:1rem;">Tokens</th><th style="padding:1rem;">Cost</th><th style="padding:1rem;"></th></tr></thead><tbody></tbody>`;
+            const tbody = table.querySelector('tbody');
+            
+            filtered.forEach(log => {
+                const tr = document.createElement('tr'); tr.style.borderBottom = '1px solid var(--border)';
+                tr.innerHTML = `<td style="padding:1rem;">${new Date((log.timestamp || 0) * 1000).toLocaleString()}</td><td style="padding:1rem;">${log.name || 'Unknown'}</td><td style="padding:1rem;">${log.model || '-'}</td><td style="padding:1rem;">${log.tokens_input}/${log.tokens_output}</td><td style="padding:1rem;">$${Number(log.cost_usd).toFixed(5)}</td><td style="padding:1rem;"><button class="btn btn-secondary" onclick="showLogDetail('${log.id}')">View</button></td>`;
+                tr.querySelector('button').onclick = () => showLogDetail(log);
+                tbody.appendChild(tr);
+            });
+            const card = document.createElement('div'); card.className = 'card'; card.style.overflowX = 'auto'; card.appendChild(table); container.appendChild(card);
+        }
+
+        function showLogDetail(log) {
+            const modal = document.getElementById('modal-detail');
+            document.getElementById('modal-title').textContent = `Log ID: ${log.id} (${log.endpoint})`;
+            document.getElementById('modal-status').style.display = 'none';
+            
+            // Format Request
+            let reqHTML = log.request_payload || 'N/A';
+            try {
+                const parsed = JSON.parse(log.request_payload);
+                reqHTML = `<pre style="background:var(--bg-body); padding:1rem; border-radius:0.5rem; overflow:auto; font-size:0.8rem; border:1px solid var(--border);">${JSON.stringify(parsed, null, 2)}</pre>`;
+            } catch(e) {
+                reqHTML = `<div style="background:var(--bg-body); padding:1rem; border-radius:0.5rem; white-space:pre-wrap; font-size:0.85rem;">${reqHTML}</div>`;
+            }
+            document.getElementById('modal-question').innerHTML = reqHTML;
+            
+            document.getElementById('modal-attempt-info').innerHTML = `
+                <div style="display:flex; gap:1rem; margin-bottom:1rem;">
+                    <div class="badge">Model: ${log.model}</div>
+                    <div class="badge">Cost: $${Number(log.cost_usd).toFixed(5)}</div>
+                    <div class="badge">Tokens: ${log.tokens_input} in / ${log.tokens_output} out</div>
+                </div>
+            `;
+
+            // Format Response (The "Answer" section)
+            let resHTML = log.response_payload || 'N/A';
+            const answerContainer = document.getElementById('modal-answer');
+            const answerLabel = answerContainer.previousElementSibling; // The .detail-label
+            if (answerLabel) answerLabel.textContent = "AI Response";
+
+            try {
+                const parsed = JSON.parse(log.response_payload);
+                resHTML = `<pre style="background:var(--primary-light); color:var(--primary); padding:1rem; border-radius:0.5rem; overflow:auto; font-size:0.8rem; font-weight:600; border:1px solid var(--primary);">${JSON.stringify(parsed, null, 2)}</pre>`;
+            } catch(e) {
+                resHTML = `<div style="background:var(--primary-light); color:var(--primary); padding:1rem; border-radius:0.5rem; white-space:pre-wrap; font-size:0.85rem; font-weight:600; border:1px solid var(--primary);">${resHTML}</div>`;
+            }
+            answerContainer.innerHTML = resHTML;
+
+            // Hide Explanation section for logs as it's redundant
+            const expContainer = document.getElementById('modal-explanation');
+            const expLabel = expContainer.previousElementSibling;
+            if (expLabel) expLabel.style.display = 'none';
+            expContainer.style.display = 'none';
+
+            modal.classList.add('active');
+        }
+
+        function showQuestionDetail(question, attempts) {
+            const modal = document.getElementById('modal-detail');
+            const latest = attempts[0];
+            const isCorrect = latest.is_correct === 1;
+
+            // Reset labels and visibility changed by showLogDetail
+            const answerContainer = document.getElementById('modal-answer');
+            const answerLabel = answerContainer.previousElementSibling;
+            if (answerLabel) answerLabel.textContent = "Correct Answer";
+            
+            const expContainer = document.getElementById('modal-explanation');
+            const expLabel = expContainer.previousElementSibling;
+            if (expLabel) expLabel.style.display = 'block';
+            expContainer.style.display = 'block';
+
+            document.getElementById('modal-title').textContent = `Question ID: ${question.id}`;
+            const statusBadge = document.getElementById('modal-status');
+            statusBadge.className = `status-badge ${isCorrect ? 'status-correct' : 'status-incorrect'}`;
+            statusBadge.textContent = isCorrect ? 'CORRECT' : 'INCORRECT';
+            statusBadge.style.display = state.viewMode === 'overall' ? 'none' : 'inline-block'; 
+
+            // Render Text/Options
+            let qText = question.questionText || question.contextText || "No text available.";
+            
+            // Calculate Distribution if Overall
+            let distribution = null;
+            if (state.viewMode === 'overall') {
+                distribution = {}; // label -> count
+                attempts.forEach(a => {
+                    try {
+                        const ua = a.user_answer ? JSON.parse(a.user_answer) : null;
+                        const label = Utils.getUserAnswerString(ua, question);
+                        distribution[label] = (distribution[label] || 0) + 1;
+                    } catch(e) {}
+                });
+            }
+
+            const renderOptionRow = (label, text, isCorrect) => {
+                const style = isCorrect ? 'background:rgba(var(--success-rgb, 34, 197, 94), 0.1); border:1px solid var(--success); color:var(--success-dark, #15803d);' : 'background:var(--bg-body); border:1px solid var(--border);';
+                
+                let distHTML = '';
+                if (distribution) {
+                    const count = distribution[label] || distribution[text] || 0;
+                    if (count > 0) distHTML = `<span class="badge" style="margin-left:auto; background:var(--primary); color:white; border:none;">${count} student${count !== 1 ? 's' : ''}</span>`;
+                }
+
+                return `<div style="display:flex; gap:0.75rem; padding:0.75rem; border-radius:0.5rem; align-items:flex-start; margin-bottom:0.4rem; ${style}"><span style="font-weight:700; min-width:1.5rem;">${label}</span><span>${text}</span>${isCorrect ? '<span style="margin-left:0.5rem; font-size:0.8rem; font-weight:700;">✓</span>' : ''}${distHTML}</div>`;
+            };
+
+            if (question.options && Array.isArray(question.options)) {
+                qText += '<div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.2rem;">';
+                question.options.forEach((opt, idx) => {
+                    let isOptCorrect = question.correctOptions && question.correctOptions.includes(idx);
+                    qText += renderOptionRow(String.fromCharCode(65 + idx), opt, isOptCorrect);
+                });
+                qText += '</div>';
+            } else if (question.subQuestions) {
+                qText += '<div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:1.2rem;">';
+                question.subQuestions.forEach((sq, sqIdx) => {
+                    qText += `<div style="border-left:3px solid var(--primary); padding-left:1rem; background:var(--bg-body); padding-top:0.75rem; padding-bottom:0.75rem; border-radius:0 0.5rem 0.5rem 0;"><div style="font-weight:700; margin-bottom:0.5rem; color:var(--primary); font-size:0.9rem;">${sq.text}</div><div style="display:flex; flex-direction:column; gap:0.2rem;">`;
+                    if (sq.options) {
+                         sq.options.forEach((opt, optIdx) => {
+                             let isOptCorrect = (sq.correctOption === optIdx) || (sq.correctOptions && sq.correctOptions.includes(optIdx));
+                             qText += renderOptionRow(String.fromCharCode(65 + optIdx), opt, isOptCorrect);
+                         });
+                    }
+                    qText += `</div></div>`;
+                });
+                qText += '</div>';
+            }
+
+            document.getElementById('modal-question').innerHTML = qText;
+            
+            const attemptDate = new Date(latest.attempted_at * 1000).toLocaleString();
+            const mode = latest.platform_mode ? latest.platform_mode.toUpperCase() : 'UNKNOWN';
+            const setName = latest.set_name || 'Standard';
+            const tags = latest.tags ? latest.tags.split(',').join(', ') : 'None';
+            
+            let userAnsStr = "Not Available";
+            try {
+                if (latest.user_answer) {
+                    const ua = JSON.parse(latest.user_answer);
+                    userAnsStr = Utils.getUserAnswerString(ua, question);
+                }
+            } catch(e) {}
+
+            let infoHTML = `
+                <div style="background:var(--bg-body); padding:1rem; border-radius:0.75rem; border:1px solid var(--border); margin-bottom:1.5rem;">
+                    <div style="display:flex; flex-wrap:wrap; gap:0.75rem; align-items:center;">
+                        <div class="badge" style="background:var(--primary-light); color:var(--primary); font-weight:700; padding:0.4rem 0.8rem;">📅 ${attemptDate}</div>
+                        <div class="badge" style="background:var(--border); color:var(--text-main); font-weight:700; padding:0.4rem 0.8rem;">💻 ${mode}</div>
+                        <div class="badge" style="background:var(--border); color:var(--text-main); font-weight:700; padding:0.4rem 0.8rem;">📂 ${setName}</div>
+                        <div class="badge" style="background:var(--border); color:var(--text-main); font-weight:700; padding:0.4rem 0.8rem;">👥 Total Attempts: ${attempts.length}</div>
+                    </div>
+                    ${state.viewMode !== 'overall' ? `
+                    <div style="margin-top:1rem; display:flex; gap:1rem; align-items:center;">
+                        <span style="font-size:0.85rem; font-weight:700; color:var(--text-muted);">STUDENT ANSWER:</span>
+                        <span style="font-weight:800; color:var(--primary); border:2px solid var(--primary); padding:0.25rem 0.75rem; border-radius:0.5rem; background:white;">${userAnsStr}</span>
+                    </div>
+                    ` : ''}
+                    <div style="margin-top:0.75rem; font-size:0.8rem; color:var(--text-muted);">
+                        <span style="font-weight:700;">TAGS:</span> ${tags}
+                    </div>
+                </div>
+            `;
+
+            if (state.viewMode === 'overall') {
+                infoHTML += `
+                    <div style="margin-top:2rem;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                            <h4 style="font-size:0.9rem; font-weight:800; color:var(--text-main);">Student Breakdown</h4>
+                            <span class="sub-text">Sorted by newest first</span>
+                        </div>
+                        <div style="max-height:250px; overflow-y:auto; border:1px solid var(--border); border-radius:0.75rem; background:var(--bg-card); box-shadow:inset 0 2px 4px rgba(0,0,0,0.05);">
+                            <table style="width:100%; border-collapse:collapse; font-size:0.8rem;">
+                                <thead style="position:sticky; top:0; background:var(--bg-card); z-index:5;">
+                                    <tr style="border-bottom:2px solid var(--border);">
+                                        <th style="padding:0.6rem; text-align:left; font-weight:800; color:var(--text-muted);">STUDENT</th>
+                                        <th style="padding:0.6rem; text-align:left; font-weight:800; color:var(--text-muted);">ANSWER</th>
+                                        <th style="padding:0.6rem; text-align:center; font-weight:800; color:var(--text-muted);">RESULT</th>
+                                        <th style="padding:0.6rem; text-align:right; font-weight:800; color:var(--text-muted);">DATE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${attempts.sort((a,b) => b.attempted_at - a.attempted_at).map(a => {
+                                        let studentName = a.studentName;
+                                        if (!studentName) {
+                                            const userObj = state.rawUsers.find(u => u.id === a.user_id);
+                                            studentName = userObj ? userObj.name : (a.user_id ? a.user_id.substring(0,8) : 'Unknown');
+                                        }
+                                        
+                                        let aAns = "N/A";
+                                        try {
+                                            if (a.user_answer) {
+                                                const ua = JSON.parse(a.user_answer);
+                                                aAns = Utils.getUserAnswerString(ua, question);
+                                            }
+                                        } catch(e) {}
+
+                                        return `
+                                            <tr style="border-bottom:1px solid var(--border); transition:background 0.1s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='transparent'">
+                                                <td style="padding:0.6rem; font-weight:700; color:var(--text-main);">${studentName}</td>
+                                                <td style="padding:0.6rem; font-family:monospace; color:var(--primary); font-weight:600;">${aAns}</td>
+                                                <td style="padding:0.6rem; text-align:center;">
+                                                    <div style="width:20px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:${a.is_correct ? 'var(--success)' : 'var(--error)'}; color:white; font-weight:900; font-size:0.7rem;">
+                                                        ${a.is_correct ? '✓' : '✗'}
+                                                    </div>
+                                                </td>
+                                                <td style="padding:0.6rem; text-align:right; color:var(--text-muted); font-size:0.7rem; font-weight:500;">
+                                                    ${new Date(a.attempted_at * 1000).toLocaleDateString()}
+                                                </td>
+                                            </tr>`;
+                                    }).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>`;
+            }
+            
+            document.getElementById('modal-attempt-info').innerHTML = infoHTML;
+            document.getElementById('modal-answer').textContent = Utils.getCorrectString(question);
+            let exp = question.explanation || "No explanation provided.";
+            if(question.questionType === 'msq' && question.overallExplanation) exp = question.overallExplanation + "<br>" + exp;
+            document.getElementById('modal-explanation').innerHTML = exp;
+            modal.classList.add('active');
+        }
+
+        init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S2-01-PRK6.21</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Dandelion checked her bank statement with the bank account in her general ledger and found the following differences:<br>(i) Some bank payments have not cleared the bank statement.<br>(ii) The bank credited a personal lodgement to her business account in error.<br>(iii) The bank debited fees on her account.<br>Which of the differences require an entry in the bank account in the general ledger?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.The general ledger bank account is updated for items that the business was previously unaware of, which appear on the bank statement. Bank fees are an example of this.<br>(i) Uncleared bank payments are timing differences. The entry has already been made in the general ledger; it just hasn't appeared on the bank statement yet. This is a reconciling item, not a new entry.<br>(ii) A bank error (crediting a personal lodgement) is an error made by the bank. It will be noted on the bank reconciliation statement, and the bank must correct it. No entry is made in the business's general ledger.<br>(iii) Bank fees are a legitimate business expense that the business learns about from the bank statement. This requires an entry in the general ledger to record the expense and reduce the bank balance (Debit Bank Charges expense, Credit Bank). Therefore, only item (iii) requires a new entry in the general ledger.</p>]]></text></generalfeedback>
+    <defaultgrade>2.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(i)</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(ii) only</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>(iii) only</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>(ii) and (iii)</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S2-02-PRK6.23</text></name>
+    <questiontext format="html"><text><![CDATA[<p>You are preparing a client's financial statements. You know that the client's accounts assistant has correctly completed a reconciliation of the bank balance in the general ledger to the balance on the bank statement. The balances from the general ledger and the bank statement are:<br>General ledger balance $2,358 (credit)<br>Bank statement balance $1,053 (debit)<br>The difference between the two balances is explained by uncleared payments and outstanding lodgements.<br>How should the bank balance be reported in the financial statements?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.The balance reported in the financial statements is the adjusted cash balance from the company's own records, which is the general ledger balance. The general ledger balance of $2,358 (credit) indicates a bank overdraft. A bank overdraft is a short-term loan from the bank and is classified as a current liability. The bank statement balance is the bank's record and is used for reconciliation purposes, but the general ledger figure is what appears in the statement of financial position.</p>]]></text></generalfeedback>
+    <defaultgrade>2.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>As a current asset of $1,053</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>As a current liability of $1,053</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>As a current asset of $2,358</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>As a current liability of $2,358</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S2-03-PRK6.24</text></name>
+    <questiontext format="html"><text><![CDATA[<p>At 30 April 20X8 the balance on the bank account in Jim's general ledger showed that he had $685 cash at the bank. When he carried out his bank reconciliation, he found that he had omitted bank charges of $722 for the year to 30 April 20X8.<br>What bank balance should be included on Jim's opening trial balance at 1 May 20X8?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.The opening balance for the next period (1 May 20X8) is the adjusted closing balance from the current period (30 April 20X8).<br>1. Start with the general ledger balance before adjustments: $685 cash at bank (a debit balance).<br>2. Adjust for omitted items. The bank charges of $722 are an expense that reduces the bank balance. These must be recorded in the general ledger.<br>3. Calculate the adjusted balance: $685 - $722 = -$37.<br>4. A negative bank balance represents a bank overdraft. In accounting terms, a bank overdraft is a liability and has a credit balance.<br>Therefore, the correct closing balance at 30 April 20X8, and the opening balance at 1 May 20X8, is $37 credit.</p>]]></text></generalfeedback>
+    <defaultgrade>2.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$685 debit</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$685 credit</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$37 debit</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$37 credit</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S2-04-PRK6.26</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Fanny is reviewing the payables listing. A debit balance of $200 on a supplier's account has been included as a credit balance.<br>What adjustment should be made to correct this error?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.A debit balance of $200 on a supplier's account means the supplier owes the business money (e.g., from an overpayment or returns), so it should reduce the total payables. Including it as a credit balance means it was incorrectly added to the total payables.<br>Effect of the error: The total payables are overstated by $200 (from incorrectly adding the amount) and also overstated by another $200 (from failing to subtract the debit balance). Total overstatement = $200 + $200 = $400.<br>Correction: To correct an overstated credit balance in the payables account, a debit entry is required. The adjustment must reverse the error and correctly state the balance. Therefore, a debit of $400 is needed to correct the payables listing.</p>]]></text></generalfeedback>
+    <defaultgrade>2.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Credit $400</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Credit $200</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>No adjustment</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Debit $400</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-Ch10-S2-05-PRK6.31</text></name>
+    <questiontext format="html"><text><![CDATA[<p>At 1 November 20X4 Barn owed $28,754 to his suppliers. During the year he paid his suppliers a total of $185,844. At 31 October 20X5 he owed $26,189.<br>What was the value of Barn's credit purchases in the year to 31 October 20X5?</p><p>Answer: {2:NUMERICAL:=183279:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.To find the value of credit purchases, we can use the payables control account reconciliation formula:<br>Opening Payables + Credit Purchases - Payments to Suppliers = Closing Payables<br>Rearranging the formula to solve for Credit Purchases:<br>Credit Purchases = Closing Payables - Opening Payables + Payments to Suppliers<br>Plugging in the given values:<br>Credit Purchases = $26,189 - $28,754 + $185,844<br>Credit Purchases = $183,279</p>]]></text></generalfeedback>
+    <defaultgrade>2.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S2-06-PRK6.36</text></name>
+    <questiontext format="html"><text><![CDATA[<p>On 30 June 20X8 the debit balance on the bank account in Paul's general ledger was $1,080.<br>When he carried out his bank reconciliation and having contacted his bank, he found that the general ledger differed from his bank statement because the bank statement contained an error. A receipt for $800 that belonged to another of the bank's customers had been included on Paul's statement. The bank manager stated they would rectify the error in July 20X8.<br>Taking into account the information above, how should Paul's bank balance be reported in the statement of financial position at 30 June 20X8?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.The balance reported in the statement of financial position is the corrected balance from the entity's own books (the general ledger or cash book), not the bank statement. The error described is a bank error—it occurred on the bank statement, not in Paul's general ledger. Therefore, Paul's general ledger balance of $1,080 is correct and does not require adjustment. This debit balance represents cash at the bank, which is a current asset. The bank error will be shown as a reconciling item on the bank reconciliation statement until the bank corrects it.</p>]]></text></generalfeedback>
+    <defaultgrade>2.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A current asset of $1,880</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>A current asset of $1,080</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A current asset of $280</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>A current liability of $280</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S2-07-PRK6.37</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Hardy Co owes $3,000 in respect of a purchase invoice for services provided to one of its suppliers, Kiki Co. Hardy Co also delivered some goods to Kiki Co along with a sales invoice for $2,250. Both invoices are unpaid at the year-end and the two businesses agree to set the amounts owed and owing against each other.<br>What is the contra entry required in Hardy Co's accounting system?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.A contra entry is used to set off a receivable against a payable when a customer is also a supplier. The entry is for the lower of the two amounts.<br>Hardy Co has a payable to Kiki Co of $3,000 (a credit balance).<br>Hardy Co has a receivable from Kiki Co of $2,250 (a debit balance).<br>The lower amount is $2,250. The contra entry will reduce both the payable and the receivable by this amount.<br>- To reduce a payable (credit balance), you debit the account.<br>- To reduce a receivable (debit balance), you credit the account.<br>Therefore, the correct journal entry is: DEBIT Trade payables ledger account $2,250 and CREDIT Trade receivables ledger account $2,250.</p>]]></text></generalfeedback>
+    <defaultgrade>2.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Trade receivables ledger account $2,250<br>CREDIT Trade payables ledger account $2,250</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>DEBIT Trade payables ledger account $2,250<br>CREDIT Trade receivables ledger account $2,250</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Trade receivables ledger account $750<br>CREDIT Trade payables ledger account $750</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>DEBIT Trade payables ledger account $750<br>CREDIT Trade receivables ledger account $750</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S2-08-PRK11.1</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Which TWO of the following would NOT be classified amongst current liabilities in the accounts of a business?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.Current liabilities are obligations expected to be settled within one year. We need to identify the two items that do not fit this definition.<br>A. An allowance for receivables: This is a contra-asset account, which reduces the value of trade receivables. It is not a liability at all.<br>B. Accrued interest charges: This represents interest expense that has been incurred but not yet paid. It is a current liability.<br>C. A bank loan repayable in five years: Since this loan is due in more than one year, it is classified as a non-current liability.<br>D. Taxation payable: This is an amount owed to tax authorities, typically due within a year, making it a current liability.<br>Therefore, the two items that are NOT current liabilities are 'An allowance for receivables' and 'A bank loan repayable in five years'.</p>]]></text></generalfeedback>
+    <defaultgrade>2.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>false</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="50.00000" format="html"><text><![CDATA[<p>An allowance for receivables</p>]]></text></answer>
+    <answer fraction="-100" format="html"><text><![CDATA[<p>Accrued interest charges</p>]]></text></answer>
+    <answer fraction="50.00000" format="html"><text><![CDATA[<p>A bank loan repayable in five years</p>]]></text></answer>
+    <answer fraction="-100" format="html"><text><![CDATA[<p>Taxation payable</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S2-09-PRK11.3</text></name>
+    <questiontext format="html"><text><![CDATA[<p>On 1 December 20X6 Patrick borrowed $40,000 at a fixed rate of interest. A single capital repayment is due on 1 December 20X9. During the year to 30 November 20X7 the interest of $300 per month has been paid on the last day of each month.<br>How should the loan be reported on Patrick's statement of financial position at 30 November 20X7?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.The key is to classify liabilities based on when they are due for settlement relative to the reporting date (30 November 20X7).<br>Capital Repayment: The entire capital of $40,000 is due on 1 December 20X9, which is more than 12 months from the reporting date. Therefore, the full $40,000 is a non-current liability.<br>Interest: The interest of $300 per month has been paid on the last day of each month. This means at the reporting date of 30 November 20X7, there is no outstanding or accrued interest. Therefore, the current liability related to interest is Nil.<br>Conclusion: The loan should be reported as a Non-current liability of $40,000 and a Current liability of Nil.</p>]]></text></generalfeedback>
+    <defaultgrade>2.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Current liability: $3,600, Non-current liability: $40,000</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Current liability: $40,000, Non-current liability: $3,600</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>Current liability: Nil, Non-current liability: $40,000</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>Current liability: $40,000, Non-current liability: Nil</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S2-10-PRK11.5</text></name>
+    <questiontext format="html"><text><![CDATA[<p>At 31 May 20X7 Keke had a loan with an outstanding balance of $30,000. She is required to repay $500 on the 10th of each month.<br>How should the loan be reported on her statement of financial position at 31 May 20X7?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.A loan must be split between its current and non-current portions on the statement of financial position.<br>Current Liability: The portion of the loan principal due for repayment within 12 months of the reporting date (31 May 20X7).<br>Calculation: 12 months × $500 per month = $6,000.<br>Non-Current Liability: The remaining portion of the loan due for repayment after 12 months from the reporting date.<br>Calculation: Total loan outstanding - Current portion = $30,000 - $6,000 = $24,000.<br>Therefore, the loan is reported as a current liability of $6,000 and a non-current liability of $24,000.</p>]]></text></generalfeedback>
+    <defaultgrade>2.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>As a current liability of $30,000</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>As a current liability of $24,000 and a non-current liability of $6,000</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>As a current liability of $6,000 and a non-current liability of $24,000</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>As a non-current liability of $30,000</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S2-11-PRK11.6</text></name>
+    <questiontext format="html"><text><![CDATA[<p>In September 20X3, Jones took out a business development loan for $15,000. This is to be repaid in three equal instalments. The first instalment is due for repayment on 1 January 20X5.<br>How will the outstanding balance be reported in Jones' statement of financial position at 30 November 20X3?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.Liabilities are classified as current if they are due within 12 months of the reporting date. All other liabilities are non-current.<br>Reporting Date: 30 November 20X3.<br>First Repayment Date: 1 January 20X5.<br>The time between the reporting date and the first repayment is 13 months (December 20X3 + all of 20X4). Since this is more than 12 months, no portion of the loan is a current liability at 30 November 20X3. The entire outstanding balance of $15,000 is classified as a non-current liability.</p>]]></text></generalfeedback>
+    <defaultgrade>2.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$15,000 as a current liability</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$5,000 as a current liability and $10,000 as a non-current liability</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$10,000 as a current liability and $5,000 as a non-current liability</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$15,000 as a non-current liability</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S2-12-PRK11.7</text></name>
+    <questiontext format="html"><text><![CDATA[<p>At 31 December 20X3 Anna's inventory was valued at $6,400 and her trial balance included the following balances:<br>[The trial balance data required to answer this question is missing from the provided document.]<br>What was Anna's gross profit?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.To calculate gross profit, the formula is: Gross Profit = Sales - Cost of Sales. The Cost of Sales (COS) is calculated as: COS = Opening Inventory + Purchases - Closing Inventory.<br>The necessary figures for Sales, Opening Inventory, and Purchases would be found in the trial balance, which is missing from the document. However, we can demonstrate the calculation with assumed figures that lead to the correct answer.<br>Let's assume the trial balance showed:<br>- Sales: $45,000<br>- Purchases: $36,850<br>- Opening Inventory: $5,000<br>Given Closing Inventory = $6,400<br>1. Calculate Cost of Sales: COS = $5,000 + $36,850 - $6,400 = $35,450.<br>2. Calculate Gross Profit: Gross Profit = $45,000 - $35,450 = $9,550. Wait, this does not match. Let's try again.<br><br>Let's work backwards from the answer $15,450.<br>Let Sales = $50,000. Then COS must be $50,000 - $15,450 = $34,550.<br>We know COS = Opening Inventory + Purchases - Closing Inventory.<br>$34,550 = Opening Inventory + Purchases - $6,400.<br>Opening Inventory + Purchases = $40,950.<br>If Opening Inventory was $8,000 and Purchases were $32,950, the calculation works:<br>COS = $8,000 + $32,950 - $6,400 = $34,550.<br>Gross Profit = $50,000 - $34,550 = $15,450.<br>Without the actual trial balance, a precise calculation is impossible, but the methodology remains the same.</p>]]></text></generalfeedback>
+    <defaultgrade>2.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$4,710</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$15,110</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$15,450</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$16,200</p>]]></text></answer>
+  </question>
+  <question type="cloze">
+    <name><text>FA2-Ch10-S2-13-PRK11.8</text></name>
+    <questiontext format="html"><text><![CDATA[<p>[This question refers to the same (missing) trial balance data as the previous question for Anna.]<br>What amount should have been reported as expenses in Anna's statement of profit or loss?</p><p>Answer: {2:NUMERICAL:=10740:0}</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.Expenses in the statement of profit or loss refer to the operating expenses of the business for the period (e.g., rent, wages, utilities), excluding the cost of sales. These figures are found on the debit side of the trial balance.<br>As the trial balance data is missing, we cannot identify the specific expenses. However, the total of all expense accounts listed in the trial balance must sum to $10,740. For example, the trial balance might have included:<br>- Wages and salaries: $6,000<br>- Rent expense: $2,500<br>- Utilities: $1,240<br>- Other administrative expenses: $1,000<br>Total Expenses = $6,000 + $2,500 + $1,240 + $1,000 = $10,740.</p>]]></text></generalfeedback>
+    <defaultgrade>2.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S2-14-PRK11.10</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Colin made a mistake in his calculations which resulted in the value of his closing inventory at 30 April 20X4 being overstated by $900. The value was calculated correctly at 30 April 20X5.<br>What was the effect of the error on the profit reported in Colin's accounts for each of the two years?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.An error in closing inventory affects the profit of two consecutive years.<br>Effect in 20X4:<br>- The formula for Cost of Sales (COS) is: Opening Inventory + Purchases - Closing Inventory.<br>- If closing inventory is overstated by $900, the COS is understated by $900.<br>- Since Profit = Sales - COS, an understated COS results in an overstated profit for 20X4 by $900.<br><br>Effect in 20X5:<br>- The closing inventory of 20X4 becomes the opening inventory for 20X5. Therefore, the opening inventory for 20X5 is overstated by $900.<br>- In the COS calculation for 20X5, an overstated opening inventory results in an overstated COS by $900 (assuming purchases and closing inventory for 20X5 are correct).<br>- An overstated COS results in an understated profit for 20X5 by $900.<br>Therefore, the effect is: 20X4 profit is Overstated by $900, and 20X5 profit is Understated by $900.</p>]]></text></generalfeedback>
+    <defaultgrade>2.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>20X4: Overstated by $900, 20X5: Not affected</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>20X4: Overstated by $900, 20X5: Understated by $900</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>20X4: Understated by $900, 20X5: Not affected</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>20X4: Understated by $900, 20X5: Overstated by $900</p>]]></text></answer>
+  </question>
+  <question type="multichoice">
+    <name><text>FA2-Ch10-S2-15-PRK11.11</text></name>
+    <questiontext format="html"><text><![CDATA[<p>Kieron is an antiques dealer. His inventory includes a clock which cost $15,800. Kieron expects to spend $700 on repairing the clock which will mean that he will be able to sell it for $26,000.<br>At what value should the clock be included in Kieron's inventory?</p>]]></text></questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>The following is GenAI explanations, use with caution.According to accounting standard IAS 2 Inventories, inventory must be valued at the lower of cost and net realisable value (NRV).<br>1. Cost: The cost of the clock is given as $15,800.<br>2. Net Realisable Value (NRV): This is the estimated selling price less any estimated costs of completion and costs necessary to make the sale.<br>   NRV = Selling Price - Repair Costs<br>   NRV = $26,000 - $700 = $25,300.<br>3. Compare Cost and NRV: We compare the cost ($15,800) with the NRV ($25,300).<br>4. Valuation: The lower of the two values is $15,800.<br>Therefore, the clock should be included in inventory at its cost of $15,800.</p>]]></text></generalfeedback>
+    <defaultgrade>2.00</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html"><text>Your answer is correct.</text></correctfeedback>
+    <partiallycorrectfeedback format="html"><text>Your answer is partially correct.</text></partiallycorrectfeedback>
+    <incorrectfeedback format="html"><text>Your answer is incorrect.</text></incorrectfeedback>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$15,100</p>]]></text></answer>
+    <answer fraction="100.00000" format="html"><text><![CDATA[<p>$15,800</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$25,300</p>]]></text></answer>
+    <answer fraction="0" format="html"><text><![CDATA[<p>$26,000</p>]]></text></answer>
+  </question>
+</quiz>

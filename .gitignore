@@ -1,0 +1,6 @@
+node_modules/
+SEM1/
+update.pdf
+bump_version.bat
+workers/pact/
+pact.html
