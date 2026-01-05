@@ -32,20 +32,8 @@ function logUsage(env, userId, model, usage, endpoint, requestPayload = null, re
         const reqStr = typeof requestPayload === 'object' ? JSON.stringify(requestPayload) : requestPayload;
         const resStr = typeof responsePayload === 'object' ? JSON.stringify(responsePayload) : responsePayload;
 
-        return fetch('https://api-x-data.fayempire.com/log-usage', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                user_id: userId,
-                model: model,
-                tokens_input: usage.prompt_tokens,
-                tokens_output: usage.completion_tokens,
-                cost_usd: cost,
-                endpoint: endpoint,
-                request_payload: reqStr,
-                response_payload: resStr
-            })
-        }).catch(err => console.error("Usage log failed:", err));
+        // return fetch('https://api-data.example.com/log-usage', { ... });
+        return Promise.resolve(); 
     } catch (e) {
         console.error("Usage log error:", e);
         return Promise.resolve();
@@ -53,11 +41,17 @@ function logUsage(env, userId, model, usage, endpoint, requestPayload = null, re
 }
 
 function setCorsHeaders(requestOrigin) {
-  const defaultOrigin = 'https://cfab2.fayempire.com';
+  const defaultOrigin = 'https://your-domain.com';
   let allowedOrigin = defaultOrigin;
 
+  const ALLOWED_ORIGINS = [
+    'http://localhost:8080',
+    'http://127.0.0.1:8080',
+    'https://your-domain.com'
+  ];
+
   if (requestOrigin) {
-      if (requestOrigin.endsWith('.fayempire.com') || requestOrigin === 'https://fayempire.com' || requestOrigin.includes('localhost') || requestOrigin.includes('127.0.0.1')) {
+      if (ALLOWED_ORIGINS.includes(requestOrigin) || requestOrigin.endsWith('.your-domain.com')) {
           allowedOrigin = requestOrigin;
       }
   }
@@ -190,15 +184,13 @@ You are an expert exam-question generator and advanced AI system. Your task is t
       }
     };
 
-    const txtUrl = `https://cfab2.fayempire.com/${subject}/${chapter}.txt`;
-    let pdfContent;
-    try {
-      const fileResponse = await fetch(txtUrl);
-      if (!fileResponse.ok) throw new Error(`Failed to fetch TXT file: ${fileResponse.status}`);
-      pdfContent = await fileResponse.text();
-    } catch (err) {
-      return new Response(JSON.stringify({ error: "Failed to fetch source material", details: err.message }), { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } });
-    }
+        // Fetch context from static JSON/Text files if needed
+        // const txtUrl = `https://your-domain.com/json/${subject}/${chapter}.txt`;
+        // const txtRes = await fetch(txtUrl);
+        // ...
+        
+        // For now, using provided context directly or empty
+        const contextText = context || "";
     
     const userPrompt = `Based on the following PDF content, generate 15-30 high-quality quiz questions that strictly adhere to the JSON schema below.${tagsInstruction}\n\nJSON Schema:\n${JSON.stringify(JSON_SCHEMA, null, 2)}\n\nPDF Content:\n${pdfContent}\n\nStrictly follow this example JSON structure...`;
 

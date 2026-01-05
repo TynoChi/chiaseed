@@ -167,6 +167,15 @@
     <!-- Alerts -->
     <div id="alert-container"></div>
 
+    <script type="module">
+        import { activeConfig as CONFIG } from '../assets/js/settings_manager.js';
+        if (CONFIG.platform && CONFIG.platform.name) {
+            document.title = `${CONFIG.platform.name} - Editor`;
+            const headerTitle = document.querySelector('.header h1');
+            if (headerTitle) headerTitle.textContent = `🌱 ${CONFIG.platform.name} Editor`;
+        }
+    </script>
+
     <!-- JS Modules -->
     <script type="module" src="js/app.js"></script>
 </body>

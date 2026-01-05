@@ -1,3 +1,5 @@
+import { handleV2Request } from './v2/controller.js';
+
 async function handleGenAILogging(request, env) {
     const requestOrigin = request.headers.get('Origin');
     const corsHeaders = setCorsHeaders(requestOrigin);
@@ -75,11 +77,17 @@ function setUserIdCookie(response, userId) {
 }
 
 function setCorsHeaders(requestOrigin) {
-  const defaultOrigin = 'https://cfab2.fayempire.com';
+  const defaultOrigin = 'https://your-domain.com';
   let allowedOrigin = defaultOrigin;
 
+  const ALLOWED_ORIGINS = [
+    'http://localhost:8080',
+    'http://127.0.0.1:8080',
+    'https://your-domain.com'
+  ];
+
   if (requestOrigin) {
-      if (requestOrigin.endsWith('.fayempire.com') || requestOrigin === 'https://fayempire.com' || requestOrigin.includes('localhost') || requestOrigin.includes('127.0.0.1')) {
+      if (ALLOWED_ORIGINS.includes(requestOrigin) || requestOrigin.endsWith('.your-domain.com')) {
           allowedOrigin = requestOrigin;
       }
   }
@@ -87,7 +95,7 @@ function setCorsHeaders(requestOrigin) {
   return {
       'Access-Control-Allow-Origin': allowedOrigin,
       'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, X-Requested-With, Authorization, X-Title, HTTP-Referer',
+      'Access-Control-Allow-Headers': 'Content-Type, X-Requested-With, Authorization, X-Title, HTTP-Referer, X-User-ID',
       'Access-Control-Max-Age': '86400',
       'Access-Control-Allow-Credentials': 'true'
   };
@@ -367,6 +375,11 @@ export default {
         if (url.pathname === '/admin/users') return handleAdminUsers(request, env);
         if (url.pathname === '/admin/attempts') return handleAdminUserAttempts(request, env);
         if (url.pathname === '/admin/genai') return handleAdminGenAI(request, env);
+
+        // V2 Routes - The Pipeline
+        if (url.pathname.startsWith('/v2')) {
+            return handleV2Request(request, env);
+        }
 
         return new Response('Leaderboard Worker: Use /track, /attempt, /leaderboard, /history, /log-usage', { status: 200, headers: setCorsHeaders(request.headers.get('Origin')) });
     }

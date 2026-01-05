@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chiaseed Prototype – Enhanced</title>
+  <title>Simulator</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="https://placehold.co/192x192/0b5cab/ffffff?text=E"/>
-  <link rel="stylesheet" href="static/calculator/calculator.css">
+  <link rel="stylesheet" href="assets/calculator/calculator.css">
 
   <!-- TinyMCE for Word-style rich text -->
   <script src="https://cdn.tiny.cloud/1/rzryz1ox9nz2xu937t4vhv7s90dz7jjvff27kbobdx9ng14r/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
@@ -455,12 +455,12 @@
 
   <main id="exam-container">
     <div class="text-center p-8 bg-surface rounded-lg shadow-md max-w-lg mx-auto mt-20">
-      <h1 class="text-2xl font-bold mb-4 text-primary">Chiaseed Exam Prototype</h1>
-      <p class="mb-6">Click the button below to load the demo exam.</p>
-      <button id="load-exam-btn" class="bg-primary text-white py-2 px-6 rounded-lg shadow hover:bg-blue-700 transition duration-150">Load Demo Exam</button>
+      <h1 class="text-2xl font-bold mb-4 text-primary">Exam Prototype</h1>
+      <p class="mb-6">Click the button below to load the selection screen.</p>
+      <button id="load-exam-btn" class="bg-primary text-white py-2 px-6 rounded-lg shadow hover:bg-blue-700 transition duration-150" onclick="location.reload()">Load Selection</button>
     </div>
   </main>
-  <div id="calculator-container" class="hidden"></div> <!-- Placeholder for calculator -->
+  <div id="calculator-container" class="hidden"></div>
 
   <footer id="footer-nav" style="display: none;">
     <div class="utility-buttons">
@@ -478,125 +478,102 @@
     </div>
   </footer>
 
-<script>
-  // Global variables provided by the Canvas environment (used for Firebase, though not active in this prototype)
-  const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-  const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-  const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-
-  // === Theme Switcher ===
-  (function initTheme() {
-    const THEME_KEY = 'icaew_theme_pref';
-    const body = document.body;
-    const radios = [document.getElementById('theme-default'), document.getElementById('theme-white'), document.getElementById('theme-yellow')];
-
-    function applyTheme(value) {
-      body.classList.remove('theme-hc-white', 'theme-hc-yellow');
-      if (value === 'hc-white') body.classList.add('theme-hc-white');
-      if (value === 'hc-yellow') body.classList.add('theme-hc-yellow');
+  <script type="module">
+    import { activeConfig as CONFIG } from './assets/js/settings_manager.js';
+    
+    // Apply Config
+    if (CONFIG.platform) {
+        if (CONFIG.platform.logoUrl) {
+            const logo = document.querySelector('header .logo');
+            if (logo) logo.src = CONFIG.platform.logoUrl;
+        }
+        if (CONFIG.platform.name) {
+            document.title = `${CONFIG.platform.name} - Simulator`;
+        }
     }
-    const saved = localStorage.getItem(THEME_KEY) || 'default';
-    applyTheme(saved);
-    radios.forEach(r => r.checked = (r.value === saved));
-    radios.forEach(r => r.addEventListener('change', e => {
-      const v = e.target.value;
-      applyTheme(v);
-      localStorage.setItem(THEME_KEY, v);
-    }));
-  })();
 
-  // === Main App Logic ===
-  document.addEventListener('DOMContentLoaded', () => {
+    // === Theme Switcher ===
+    (function initTheme() {
+      const THEME_KEY = 'icaew_theme_pref';
+      const body = document.body;
+      const radios = [document.getElementById('theme-default'), document.getElementById('theme-white'), document.getElementById('theme-yellow')];
+
+      function applyTheme(value) {
+        body.classList.remove('theme-hc-white', 'theme-hc-yellow');
+        if (value === 'hc-white') body.classList.add('theme-hc-white');
+        if (value === 'hc-yellow') body.classList.add('theme-hc-yellow');
+      }
+      const saved = localStorage.getItem(THEME_KEY) || (CONFIG.platform?.theme === 'dark' ? 'hc-white' : 'default');
+      applyTheme(saved);
+      radios.forEach(r => {
+          if (r) {
+              r.checked = (r.value === saved);
+              r.addEventListener('change', e => {
+                const v = e.target.value;
+                applyTheme(v);
+                localStorage.setItem(THEME_KEY, v);
+              });
+          }
+      });
+    })();
+
+    // === Main App Logic ===
     const examContainer = document.getElementById('exam-container');
     const footerNav = document.getElementById('footer-nav');
     const examTimerDisplay = document.getElementById('exam-timer');
-    // const loadExamBtn = document.getElementById('load-exam-btn'); // Removed
 
     let examData, currentQuestionIndex = 0, userAnswers = {}, userMerges = {}, timerInterval = null;
     let timeLeft = 120 * 60; // 2 hours in seconds
-    const examFilesPath = 'mat/json/';
+    const examFilesPath = CONFIG.platform?.paths?.json || 'json/';
     
     // --- Excel Merge State ---
     let selectionStart = null;
     let selectionEnd = null;
 
-    function handleCellMouseDown(r, c, qId) {
+    window.handleCellMouseDown = function(r, c, qId) {
       selectionStart = { r, c };
       selectionEnd = { r, c };
       updateSelectionVisuals(qId);
     }
 
-    function handleCellMouseOver(r, c, qId) {
+    window.handleCellMouseOver = function(r, c, qId) {
       if (selectionStart) {
         selectionEnd = { r, c };
         updateSelectionVisuals(qId);
       }
     }
 
-    function handleCellMouseUp() {
-      // End selection (logic handled in click/drag)
+    window.handleCellMouseUp = function() {
       // selectionStart remains set to allow "Merge" click
     }
-    
-    // Clear selection if clicking outside?
-    document.addEventListener('mouseup', (e) => {
-       // We don't clear selectionStart immediately so user can click 'Merge'
-       // But if they click elsewhere, maybe? For now, simplified.
-    });
 
     function updateSelectionVisuals(qId) {
-       // Clear all selected classes
        document.querySelectorAll('.selected-cell').forEach(el => el.classList.remove('selected-cell'));
-       
        if (!selectionStart || !selectionEnd) return;
-       
        const minR = Math.min(selectionStart.r, selectionEnd.r);
        const maxR = Math.max(selectionStart.r, selectionEnd.r);
        const minC = Math.min(selectionStart.c, selectionEnd.c);
        const maxC = Math.max(selectionStart.c, selectionEnd.c);
-
        for(let r=minR; r<=maxR; r++) {
          for(let c=minC; c<=maxC; c++) {
             const id = `${qId}_grid_${r}_${c}`;
             const input = document.getElementById(id);
-            if (input) {
-              // The parent TD needs the class usually, or input
-              // Our CSS targets .selected-cell on input or td? 
-              // CSS: .excel-grid .selected-cell { ... }
-              // Let's add to input
-              input.classList.add('selected-cell');
-            }
+            if (input) input.classList.add('selected-cell');
          }
        }
     }
 
     window.mergeSelectedCells = function(qId) {
        if (!selectionStart || !selectionEnd) return;
-       
        const minR = Math.min(selectionStart.r, selectionEnd.r);
        const maxR = Math.max(selectionStart.r, selectionEnd.r);
        const minC = Math.min(selectionStart.c, selectionEnd.c);
        const maxC = Math.max(selectionStart.c, selectionEnd.c);
-       
-       // Create merge object
-       const merge = {
-         r: minR, c: minC,
-         rs: maxR - minR + 1,
-         cs: maxC - minC + 1
-       };
-
+       const merge = { r: minR, c: minC, rs: maxR - minR + 1, cs: maxC - minC + 1 };
        if (!userMerges[qId]) userMerges[qId] = [];
-       
-       // Remove any existing merges that intersect/overlap (simplified: just push new one)
-       // A real implementation would need to handle conflicts. 
-       // For prototype, we assume user knows what they are doing.
        userMerges[qId].push(merge);
-       
-       // Clear selection
        selectionStart = null; 
        selectionEnd = null;
-       
-       // Re-render
        renderQuestion(currentQuestionIndex);
     }
 
@@ -608,14 +585,10 @@
     function isMergedHidden(qId, r, c) {
       if (!userMerges[qId]) return false;
       return userMerges[qId].some(m => {
-         // If it is the top-left cell, it is NOT hidden
          if (m.r === r && m.c === c) return false;
-         // If it is inside the range, it IS hidden
          return r >= m.r && r < m.r + m.rs && c >= m.c && c < m.c + m.cs;
       });
     }
-
-    // --- Utility Functions ---
 
     function startTimer() {
       if (timerInterval) clearInterval(timerInterval);
@@ -627,7 +600,6 @@
         examTimerDisplay.textContent = `${h}:${m}:${s}`;
         if (timeLeft <= 0) {
           clearInterval(timerInterval);
-          // Auto-submit or show message
           alert('Time is up! Exam finished.');
         }
       }, 1000);
@@ -635,172 +607,91 @@
     }
 
     function saveAnswers() {
-      // Destroy TinyMCE instances before saving to ensure content is fully updated in the textarea
       for (const instanceId in tinymce.editors) {
         const editor = tinymce.editors[instanceId];
         const textarea = editor.targetElm;
         const inputId = textarea.dataset.inputId;
         userAnswers[inputId] = editor.getContent();
-        // editor.destroy(); // Don't destroy here, or we lose focus/state if just autosaving
       }
-
-      // Save simple text inputs
       examContainer.querySelectorAll('input[type="text"]').forEach(el => {
         const id = el.id || el.dataset.inputId;
-        if (id) {
-          userAnswers[id] = el.value;
-        }
+        if (id) userAnswers[id] = el.value;
       });
-      console.log("Answers saved:", userAnswers);
-      // In a real app, this would trigger an async save to Firestore.
     }
 
-    // --- Excel Logic ---
-
     window.handleGridFocus = function(el) {
-        // If there is a stored formula, show it instead of the result
         const formula = el.getAttribute('data-formula');
-        if (formula) {
-            el.value = formula;
-        }
+        if (formula) el.value = formula;
     };
 
     window.handleGridBlur = function(el) {
         const val = el.value.trim();
-        const inputId = el.id; // e.g., q31_grid_0_0
-
-        // 1. Check if it's a formula
+        const inputId = el.id;
         if (val.startsWith('=')) {
             el.setAttribute('data-formula', val);
-            userAnswers[inputId] = val; // Save formula as the "truth"
+            userAnswers[inputId] = val;
         } else {
             el.removeAttribute('data-formula');
             userAnswers[inputId] = val;
         }
-
-        // 2. Trigger calculation for this cell (and potentially others)
-        // We'll just recalc the whole grid for simplicity to handle dependencies
         const questionId = inputId.split('_grid_')[0];
         recalculateAllGrid(questionId);
     };
 
     function recalculateAllGrid(questionId) {
-        // Find all inputs belonging to this question's grid
         const inputs = document.querySelectorAll(`input[id^="${questionId}_grid_"]`);
-        
-        // We might need multiple passes or a dependency graph. 
-        // For a prototype, 2 passes catches simple A->B dependencies. 
-        // 3 passes catches A->B->C.
         for (let pass = 0; pass < 3; pass++) {
             inputs.forEach(input => {
                 const formula = input.getAttribute('data-formula');
-                if (formula) {
-                    const result = evaluateFormula(formula, questionId);
-                    input.value = result;
-                    // Note: We DON'T update userAnswers with the result, 
-                    // strictly keeping the formula as the saved answer.
-                }
+                if (formula) input.value = evaluateFormula(formula, questionId);
             });
         }
     }
 
     function evaluateFormula(formula, questionId) {
-        // Remove '='
         let expression = formula.substring(1).toUpperCase();
-
-        // Helper to get value from cell ref "A1"
         const getVal = (ref) => {
             const colChar = ref.match(/[A-Z]+/)[0];
-            const rowNum = parseInt(ref.match(/[0-9]+/)[0]) - 1; // 1-based to 0-based
-            
-            // Convert Col Chars (A, B... AA) to index
+            const rowNum = parseInt(ref.match(/[0-9]+/)[0]) - 1;
             let colIndex = 0;
-            for (let i = 0; i < colChar.length; i++) {
-                colIndex = colIndex * 26 + (colChar.charCodeAt(i) - 64);
-            }
-            colIndex -= 1; // 0-based
-
+            for (let i = 0; i < colChar.length; i++) colIndex = colIndex * 26 + (colChar.charCodeAt(i) - 64);
+            colIndex -= 1;
             const id = `${questionId}_grid_${rowNum}_${colIndex}`;
             const el = document.getElementById(id);
             if (!el) return 0;
-
-            // If element has a currently calculated value, use that. 
-            // If it's focused (showing formula), we might have an issue, 
-            // but we assume dependencies aren't focused simultaneously.
-            // Also check if it is a number
-            let val = el.value.replace(/,/g, ''); // remove commas if we add formatting later
-            return parseFloat(val) || 0;
+            return parseFloat(el.value.replace(/,/g, '')) || 0;
         };
-
-        // 1. Handle ranges: SUM(A1:B2)
-        // Regex to find SUM(...) pattern
         expression = expression.replace(/SUM\(([A-Z]+[0-9]+):([A-Z]+[0-9]+)\)/g, (match, start, end) => {
-            // Expand range
-            // Naive expansion: Assume same column or same row for simplicity, or rectangular block
-            // We need to iterate rows and cols
-            
-            // Parse start
             const startColMatch = start.match(/[A-Z]+/)[0];
             const startRow = parseInt(start.match(/[0-9]+/)[0]);
-            
-            // Parse end
             const endColMatch = end.match(/[A-Z]+/)[0];
             const endRow = parseInt(end.match(/[0-9]+/)[0]);
-
-            // Convert cols to indices
             const getColIdx = (c) => {
                 let idx = 0;
                 for (let i=0; i<c.length; i++) idx = idx * 26 + (c.charCodeAt(i) - 64);
                 return idx - 1;
             };
-            const c1 = getColIdx(startColMatch);
-            const c2 = getColIdx(endColMatch);
-
+            const c1 = getColIdx(startColMatch), c2 = getColIdx(endColMatch);
             let sum = 0;
             for (let r = Math.min(startRow, endRow) - 1; r <= Math.max(startRow, endRow) - 1; r++) {
                 for (let c = Math.min(c1, c2); c <= Math.max(c1, c2); c++) {
                     const id = `${questionId}_grid_${r}_${c}`;
                     const el = document.getElementById(id);
-                    if (el) {
-                        const v = parseFloat(el.value.replace(/,/g, '')) || 0;
-                        sum += v;
-                    }
+                    if (el) sum += parseFloat(el.value.replace(/,/g, '')) || 0;
                 }
             }
             return sum;
         });
-
-        // 2. Handle individual cell references (A1, B2) in math
-        // Regex: Look for cell pattern NOT followed by : (to avoid breaking remaining ranges if any)
-        // Actually we already replaced ranges. So just find A1, B2...
-        // Sort by length descending to avoid replacing A11 with value(A1) + 1
-        // But straightforward replace with regex word boundary \b should work
-        
-        // We use a replacer function.
-        expression = expression.replace(/[A-Z]+[0-9]+/g, (match) => {
-            return getVal(match);
-        });
-
-        // 3. Safe Evaluate
+        expression = expression.replace(/[A-Z]+[0-9]+/g, (match) => getVal(match));
         try {
-            // Only allow math chars
             if (!/^[0-9+\-*/.() ]+$/.test(expression)) return "#ERR";
             return Function('"use strict";return (' + expression + ')')();
-        } catch (e) {
-            return "#ERR";
-        }
+        } catch (e) { return "#ERR"; }
     }
-
-    // --- Rendering and Initialization ---
 
     function renderQuestion(index) {
       if (!examData || !examData.questions || index < 0 || index >= examData.questions.length) return;
-
-      // 1. Clean up old TinyMCE instances before changing HTML
-      for (const instanceId in tinymce.editors) {
-          tinymce.editors[instanceId].destroy();
-      }
-
+      for (const instanceId in tinymce.editors) tinymce.editors[instanceId].destroy();
       const question = examData.questions[index];
       let contentHtml = `
         <div class="question-container">
@@ -824,120 +715,49 @@
             </div>
             <div class="question-proforma">
       `;
-
       if (question.proformas) {
         question.proformas.forEach(proforma => {
           const proformaTitle = proforma.title || 'Proforma';
-
           if (!proforma.type || proforma.type === "table") {
-            // === Classic Table Proforma ===
             contentHtml += `<div class="question-section"><h3>${proformaTitle}</h3><table class="proforma-table">`;
             proforma.rows.forEach(row => {
-              const rowClass = row.isBold ? 'bold-row' : '';
               const val = userAnswers[row.inputId] || '';
-              // Handle 'header-row' and 'subheader-row' if present in data (compatibility with pilot.json)
-              if (row.isHeader) {
-                  contentHtml += `<tr class="header-row"><td colspan="2">${row.label}</td></tr>`;
-              } else if (row.isSubHeader) {
-                  contentHtml += `<tr class="subheader-row"><td colspan="2">${row.label}</td></tr>`;
-              } else {
-                  contentHtml += `<tr class="${rowClass}">
-                                    <td>${row.label}</td>
-                                    <td>${row.isInput ? `<input type="text" data-input-id="${row.inputId}" value="${val}" aria-label="${row.label}">` : ''}</td>
-                                  </tr>`;
-              }
+              if (row.isHeader) contentHtml += `<tr class="header-row"><td colspan="2">${row.label}</td></tr>`;
+              else if (row.isSubHeader) contentHtml += `<tr class="subheader-row"><td colspan="2">${row.label}</td></tr>`;
+              else contentHtml += `<tr class="${row.isBold ? 'bold-row' : ''}"><td>${row.label}</td><td>${row.isInput ? `<input type="text" data-input-id="${row.inputId}" value="${val}">` : ''}</td></tr>`;
             });
             contentHtml += `</table></div>`;
-
           } else if (proforma.type === "excel-grid" || proforma.type === "spreadsheet") {
-            // === Excel-style Free Grid ===
-            // Default dimensions if not provided
-            const gridH = proforma.gridHeight || proforma.rows || 40;
-            const gridW = proforma.gridWidth || proforma.cols || 12;
-
+            const gridH = proforma.gridHeight || proforma.rows || 40, gridW = proforma.gridWidth || proforma.cols || 12;
             contentHtml += `<div class="question-section">
-              <div style="display:flex; justify-content:space-between; align-items:center;">
-                <h3>${proformaTitle}</h3>
-                <button onclick="mergeSelectedCells('${question.id}')" style="padding:4px 10px; background:var(--primary); color:#fff; border-radius:4px; border:none; font-size:0.85rem; cursor:pointer;">Merge Cells</button>
-              </div>
-              <div class="excel-grid"><table>`;
-            
-            // 1. Render Headers
-            contentHtml += '<thead><tr><th></th>'; // Corner cell
-            if (proforma.headers) {
-                proforma.headers.forEach(h => contentHtml += `<th>${h}</th>`);
-            } else {
-                for(let c=0; c < gridW; c++) {
-                    const letter = String.fromCharCode(65 + (c % 26)); // Simple A-Z loop for now
-                    contentHtml += `<th>${letter}</th>`;
-                }
-            }
-            contentHtml += '</tr></thead><tbody>';
-
-            // 2. Render Grid Rows
+              <div style="display:flex; justify-content:space-between; align-items:center;"><h3>${proformaTitle}</h3><button onclick="mergeSelectedCells('${question.id}')" style="padding:4px 10px; background:var(--primary); color:#fff; border-radius:4px; border:none; cursor:pointer;">Merge Cells</button></div>
+              <div class="excel-grid"><table><thead><tr><th></th>${proforma.headers ? proforma.headers.map(h => `<th>${h}</th>`).join('') : Array.from({length:gridW}, (_,i)=>`<th>${String.fromCharCode(65+i)}</th>`).join('')}</tr></thead><tbody>`;
             for (let r = 0; r < gridH; r++) {
-              contentHtml += `<tr><td class="fixed-cell text-center">${r+1}</td>`; // Row Number
+              contentHtml += `<tr><td class="fixed-cell text-center">${r+1}</td>`;
               for (let c = 0; c < gridW; c++) {
-                // Check if this cell is hidden by a merge
                 if (isMergedHidden(question.id, r, c)) continue;
-
-                // Check if this cell starts a merge
-                const merge = getMergeData(question.id, r, c);
-                const rowspan = merge ? `rowspan="${merge.rs}"` : '';
-                const colspan = merge ? `colspan="${merge.cs}"` : '';
-
-                // Check if this specific cell is "fixed"
-                const fixed = proforma.fixedCells?.find(cell => cell.row === r && cell.col === c);
-                
-                const uniqueId = `${question.id}_grid_${r}_${c}`;
-                const val = userAnswers[uniqueId] || '';
-
-                if (fixed) {
-                  contentHtml += `<td ${rowspan} ${colspan} class="fixed-cell">${fixed.value}</td>`;
-                } else {
-                  contentHtml += `<td ${rowspan} ${colspan}>
-                    <input type="text" 
-                           id="${uniqueId}" 
-                           data-input-id="${uniqueId}" 
-                           value="${val}" 
-                           style="text-align:center;"
-                           autocomplete="off"
-                           onfocus="handleGridFocus(this)"
-                           onblur="handleGridBlur(this)"
-                           onmousedown="handleCellMouseDown(${r}, ${c}, '${question.id}')"
-                           onmouseover="handleCellMouseOver(${r}, ${c}, '${question.id}')"
-                           onmouseup="handleCellMouseUp()">
-                  </td>`;
-                }
+                const merge = getMergeData(question.id, r, c), fixed = proforma.fixedCells?.find(cell => cell.row === r && cell.col === c), uniqueId = `${question.id}_grid_${r}_${c}`, val = userAnswers[uniqueId] || '';
+                if (fixed) contentHtml += `<td ${merge?`rowspan="${merge.rs}" colspan="${merge.cs}"`:''} class="fixed-cell">${fixed.value}</td>`;
+                else contentHtml += `<td ${merge?`rowspan="${merge.rs}" colspan="${merge.cs}"`:''}><input type="text" id="${uniqueId}" data-input-id="${uniqueId}" value="${val}" style="text-align:center;" onfocus="handleGridFocus(this)" onblur="handleGridBlur(this)" onmousedown="handleCellMouseDown(${r}, ${c}, '${question.id}')" onmouseover="handleCellMouseOver(${r}, ${c}, '${question.id}')" onmouseup="handleCellMouseUp()"></td>`;
               }
               contentHtml += '</tr>';
             }
             contentHtml += '</tbody></table></div></div>';
-
           } else if (proforma.type === "word-rich" || proforma.type === "word") {
-            // === Word-style Rich Text ===
             const savedContent = userAnswers[proforma.inputId] || '';
-            contentHtml += `
-              <div class="question-section word-rich">
-                <h3>${proformaTitle}</h3>
-                <textarea data-input-id="${proforma.inputId}" placeholder="${proforma.placeholder || ''}" id="${proforma.inputId}">${savedContent}</textarea>
-              </div>`;
+            contentHtml += `<div class="question-section word-rich"><h3>${proformaTitle}</h3><textarea data-input-id="${proforma.inputId}" id="${proforma.inputId}">${savedContent}</textarea></div>`;
           }
         });
       }
-
       contentHtml += `</div></div></div>`;
       examContainer.innerHTML = contentHtml;
-
       updateNavButtons();
       addInputListeners();
       initRichTextEditors();
     }
 
     function addInputListeners() {
-      // Listeners for all standard text inputs (tables and excel grid inputs)
       examContainer.querySelectorAll('input[type="text"]').forEach(inp => {
-        // Use 'input' for real-time saving (more robust than 'change')
         inp.addEventListener('input', (e) => {
           const id = e.target.id || e.target.dataset.inputId;
           userAnswers[id] = e.target.value;
@@ -947,317 +767,143 @@
 
     function initRichTextEditors() {
       document.querySelectorAll('.word-rich textarea').forEach(textarea => {
-        // TinyMCE needs an ID, which we set from inputId in renderQuestion
         const inputId = textarea.dataset.inputId;
-
         tinymce.init({
-          selector: `#${inputId}`,
-          height: 560,
-          menubar: false,
-          plugins: 'lists link table code autoresize',
+          selector: `#${inputId}`, height: 560, menubar: false, plugins: 'lists link table code autoresize',
           toolbar: 'undo redo | formatselect | bold italic underline | bullist numlist | table | removeformat | code',
           content_style: "body { font-family: var(--font-family); font-size:14px; color: var(--text); }",
           setup: editor => {
-            // Use change/keyup to update userAnswers in real time
-            editor.on('change keyup', () => {
-              userAnswers[inputId] = editor.getContent();
-            });
-            // Immediately load saved content on init
-            editor.on('init', () => {
-              if (userAnswers[inputId]) {
-                editor.setContent(userAnswers[inputId]);
-              }
-            });
+            editor.on('change keyup', () => userAnswers[inputId] = editor.getContent());
+            editor.on('init', () => { if (userAnswers[inputId]) editor.setContent(userAnswers[inputId]); });
           }
         });
       });
     }
 
-    // --- Navigation & PDF Export ---
-
     function updateNavButtons() {
       document.getElementById('back-btn').disabled = currentQuestionIndex === 0;
       document.getElementById('next-btn').style.display = currentQuestionIndex < examData.questions.length - 1 ? 'inline-block' : 'none';
       document.getElementById('mark-btn').style.display = currentQuestionIndex === examData.questions.length - 1 ? 'inline-block' : 'none';
-      document.getElementById('export-pdf-btn').style.display = 'inline-block'; // Always visible once exam is loaded
+      document.getElementById('export-pdf-btn').style.display = 'inline-block';
     }
 
-    document.getElementById('next-btn').addEventListener('click', () => {
+    document.getElementById('next-btn').onclick = () => {
       saveAnswers();
       if (currentQuestionIndex < examData.questions.length - 1) {
         currentQuestionIndex++;
         renderQuestion(currentQuestionIndex);
       }
-    });
+    };
 
-    document.getElementById('back-btn').addEventListener('click', () => {
+    document.getElementById('back-btn').onclick = () => {
       saveAnswers();
       if (currentQuestionIndex > 0) {
         currentQuestionIndex--;
         renderQuestion(currentQuestionIndex);
       }
-    });
+    };
 
-    document.getElementById('mark-btn').addEventListener('click', () => {
+    document.getElementById('mark-btn').onclick = () => {
         saveAnswers();
-        
-        // Auto-download PDF on submission
         document.getElementById('export-pdf-btn').click();
-
-        // In a real app, this would send all answers for marking.
-        examContainer.innerHTML = `<div class="text-center p-8 bg-surface rounded-lg shadow-md max-w-lg mx-auto mt-20">
-            <h2 class="text-2xl font-bold mb-4 text-primary">Exam Submitted!</h2>
-            <p class="mb-6">Your answers have been saved and submitted for marking. A PDF copy of your answers is downloading.</p>
-            <button class="bg-primary text-white py-2 px-4 rounded-lg shadow" onclick="location.reload()">Start New Exam</button>
-        </div>`;
+        examContainer.innerHTML = `<div class="text-center p-8 bg-surface rounded-lg shadow-md max-w-lg mx-auto mt-20"><h2 class="text-2xl font-bold mb-4 text-primary">Exam Submitted!</h2><p class="mb-6">Your answers have been saved and submitted for marking. A PDF copy of your answers is downloading.</p><button class="bg-primary text-white py-2 px-4 rounded-lg shadow" onclick="location.reload()">Start New Exam</button></div>`;
         footerNav.style.display = 'none';
         examTimerDisplay.style.display = 'none';
         if (timerInterval) clearInterval(timerInterval);
-    });
+    };
 
-    // --- PDF Export Logic ---
-    document.getElementById('export-pdf-btn').addEventListener('click', async () => {
-        saveAnswers(); // Ensure all rich text and input content is saved one last time
-        
+    document.getElementById('export-pdf-btn').onclick = async () => {
+        saveAnswers();
         const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const pageWidth = pdf.internal.pageSize.getWidth();
-        const pageHeight = pdf.internal.pageSize.getHeight();
+        const pdf = new jsPDF('p', 'mm', 'a4'), pageWidth = pdf.internal.pageSize.getWidth(), pageHeight = pdf.internal.pageSize.getHeight();
         let yPosition = 15;
-
-        // Title Setup
-        pdf.setFontSize(16);
-        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(16); pdf.setFont('helvetica', 'bold');
         pdf.text(`${examData.examTitle || 'Exam Answers'} – Student Submission`, pageWidth / 2, yPosition, { align: 'center' });
         yPosition += 10;
-
-        pdf.setFontSize(10);
-        pdf.setFont('helvetica', 'normal');
+        pdf.setFontSize(10); pdf.setFont('helvetica', 'normal');
         pdf.text(`Generated on: ${new Date().toLocaleString()}`, pageWidth / 2, yPosition, { align: 'center' });
         yPosition += 15;
-
-        // Collect ALL answer containers to screenshot
         const answerContainers = [];
-
         examData.questions.forEach((q, qIndex) => {
             q.proformas?.forEach(proforma => {
                 const container = document.createElement('div');
-                // Use Tailwind classes for a modern look in the temporary container
-                container.className = 'p-4 mb-5 bg-white rounded-lg shadow-md max-w-full';
-                // Removed fixed width (190mm) to allow table to expand naturally
-                
-                let html = `<div style="font-size:16px; font-weight:bold; margin-bottom:12px; color:#0b5cab;">
-                                Question ${qIndex + 1}: ${q.title} – Your Answer
-                            </div>`;
-
+                container.className = 'p-4 mb-5 bg-white max-w-full';
+                let html = `<div style="font-size:16px; font-weight:bold; margin-bottom:12px; color:#0b5cab;">Question ${qIndex + 1}: ${q.title} – Your Answer</div>`;
                 if ((proforma.type || 'table') === 'table') {
-                    // Rebuild Traditional Table
-                    html += '<table style="width:100%; border-collapse:collapse; font-size:14px; table-layout:fixed;">';
+                    html += '<table style="width:100%; border-collapse:collapse; font-size:14px; color:black;">';
                     proforma.rows.forEach(row => {
                         if (row.isInput) {
-                            const userVal = userAnswers[row.inputId] || '';
-                            const displayVal = userVal === '' ? '(blank)' : userVal;
-                            html += `<tr>
-                                    <td style="border:1px solid #ddd; padding:8px; width:50%; background:#f9f9f9; text-align:left; color:black;">${row.label}</td>
-                                    <td style="border:1px solid #ddd; padding:8px; width:50%; text-align:right; font-weight:600; color:black;">${displayVal}</td>
-                                    </tr>`;
+                            const userVal = userAnswers[row.inputId] || '(blank)';
+                            html += `<tr><td style="border:1px solid #ddd; padding:8px; width:50%; background:#f9f9f9;">${row.label}</td><td style="border:1px solid #ddd; padding:8px; width:50%; text-align:right; font-weight:600;">${userVal}</td></tr>`;
                         }
                     });
                     html += '</table>';
-
                 } else if (proforma.type === 'excel-grid' || proforma.type === 'spreadsheet') {
-                    // Rebuild Excel Grid
-                    // Use width: auto to fit content, text-color black
-                    const gridH = proforma.gridHeight || proforma.rows || 40;
-                    const gridW = proforma.gridWidth || proforma.cols || 12;
-
-                    html += `<div style="overflow-x:auto;"><table style="border-collapse:collapse; font-size:13px; width:auto; min-width:100%; table-layout:fixed; color:black;">`;
-                    html += '<thead><tr><th></th>'; // Corner
-                    
-                    if (proforma.headers) {
-                         proforma.headers.forEach(h => html += `<th style="border:1px solid #333; background:#e3f2fd; padding:8px; text-align:center; width:100px; color:black;">${h}</th>`);
-                    } else {
-                         for(let c=0; c < gridW; c++) {
-                            const letter = String.fromCharCode(65 + (c % 26));
-                            const w = '100px';
-                            html += `<th style="border:1px solid #333; background:#e3f2fd; padding:8px; text-align:center; width:${w}; color:black;">${letter}</th>`;
-                         }
-                    }
-                    
-                    html += '</tr></thead><tbody>';
-
+                    const gridH = proforma.gridHeight || proforma.rows || 40, gridW = proforma.gridWidth || proforma.cols || 12;
+                    html += `<table style="border-collapse:collapse; font-size:13px; width:100%; color:black;"><thead><tr><th></th>${proforma.headers ? proforma.headers.map(h => `<th style="border:1px solid #333; background:#e3f2fd; padding:8px;">${h}</th>`).join('') : Array.from({length:gridW}, (_,i)=>`<th style="border:1px solid #333; background:#e3f2fd; padding:8px;">${String.fromCharCode(65+i)}</th>`).join('')}</tr></thead><tbody>`;
                     for (let r = 0; r < gridH; r++) {
-                        html += `<tr><td style="border:1px solid #999; padding:4px; background:#f5f5f5; text-align:center;">${r+1}</td>`;
+                        html += `<tr><td style="border:1px solid #999; padding:4px; background:#f5f5f5;">${r+1}</td>`;
                         for (let c = 0; c < gridW; c++) {
-                            const fixed = proforma.fixedCells?.find(x => x.row === r && x.col === c);
-                            const inputId = `${q.id}_grid_${r}_${c}`; 
-                            // Fixed cells
-                            if (fixed) {
-                                html += `<td style="border:1px solid #999; padding:8px; background:#f5f5f5; text-align:left; color:black;">${fixed.value}</td>`;
-                            } else {
-                                const val = userAnswers[inputId] || '';
-                                html += `<td style="border:1px solid #999; padding:8px; text-align:center; color:black;">${val}</td>`;
-                            }
+                            const fixed = proforma.fixedCells?.find(x => x.row === r && x.col === c), val = userAnswers[`${q.id}_grid_${r}_${c}`] || '';
+                            html += `<td style="border:1px solid #999; padding:8px;">${fixed ? fixed.value : val}</td>`;
                         }
                         html += '</tr>';
                     }
-                    html += `</tbody></table></div>`;
-
+                    html += `</tbody></table>`;
                 } else if (proforma.type === 'word-rich' || proforma.type === 'word') {
-                    // Rebuild Rich Text
-                    const content = userAnswers[proforma.inputId] || '<p>(No answer provided)</p>';
-                    html += `<div style="border:1px solid #ddd; padding:12px; min-height:100px; background:#fafafa; line-height:1.5; font-size:14px;">
-                                ${content}
-                            </div>`;
+                    html += `<div style="border:1px solid #ddd; padding:12px; min-height:100px; background:#fafafa; color:black;">${userAnswers[proforma.inputId] || '<p>(No answer provided)</p>'}</div>`;
                 }
-
-                container.innerHTML = html;
-                document.body.appendChild(container); // temporarily add to DOM for screenshot
-                answerContainers.push(container);
+                container.innerHTML = html; document.body.appendChild(container); answerContainers.push(container);
             });
         });
-
-        // Now convert each answer block to image and add to PDF
-        for (let i = 0; i < answerContainers.length; i++) {
-            const el = answerContainers[i];
-
-            // Check if we need a new page
-            if (yPosition > pageHeight - 40) {
-                pdf.addPage();
-                yPosition = 20;
-            }
-
+        for (const el of answerContainers) {
+            if (yPosition > pageHeight - 40) { pdf.addPage(); yPosition = 20; }
             try {
-                // html2canvas takes a screenshot of the DOM element
                 const canvas = await html2canvas(el, { scale: 2, useCORS: true, backgroundColor: '#ffffff' });
-                const imgData = canvas.toDataURL('image/png');
-                
-                // Calculate height to fit A4 aspect ratio (Corrected: No / 2)
-                const imgWidth = pageWidth - 20; // 10mm margin on each side
-                let imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-                // If image is too tall, shrink it and push to new page
-                if (yPosition + imgHeight > pageHeight - 20) {
-                    pdf.addPage();
-                    yPosition = 20;
-                }
-
+                const imgData = canvas.toDataURL('image/png'), imgWidth = pageWidth - 20, imgHeight = (canvas.height * imgWidth) / canvas.width;
+                if (yPosition + imgHeight > pageHeight - 20) { pdf.addPage(); yPosition = 20; }
                 pdf.addImage(imgData, 'PNG', 10, yPosition, imgWidth, imgHeight);
-                yPosition += imgHeight + 12; // Add spacing
-
-            } catch (err) {
-                console.error("html2canvas failed on element", err);
-                pdf.text("(Failed to capture this answer block)", 15, yPosition);
-                yPosition += 15;
-            }
-
-            // Clean up temporary DOM element
+                yPosition += imgHeight + 12;
+            } catch (err) { console.error(err); }
             el.remove();
         }
-
-        // Final save
-        const fileName = `${examData.examTitle?.replace(/[^a-z0-9]/gi, '_') || 'Exam'}_Answers_${new Date().toISOString().slice(0,10)}.pdf`;
-        pdf.save(fileName);
-        
-        // No need to re-render current question here as we are likely submitting or staying on page.
-        // If we needed to restore state, we should capture the exact active question index before starting.
-    });
-    
-    // --- Initial Load ---
+        pdf.save(`${examData.examTitle?.replace(/[^a-z0-9]/gi, '_') || 'Exam'}_Answers_${new Date().toISOString().slice(0,10)}.pdf`);
+    };
 
     async function initExamSelection() {
-        const container = document.getElementById('exam-container');
-        container.innerHTML = `<div class="landing-container">
-            <h1>Welcome to the Chiaseed Platform</h1>
-            <p>Loading available exams...</p>
-        </div>`;
-
+        examContainer.innerHTML = `<div class="landing-container"><h1>Welcome</h1><p>Loading available exams...</p></div>`;
         try {
             const response = await fetch(`${examFilesPath}sets.json`);
-            if (!response.ok) throw new Error('Failed to load exam sets');
+            if (!response.ok) throw new Error('Failed to load sets');
             const sets = await response.json();
+            examContainer.innerHTML = `<div class="landing-container"><h1>Welcome</h1><p>Please choose an exam set.</p><div class="exam-selection-list">${sets.map(set => `<button class="exam-select-btn" data-file="${set.filename}">${set.name}</button>`).join('')}</div></div>`;
+            examContainer.querySelectorAll('.exam-select-btn').forEach(btn => btn.onclick = () => loadExam(btn.dataset.file));
+        } catch (err) { examContainer.innerHTML = `<div class="landing-container"><h1>Error</h1><p>${err.message}</p></div>`; }
+    }
 
-            let buttonsHtml = sets.map(set => 
-                `<button class="exam-select-btn" onclick="loadExam('${set.filename}')">
-                    ${set.name}
-                </button>`
-            ).join('');
-
-            container.innerHTML = `<div class="landing-container">
-                <h1>Welcome to the Chiaseed Platform</h1>
-                <p>Please choose which set you would like to attempt.</p>
-                <div class="exam-selection-list">
-                    ${buttonsHtml}
-                </div>
-            </div>`;
-
+    async function loadExam(filename) {
+        examContainer.innerHTML = `<div class="text-center p-8 bg-surface mt-20"><p>Loading Exam...</p></div>`;
+        try {
+            const response = await fetch(`${examFilesPath}${filename}.json`);
+            if (!response.ok) throw new Error(`File not found: ${filename}.json`);
+            examData = await response.json();
+            currentQuestionIndex = 0; userAnswers = {}; renderQuestion(currentQuestionIndex);
+            footerNav.style.display = 'flex'; startTimer();
+            history.pushState({ mode: 'exam', filename }, "", `#${filename}`);
         } catch (err) {
-            container.innerHTML = `<div class="landing-container">
-                <h1>Error</h1>
-                <p>${err.message}</p>
-            </div>`;
+             examContainer.innerHTML = `<div class="text-center p-8 bg-red-50 text-red-600 mt-20"><h2 class="font-bold">Error</h2><p>${err.message}</p><button class="mt-4 bg-primary text-white py-2 px-4 rounded" onclick="initExamSelection()">Back</button></div>`;
         }
     }
 
-    window.loadExam = async function(filename) {
-        // if user clicks test which might not exist in json folder but sets.json points to it, handle error
-        const container = document.getElementById('exam-container');
-        container.innerHTML = `<div class="text-center p-8 bg-surface rounded-lg shadow-md max-w-lg mx-auto mt-20"><p>Loading Exam...</p></div>`;
-        
-        try {
-            // AF.html appends .json, assume filename in sets.json is just the name without extension if it mimics AF.html data
-            // sets.json content was: "filename": "pilot"
-            const response = await fetch(`${examFilesPath}${filename}.json`);
-            if (!response.ok) throw new Error(`Exam file not found: ${filename}.json`);
-            examData = await response.json();
-            
-            // Start Exam
-            currentQuestionIndex = 0;
-            userAnswers = {};
-            renderQuestion(currentQuestionIndex);
-            footerNav.style.display = 'flex';
-            startTimer();
-            
-            // Push history state so back button doesn't leave the page immediately
-            history.pushState({ mode: 'exam', filename: filename }, "", `#${filename}`);
-
-        } catch (err) {
-            console.error(err);
-             container.innerHTML = `<div class="text-center p-8 bg-red-50 text-red-600 rounded-lg max-w-lg mx-auto mt-20">
-                <h2 class="font-bold text-xl">Error Loading Exam</h2>
-                <p>${err.message}</p>
-                <button class="mt-4 bg-primary text-white py-2 px-4 rounded" onclick="initExamSelection()">Back to Selection</button>
-            </div>`;
+    window.onpopstate = (event) => {
+        if (!event.state || !event.state.mode) {
+            if (timerInterval) clearInterval(timerInterval);
+            footerNav.style.display = 'none'; examTimerDisplay.style.display = 'none';
+            initExamSelection();
         }
     };
 
-    window.addEventListener('popstate', (event) => {
-        // If we go back to a state with no exam data, or explicitly empty state, reload selection
-        if (!event.state || !event.state.mode) {
-            // Stop timer if running
-            if (timerInterval) clearInterval(timerInterval);
-            footerNav.style.display = 'none';
-            examTimerDisplay.style.display = 'none';
-            // Reload selection screen
-            initExamSelection();
-        }
-    });
-
-    window.addEventListener('popstate', (event) => {
-        // If we go back to a state with no exam data, or explicitly empty state, reload selection
-        if (!event.state || !event.state.mode) {
-            // Stop timer if running
-            if (timerInterval) clearInterval(timerInterval);
-            footerNav.style.display = 'none';
-            examTimerDisplay.style.display = 'none';
-            // Reload selection screen
-            initExamSelection();
-        }
-    });
-
-    // Initialize
     initExamSelection();
-  });
-</script>
+  </script>
 </body>
 </html>

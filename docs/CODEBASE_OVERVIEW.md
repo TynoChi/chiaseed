@@ -1,135 +1,54 @@
-# Codebase Overview & File Dictionary
+# Codebase Overview & File Dictionary (v1.1.0)
 
-This document provides a comprehensive explanation of the file structure, the specific purpose of each key file, and a detailed breakdown of the functions contained within the source code. Use this as a reference for future refactoring or feature implementation.
+This document provides a comprehensive explanation of the Chiaseed file structure, the specific purpose of each key file, and the architectural evolution of the platform.
+
+---
+
+## 🚀 Version 1.1.0 Refactor
+The v1.1.0 release introduces a **Settings-Driven Architecture**, allowing users to configure the platform without modifying core logic files.
+
+*   **Selection Flow**: Reordered from (Chapter -> Set) to **(Set -> Chapter)**.
+*   **Centralized Config**: All modules now consume `activeConfig` from `settings_manager.js` instead of the static `config.js` default.
+*   **Security**: Integrated `promptExit()` to safeguard progress.
 
 ---
 
 ## 📂 Root Directory
 
-### Core Applications
-
 *   **`index.html`**: **The Main Application Entry Point.**
-    *   **Purpose:** The central hub for the "2nd Semester Quiz Platform". It is a lean HTML file that loads modular JavaScript (`assets/js/app.js`) and CSS.
-    *   **Functionality:**
-        *   **Three Primary Modes:**
-            1.  **Study Mode:** Chapter-by-chapter practice from the standard question bank.
-            2.  **Question Bank (DAM):** Customisable random sets (Standard, AI, or Mixed).
-            3.  **ChiaSeed (Weakness):** Focused practice mode allowing selection of specific topic groups and concepts (tags) to target weak areas.
-        *   **Statistics:** Integrated leaderboard and personal progress tracking, accessible via the header icon.
-        *   **PWA:** Supports progressive web app features (`manifest.json`, `sw.js`).
-    *   **UI Structure:** Grid-based layouts for selection, modal-based interactions for login/results.
-
-*   **`admin.html`**: **Admin Dashboard.**
-    *   **Purpose:** A standalone tool for monitoring student progress and system usage.
-    *   **Functionality:**
-        *   **Student Progress:** Lists unique users and consolidated students (by name).
-        *   **Progress Map:** Visualizes chapter-by-chapter progress using a color-coded grid.
-        *   **Deep Drill-Down:** Clicking a question box shows detailed attempt info (Platform Mode, Set Name, Tags, Time).
-        *   **GenAI Audit:** Logs of all AI generation requests and associated costs.
-    *   **Key Functions (Inline Script):**
-        *   `init()`: Bootstraps the dashboard.
-        *   `fetchQuestionStructure()`: Loads `combined-set-1.json` to build the "universe" of valid questions.
-        *   `fetchUsers()`: Calls `/admin/users` to get the list of tracked sessions.
-        *   `renderUserList(filter)`: Renders the sidebar list with search filtering.
-        *   `selectUser(user)`: Fetches attempt data for a specific ID (or list of IDs in consolidated mode).
-        *   `renderProgressMap()`: The core logic that draws the grid.
-        *   `showQuestionDetail(q, attempts)`: Opens a modal showing detailed context (Mode, Set, Tags) and the question itself.
-
-*   **`chiaseed.html`**: **(Legacy/Deprecated)**
-    *   *Note: The functionality of this file has been fully integrated into the "ChiaSeed" tab within `index.html`. It remains as a fallback or reference but is no longer the primary entry point.*
-
-### Config Files
-*   **`package.json`**: Node dependencies (mostly for `wrangler`).
-*   **`manifest.json`**: PWA metadata (icons, colors).
-*   **`sw.js`**: Service Worker for offline caching.
-*   **`run.bat`** / **`run.sh`**: Helpers to start local Python server.
-
----
-
-## 📂 `SEM1/` (Semester 1 Archive)
-
-This directory contains a standalone copy of the quiz platform tailored for Semester 1.
-*   **`SEM1/index.html`**: The main entry for S1.
-*   **`SEM1/dam.html`**: Daily Assessment Mode for S1.
-*   **`SEM1/editor.html`**: A tool for editing S1 question data.
-*   **`SEM1/videos/`**: Video resources and tutorials.
-*   **`SEM1/prompts/`**: AI system prompts used during S1.
+    *   Central hub for the quiz platform. It loads modular JavaScript (`assets/js/app.js`) and handles the three primary modes: **Study**, **DAM**, and **ChiaSeed (Weakness)**.
+    *   Features integrated statistics (leaderboard/progress) and PWA support.
+*   **`setup.py`**: **(New Utility)** Interactive CLI tool to quickly configure your Platform Name and API endpoints.
+*   **`simulator.html`**: A separate high-fidelity entrance for the exam simulation mode.
+*   **`editor/`**: A standalone subdirectory containing a browser-based tool for creating and editing question JSON files.
 
 ---
 
 ## 📂 `assets/js/` (Modular Logic)
 
-The JavaScript codebase is fully modular (ES6 Modules). Implementation is distributed into subdirectories for maintainability.
+### Core System
+*   **`settings_manager.js`**: **(Architectural Hub)** Manages `localStorage` overrides. It deep-merges user settings with `config.js` defaults and exports the `activeConfig` used globally.
+*   **`app.js`**: Initializes `QuizUI` and the `UserTracker` authentication system.
+*   **`auth.js`**: Handles user identity. It manages the `UserTracker` object for backend syncing and leaderboard registration.
+*   **`engine.js`**: The **Quiz State Machine**. Manages the global and per-question timers, answer state, and transition logic.
 
-### `app.js`
-*   **Purpose:** Entry point. Initializes `QuizUI` and `UserTracker`.
+### Data & API (`assets/js/api/`)
+*   **`api.js`**: The facade for data acquisition. Delegates requests to specific fetchers based on the quiz mode.
+*   **`study_fetcher.js`**: Handles fetching static chapter JSONs. In v1.1.0, it is optimized to try `json/combined/` first to ensure zero-latency loading.
+*   **`dam_fetcher.js`**: Logic for aggregating random sets across multiple chapters.
+*   **`common.js`**: Shared utilities, including `normalizeQuestion` which ensures legacy JSON formats are compatible with the modern renderer.
+*   **`cache.js`**: Manages in-memory caching (`CACHE` and `DAM_CACHE`) to prevent redundant network requests.
 
-### `config.js`
-*   **Purpose:** Static configuration (Subject names, Chapters, API Endpoints).
-
-### `utils.js`
-*   **Purpose:** Pure helper functions (Shuffle, Formatting, Cookies).
-
-### `auth.js`
-*   **Purpose:** Identity management and `UserTracker` for backend syncing.
-
-### `api.js` (Facade)
-*   Delegates to `assets/js/api/`:
-    *   **`study_fetcher.js`**: Fetches static chapter JSONs.
-    *   **`dam_fetcher.js`**: Logic for aggregating random sets.
-    *   **`gen_fetcher.js`**: Communicates with the Alpha worker for AI tasks.
-    *   **`cache.js`**: Handles local storage caching of quiz data.
-    *   **`common.js`**: Shared fetch utilities.
-
-### `engine.js`
-*   **Purpose:** Quiz State Machine. Delegates grading to `engine/scoring.js`.
-
-### `ui.js` (Facade)
-*   Delegates to `assets/js/ui/`:
-    *   **`question_renderer.js`**: Generates HTML for different question types.
-    *   **`result_renderer.js`**: Renders the final score and review screen.
-    *   **`leaderboard.js`**: Handles leaderboard fetching and display.
-    *   **`ai_helper.js`**: Manages interaction with the AI Explanation service.
-
----
-
-## 📂 `workers/` (Backend)
-
-### `workers/alpha/` (AI Gen)
-*   **`index.js`**: Handles AI explanations. Includes (currently disabled) logic for full quiz generation based on uploaded text.
-
-### `workers/beta/` (Data & DB)
-*   **`index.js`**: The master API gateway for D1 database operations.
-
-### `workers/pact/` (Utility)
-*   A secondary worker containing a simple UI and asset hosting.
+### User Interface (`assets/js/ui/`)
+*   **`ui.js`**: The main UI controller. Orchestrates view switching and input population.
+*   **`question_renderer.js`**: Generates HTML for 6 question types: MCQ, MSQ, Numerical, Multi-Numerical, Nested, and MCloze (Fill-in-the-blanks).
+*   **`result_renderer.js`**: Renders the final review screen. It calculates "Fair Scoring" (based on attempted questions) and identifies weak spots.
+*   **`ai_helper.js`**: Manages interaction with the AI Explanation service. It sends context-rich prompts to the backend and renders structured JSON responses.
 
 ---
 
 ## 📂 `scripts/` (Maintenance)
 
-*   **`update_answers_v2.py`**: Python script for batch correction of answer keys.
-*   **`update_tags_v2.py`**: Ensures consistent tagging across all JSON files.
-*   **`generate_combined.js`**: Node script to compile individual chapters into `combined-set-*.json`.
-
----
-
-## 📂 `ARF/` (Module Assets)
-
-*   **PDFs**: Extensive collection of Question Banks (`QBC*.pdf`) and Workbooks (`WBC*.pdf`) with accompanying answer keys.
-*   **`Workbook-v1/`**: Individual chapter PDFs from the ASR series.
-
----
-
-## 📂 `json/` (Data)
-
-*   **`combined/`**: Optimized aggregates (`combined-set-1.json`, `combined-set-qb.json`, `combined-set-ai.json`).
-*   **`new/`**: The "Source of Truth" individual chapter files.
-
----
-
-## 📂 `cs/` (Exam Sim)
-
-*   **`cs/index.html`**: The high-fidelity simulator.
-*   **`cs/converter/`**: Contains multiple versioned tools for converting various data formats into the simulator's schema.
-*   **`cs/template/`**: JSON templates for MCQ, MSQ, Cloze, and Numerical question types.
+*   **`generate_combined.js`**: Node.js script to compile individual chapter files into `combined-set-*.json` aggregates.
+*   **`update_tags_v2.py`**: Standardizes tags across the question bank to ensure consistency in ChiaSeed mode.
+*   **`check_dataset.js`**: Validation tool to identify broken JSON or missing fields in your data.

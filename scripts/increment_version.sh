@@ -1,23 +1,33 @@
 #!/bin/bash
 
-# Define files to update (relative to the script location)
-# We assume the script is in /scripts, so we go up one level to root
+# --- Configuration ---
+# List of files to update version numbers in.
+# Paths are relative to the project root.
+TARGET_FILES=(
+    "index.html"
+    "admin.html"
+    # "package.json" # Optional: Add if you want to sync with package.json
+)
+
+# --- Script Logic ---
+
+# Determine script location and project root
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROJECT_ROOT="$DIR/.."
 
-FILES=("$PROJECT_ROOT/index.html" "$PROJECT_ROOT/admin.html")
+echo "Incrementing version numbers in project root: $PROJECT_ROOT"
 
-# Loop through files and apply the regex replacement
-for file in "${FILES[@]}"; do
+for filename in "${TARGET_FILES[@]}"; do
+    file="$PROJECT_ROOT/$filename"
+    
     if [ -f "$file" ]; then
         # Perl regex to find vX.Y.Z and increment Z
-        # -i: in-place edit
-        # -p: print lines
-        # -e: execute command
-        # s/.../.../ge: search/replace with 'e' flag to evaluate the replacement as code
+        # Looks for patterns like "v1.0.0" or "v2.3.4"
         perl -i -pe 's/v(\d+)\.(\d+)\.(\d+)/"v$1.$2.".($3+1)/ge' "$file"
-        echo "Updated version in $file"
+        echo "  [UPDATED] $filename"
     else
-        echo "File not found: $file"
+        echo "  [SKIPPED] $filename (Not found)"
     fi
 done
+
+echo "Version increment complete."

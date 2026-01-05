@@ -1,8 +1,8 @@
-import { CONFIG } from './config.js';
+import { activeConfig as CONFIG } from './settings_manager.js';
 import { setCookie, getCookie } from './utils.js';
 import { showModal, closeModal } from './modal.js';
 
-export const studentNames = ["Amirul", "Aiman", "Zulfan", "Syawal", "Hannan", "Faiz", "Adam", "Alip", "Kimi", "Mansur", "Akmal", "Putra", "Kyrie", "Mut", "Ain", "Hanie", "Damia", "Anis"].sort();
+export const studentNames = (CONFIG.platform && CONFIG.platform.students ? CONFIG.platform.students : []).sort();
 export let loggedInUser = null;
 export let currentUserId = null;
 
@@ -115,11 +115,11 @@ export const UserTracker = {
         
         try {
             // 2. Ping track to establish/check UUID
-            console.log('UserTracker: Pinging /track endpoint.');
-            const res = await fetch(CONFIG.endpoints.data + '/track', { credentials: 'include' });
-            if (!res.ok) throw new Error("Failed to ping /track");
+            console.log('UserTracker: Pinging /v2/track endpoint.');
+            const res = await fetch(CONFIG.endpoints.data + '/v2/track', { credentials: 'include' });
+            if (!res.ok) throw new Error("Failed to ping /v2/track");
             const data = await res.json();
-            console.log('UserTracker: /track response:', data);
+            console.log('UserTracker: /v2/track response:', data);
             
             if (data.userId) {
                 currentUserId = data.userId;
@@ -181,7 +181,7 @@ export const UserTracker = {
         }
         console.log('UserTracker: Attempting to register name:', name);
         try {
-            const res = await fetch(CONFIG.endpoints.data + '/register', {
+            const res = await fetch(CONFIG.endpoints.data + '/v2/track', {
                 method: 'POST', headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ name }),
                 credentials: 'include'
@@ -193,16 +193,22 @@ export const UserTracker = {
             }
         } catch (e) { console.error("UserTracker: Register failed", e); }
     },
-    async submitScore(correct, total, timeMs) {
+    async submitScore(correct, total, timeMs, mode, tags) {
         if (!loggedInUser || loggedInUser.toLowerCase() === 'anonymous') {
             console.warn('UserTracker: Not logged in or Anonymous, score not submitted.');
             return;
         } 
         console.log('UserTracker: Submitting score for user:', loggedInUser, { correct, total, timeMs });
         try {
-            const res = await fetch(CONFIG.endpoints.data + '/leaderboard', {
+            const res = await fetch(CONFIG.endpoints.data + '/v2/submit-score', {
                 method: 'POST', headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ total_correct: correct, total_questions: total, time_taken_ms: timeMs, name: loggedInUser }),
+                body: JSON.stringify({ 
+                    correct, 
+                    total, 
+                    timeMs, 
+                    mode: mode || 'standard',
+                    tags: tags || [] 
+                }),
                 credentials: 'include'
             });
             if (res.ok) {
@@ -219,7 +225,7 @@ export const UserTracker = {
          }
          console.log('UserTracker: Tracking attempt for user:', loggedInUser, { qId, isCorrect, chapter, set, tags, platform_mode });
          try {
-            const res = await fetch(CONFIG.endpoints.data + '/attempt', {
+            const res = await fetch(CONFIG.endpoints.data + '/v2/attempt', {
                 method: 'POST', headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ 
                     question_id: qId, 
@@ -228,8 +234,8 @@ export const UserTracker = {
                     set_name: set || '00',
                     tags: tags || [],
                     platform_mode: platform_mode || 'unknown',
-                    user_answer: user_answer || null,
-                    name: loggedInUser
+                    user_answer: user_answer || null
+                    // name is no longer needed here as it's handled by session/cookie
                 }),
                 credentials: 'include'
             });

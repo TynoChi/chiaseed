@@ -1,4 +1,4 @@
-import { CONFIG } from '../config.js';
+import { activeConfig as CONFIG } from '../settings_manager.js';
 import { Utils } from '../utils.js';
 import { DAM_CACHE } from './cache.js';
 import { fetchWithFallback, normalizeQuestions } from './common.js';
@@ -33,8 +33,8 @@ export async function fetchDAMQuiz(params) {
         for(let i=1; i<=subjectInfo.chapters; i++) selectedChapters.push(String(i).padStart(2,'0'));
     }
 
-    // Use combined JSON for ARF sets 00 and 10, BUT NOT in Custom Mode
-    if (baseSubjectCode === 'ARF' && !isUnseen && damSettings.type !== 'customise') {
+    // Use combined JSON if configured for this subject, BUT NOT in Custom Mode
+    if (subjectInfo && subjectInfo.useCombined && !isUnseen && damSettings.type !== 'customise') {
         const combinedFiles = [];
         if (setsToFetch.includes('00')) combinedFiles.push('combined-set-qb.json');
         if (setsToFetch.includes('10')) combinedFiles.push('combined-set-ai.json');
@@ -71,8 +71,8 @@ export async function fetchDAMQuiz(params) {
     selectedChapters.forEach(ch => {
             setsToFetch.forEach(s => {
                 let filename = `${baseSubjectCode}-${s}-${ch}.json`;
-                if (baseSubjectCode === 'ARF' && !isUnseen && (s === '00' || s === '10' || s === '11' || s === '02')) {
-                    filename = `new/${filename}`;
+                if (subjectInfo && subjectInfo.pathPrefix && !isUnseen) {
+                    filename = `${subjectInfo.pathPrefix}${filename}`;
                 }
                 fetchPromises.push(
                     fetchWithFallback(filename, isUnseen)
@@ -110,7 +110,7 @@ export async function fetchDAMQuiz(params) {
     if (damSettings.type === 'iz_mixed' || damSettings.type === 'customise') {
             timeLimit = finalQ.length * (damSettings.type === 'customise' ? damSettings.timePerQ : 1.5);
     } else { 
-            timeLimit = (baseSubjectCode === 'AF' ? 120 : (baseSubjectCode === 'SE' ? 90 : 75));
+            timeLimit = 90; // Default standard exam time
     }
     console.log('API Call: Final quiz data prepared for DAM mode:', { numQuestions: finalQ.length, timeLimit: timeLimit });
     return { entries: finalQ, timeLimit: timeLimit };

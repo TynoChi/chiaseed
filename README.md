@@ -1,74 +1,64 @@
-# ChiaSeed Platform v1.0.0
+# Chiaseed Quiz Platform v1.1.0
 
-A comprehensive suite of tools for generating, practicing, and analyzing accountancy exams. This project includes a client-side quiz application, a high-fidelity exam simulator, and serverless backend workers for AI generation and data tracking.
-
-**Note:** This is the open-source release of the platform logic. Proprietary question banks and PDF materials have been excluded.
+A lightweight, customizable, and open-source quiz platform designed for accountancy exams and similar question-bank-based learning.
 
 ## 🚀 Quick Start
 
-### Local Development
-1.  **Prerequisites:** Python (for simple serving) or any static file server.
-2.  **Run:**
+1.  **Run the Setup Utility:**
     ```bash
-    ./run.sh
-    # OR
-    python -m http.server 8080
+    python3 setup.py
     ```
-3.  **Access:** Open `http://localhost:8080` in your browser.
+    This will help you configure your Platform Name and API endpoints without manually editing code.
+
+2.  **Serve the application:**
+    *   **Using Python:** `python3 -m http.server 8080`
+    *   **Using Node.js:** `npx http-server .`
+
+3.  **Open in Browser:** Navigate to `http://localhost:8080`.
 
 ---
 
-## 📂 Project Structure
+## 📖 Configuration
 
-### 1. Main Quiz App (`/`)
-*   **`index.html`**: The core application. It integrates three primary modes:
-    *   **Study Mode:** Practice specific chapters (requires your own JSON data).
-    *   **DAM Mode:** "Daily Assessment Mode" for customizable random sets.
-    *   **ChiaSeed (Weakness) Mode:** A focused practice tool that lets you select specific topics and concepts to target your weak areas.
-*   **Features:**
-    *   **Integrated Statistics:** Real-time leaderboard and personal progress tracking.
-    *   **AI Explanation:** Instant detailed explanations for every question using DeepSeek models (requires backend setup).
-    *   **Fix Weak Spots:** Automatically redirects from results to practice the specific topics you missed.
+The platform is settings-driven. While defaults are in `assets/js/config.js`, users can override them via the in-app Settings UI.
 
-### 2. Admin Dashboard (`/admin.html`)
-A powerful tool for monitoring student progress and system health.
-*   **Progress Map:** Visualizes student performance across chapters.
-*   **Drill-Down:** Inspect specific question attempts to see user answers, timestamps, platform mode, and tags.
-*   **GenAI Audit:** Monitor AI token usage and costs.
+### Selection Flow (v1.1.0)
+The selection logic has been optimized for user flow:
+1.  **Select Set**: Choose between Question Bank, AI, or custom sets.
+2.  **Select Chapter**: The chapter list dynamically updates based on the selected set.
 
-### 3. Exam Simulator (`/cs/`)
-A "Pro" version of the exam interface designed to mimic the actual exam software.
-*   **Features:** Excel-style grids, Rich Text Editors, PDF Export, and multiple versioned converters.
-*   **Location:** `cs/index.html`
-
-### 4. Backend Workers (`/workers/`)
-*   **Alpha (`api-x-gen`):** Handles AI explanations and question generation.
-    *   *Note: The `/generate` endpoint logic exists in `handleQuizGeneration`.*
-*   **Beta (`api-x-data`):** Handles user tracking, D1 database storage (Users, QuizAttempts, Leaderboard), and admin APIs.
-*   **Pact:** A utility worker for internal testing or specific mini-apps.
-
-### 5. Assets & Data
-*   **`assets/js/`**: Modular ES6 JavaScript structure.
-*   **`json_schema.json`**: The schema definition for creating your own compatible question banks.
-
-### 6. Scripts (`/scripts/`)
-Maintenance and data processing tools:
-*   `generate_combined.js`: Merges chapter JSONs into combined sets.
-*   `update_answers_v2.py`: Batch updates question answers in JSON files.
-*   `update_tags_v2.py`: Standardizes tags across the question bank.
-*   `increment_version.sh`: Helper for versioning deployments.
+### Endpoints
+*   **Static**: Where your JSON files are hosted.
+*   **GenAI**: Your Cloudflare Worker for AI explanations.
+*   **Data**: Your Cloudflare Worker for tracking and leaderboards.
 
 ---
 
-## 📚 Documentation
+## 🛠️ Setup Utility
 
-*   **[Codebase Overview](docs/CODEBASE_OVERVIEW.md):** A high-level dictionary of all files and their purposes.
-*   **[Function Reference](docs/FUNCTION_REFERENCE.md):** Detailed breakdown of key functions in the Frontend and Backend logic.
+To avoid manual code editing, use the included `setup.py` script. This interactive tool will automatically update your `config.js` with:
+*   **Custom Branding**: Change the Platform Name.
+*   **API Integration**: Set your GenAI and Data tracking endpoints.
+
+**Usage:**
+```bash
+python3 setup.py
+```
 
 ---
 
-## ⚖️ License & Copyright
+## 🛠️ Tools & Scripts
 
-This platform logic is open-source under the **GNU Alfredo License**. 
+*   **`setup.py`**: Interactive CLI tool to configure your platform.
+*   **`scripts/generate_combined.js`**: Merges individual chapter files into combined sets for faster loading.
+*   **`editor/`**: A standalone tool included in this folder to create and edit your question JSONs.
 
-**Important:** This repository does NOT include any Question Bank data, JSON material, or PDF resources, as those are copyrighted materials. Users must provide their own data structures following the `json_schema.json` format.
+---
+
+## 📂 Directory Structure
+
+*   **`assets/js/`**: Core application logic.
+    *   `settings_manager.js`: **Central configuration hub.**
+*   **`json/`**: Place your question bank JSON files here.
+*   **`workers/`**: Cloudflare Worker source code.
+*   **`docs/`**: Detailed technical documentation.

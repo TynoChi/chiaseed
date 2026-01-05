@@ -1,4 +1,4 @@
-import { CONFIG } from '../config.js';
+import { activeConfig as CONFIG } from '../settings_manager.js';
 import { Utils } from '../utils.js';
 import { currentUserId } from '../auth.js';
 import { showModal } from '../modal.js';

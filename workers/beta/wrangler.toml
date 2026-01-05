@@ -13,5 +13,5 @@ database_name = "next-gen-db"
 database_id = "5b7b9020-70d3-4620-ac23-4d42fe53f7f3"
 
 [[routes]]
-pattern = "api-x-data.fayempire.com"
+pattern = "api-data.example.com"
 custom_domain = true

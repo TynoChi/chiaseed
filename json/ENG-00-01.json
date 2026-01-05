@@ -1,0 +1,60 @@
+{
+  "entries": [
+    {
+      "id": "ENG-001",
+      "chapter": "01",
+      "type": "mcq",
+      "question": "Choose the correct verb: They ______ to the park every Sunday.",
+      "options": [
+        "goes",
+        "go",
+        "going",
+        "gone"
+      ],
+      "answer": "B",
+      "explanation": "With plural subjects like 'They', we use the base form of the verb 'go'.",
+      "tags": ["Grammar", "Present Tense"]
+    },
+    {
+      "id": "ENG-002",
+      "chapter": "01",
+      "type": "nested",
+      "question": "Context: Vocabulary and Sentence Structure",
+      "subQuestions": [
+        {
+          "text": "Type the antonym of 'Large':",
+          "type": "text",
+          "correctAnswer": "small"
+        },
+        {
+          "text": "Complete: I am ______ (read) a book now.",
+          "type": "text",
+          "correctAnswer": "reading"
+        },
+        {
+          "text": "Select the correct pronoun: ______ is my friend.",
+          "type": "mcq",
+          "options": ["He", "Him", "His"],
+          "correctOption": 0
+        }
+      ],
+      "explanation": "1. 'Small' is the opposite of 'large'. 2. Present continuous requires verb+ing. 3. 'He' is the subject pronoun.",
+      "tags": ["Grammar", "Nested", "Vocabulary"]
+    },
+    {
+      "id": "ENG-003",
+      "chapter": "01",
+      "type": "mcq",
+      "question": "Which of these is a noun?",
+      "options": [
+        "Run",
+        "Beautiful",
+        "Table",
+        "Quickly"
+      ],
+      "answer": "C",
+      "explanation": "'Table' is a person, place, or thing.",
+      "tags": ["Grammar", "Parts of Speech"]
+    }
+  ]
+}

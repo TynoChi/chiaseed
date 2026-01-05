@@ -1,4 +1,4 @@
-import { CONFIG } from './config.js';
+import { activeConfig as CONFIG } from './settings_manager.js';
 import { Utils } from './utils.js';
 import { showModal, closeModal } from './modal.js';
 import { loggedInUser, showLoginModal } from './auth.js';
@@ -8,6 +8,7 @@ import { QuestionRenderer } from './ui/question_renderer.js';
 import { ResultRenderer } from './ui/result_renderer.js';
 import { AIHelper } from './ui/ai_helper.js';
 import { LeaderboardManager } from './ui/leaderboard.js';
+import { SettingsUI } from './ui/settings_ui.js';
 
 export class QuizUI {
     constructor() {
@@ -47,6 +48,7 @@ export class QuizUI {
         this.resultRenderer = new ResultRenderer(this);
         this.aiHelper = new AIHelper(this.engine);
         this.leaderboardManager = new LeaderboardManager(this);
+        this.settingsUI = new SettingsUI();
         
         // State
         this.chiaQuestions = [];
@@ -73,9 +75,10 @@ export class QuizUI {
 
     init() {
         this.setupTheme();
+        this.applyConfig();
         this.populateSubjects();
+        this.populateTagCategories();
         this.setupEventListeners();
-        this.checkDonation();
         
         window.QuizUI = { showModal, closeModal };
 
@@ -101,6 +104,30 @@ export class QuizUI {
         applyTheme(saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches));
         toggle.onclick = () => applyTheme(!document.documentElement.classList.contains('dark'));
     }
+
+    applyConfig() {
+        if (!CONFIG.platform) return;
+        
+        // Title
+        if (CONFIG.platform.name) {
+            document.title = CONFIG.platform.name;
+            const logoText = document.querySelector('.logo span');
+            if (logoText) logoText.textContent = CONFIG.platform.name;
+        }
+
+        // Logo
+        if (CONFIG.platform.logoUrl) {
+            const logoImg = document.querySelector('.logo img');
+            if (logoImg) logoImg.src = CONFIG.platform.logoUrl;
+        }
+
+        // Theme preference (if set in config and no local override)
+        if (CONFIG.platform.theme && !localStorage.getItem('theme')) {
+            const isDark = CONFIG.platform.theme === 'dark';
+            document.documentElement.classList.toggle('dark', isDark);
+        }
+    }
+
     populateSubjects() {
         this.els.inputs.subject.innerHTML = '';
         Object.entries(CONFIG.subjects).forEach(([code, data]) => {
@@ -109,23 +136,63 @@ export class QuizUI {
         });
         this.updateChapters();
     }
+    
+    populateTagCategories() {
+        const select = this.els.inputs.chiaCategory;
+        if (!select || !CONFIG.tags || !CONFIG.tags.categories) return;
+        select.innerHTML = '';
+        CONFIG.tags.categories.forEach(cat => {
+            const opt = document.createElement('option'); opt.value = cat.id; opt.textContent = cat.label;
+            select.appendChild(opt);
+        });
+    }
+
     updateChapters() {
         const subCode = this.els.inputs.subject.value;
         const data = CONFIG.subjects[subCode];
+        if (!data) return;
+
         const chapterLabel = document.querySelector('label[for="input-chapter"]');
         const setLabel = document.querySelector('label[for="input-set"]');
-        if (chapterLabel) chapterLabel.textContent = (data && data.labels && data.labels.chapter) ? data.labels.chapter : "Chapter";
-        if (setLabel) setLabel.textContent = (data && data.labels && data.labels.set) ? data.labels.set : "Set";
+        if (chapterLabel) chapterLabel.textContent = (data.labels && data.labels.chapter) ? data.labels.chapter : "Chapter";
+        if (setLabel) setLabel.textContent = (data.labels && data.labels.set) ? data.labels.set : "Set";
+        
+        // Populate Sets (Study Mode & DAM Source)
         const setSelect = this.els.inputs.set;
+        const damSourceSelect = document.getElementById('dam-chapter-source');
+        const damSetContainer = document.getElementById('dam-set-container');
+        
+        const sets = data.sets || [];
+        
         if (setSelect) {
             setSelect.innerHTML = '';
-            const sets = (data && data.sets) ? data.sets : [{ value: "00", text: "Question Bank (Standard)" },{ value: "10", text: "AI Generated (Set 01)" }];
             sets.forEach(s => {
                 const opt = document.createElement('option'); opt.value = s.value; opt.textContent = s.text;
                 setSelect.appendChild(opt);
             });
             if (sets.length > 0) setSelect.value = sets[0].value;
         }
+
+        if (damSourceSelect) {
+            damSourceSelect.innerHTML = '';
+            sets.forEach(s => {
+                const opt = document.createElement('option'); opt.value = s.value; opt.textContent = s.text;
+                damSourceSelect.appendChild(opt);
+            });
+        }
+
+        if (damSetContainer) {
+            damSetContainer.innerHTML = '';
+            sets.forEach((s, idx) => {
+                const label = document.createElement('label');
+                label.className = "checkbox-item";
+                label.style.marginBottom = "0";
+                label.style.width = "auto";
+                label.innerHTML = `<input type="checkbox" name="dam-set" value="${s.value}" ${idx === 0 ? 'checked' : ''}/> ${s.text}`;
+                damSetContainer.appendChild(label);
+            });
+        }
+
         this.populateChapterOptions();
     }
 
@@ -146,10 +213,14 @@ export class QuizUI {
         if (!data) return;
         
         let options = [];
-        if (subCode === 'ARF' && setCode === '02') {
-            options = ['A', 'B', 'C', 'D', 'E'].map(l => ({ value: l, text: `Set ${l}` }));
-        } else {
+        // Use configured chapter titles
+        if (data.chapterTitles) {
             options = data.chapterTitles.map((title, i) => ({ value: String(i+1).padStart(2, '0'), text: title }));
+        } else {
+             // Fallback if no titles defined
+             for(let i=1; i<=data.chapters; i++) {
+                 options.push({ value: String(i).padStart(2, '0'), text: `Chapter ${i}` });
+             }
         }
         
         options.forEach(optData => {
@@ -242,6 +313,7 @@ export class QuizUI {
 
         document.getElementById('btn-refresh-leaderboard').onclick = () => this.fetchAndRenderLeaderboard();
         document.getElementById('btn-cost').onclick = () => { showModal('modal-usage'); this.fetchAndShowUsage(); };
+        document.getElementById('btn-settings').onclick = () => this.settingsUI.open();
         document.getElementById('btn-start').onclick = () => this.startQuiz();
         this.els.quiz.btnPrev.onclick = () => this.engine.goToQuestion(this.engine.currentIndex - 1);
         this.els.quiz.btnNext.onclick = () => {
@@ -281,13 +353,70 @@ export class QuizUI {
         try {
             this.switchView('loading');
             loadingText.textContent = "Loading Questions...";
-            const [qbRes, aiRes, s2Res] = await Promise.allSettled([fetch('json/combined/combined-set-qb.json'),fetch('json/combined/combined-set-ai.json'),fetch('json/combined/combined-set-02.json')]);
-            let qbData = [], aiData = [], s2Data = [];
-            if (qbRes.status === 'fulfilled' && qbRes.value.ok) qbData = (await qbRes.value.json()).entries || [];
-            if (aiRes.status === 'fulfilled' && aiRes.value.ok) aiData = (await aiRes.value.json()).entries || [];
-            if (s2Res.status === 'fulfilled' && s2Res.value.ok) s2Data = (await s2Res.value.json()).entries || [];
-            this.chiaQuestions = [...qbData, ...aiData, ...s2Data];
-            if (this.chiaQuestions.length === 0) throw new Error("No questions could be loaded.");
+            
+            const combinedDir = CONFIG.platform.paths.combined || 'json/combined/';
+            const files = CONFIG.platform.paths.combinedFiles || [];
+            
+            this.chiaQuestions = [];
+            
+            // 1. Try Combined Files
+            if (files.length > 0) {
+                const results = await Promise.allSettled(files.map(f => fetch(combinedDir + f)));
+                for (const res of results) {
+                    if (res.status === 'fulfilled' && res.value.ok) {
+                        const data = await res.value.json();
+                        const entries = Array.isArray(data) ? data : (data.entries || []);
+                        this.chiaQuestions.push(...entries);
+                    }
+                }
+            }
+
+            // 2. Fallback: Load individual files defined in Subjects config
+            if (this.chiaQuestions.length === 0) {
+                console.log("No combined questions found, attempting to load individual subject files...");
+                const fetchPromises = [];
+                
+                Object.entries(CONFIG.subjects).forEach(([subCode, subData]) => {
+                    const sets = subData.sets || [{ value: '00' }];
+                    const numChapters = subData.chapters || 0;
+                    
+                    for (let ch = 1; ch <= numChapters; ch++) {
+                        const chStr = String(ch).padStart(2, '0');
+                        sets.forEach(set => {
+                            const filename = `${subCode}-${set.value}-${chStr}.json`;
+                            const path = (CONFIG.endpoints.static || 'json/') + (subData.pathPrefix || '') + filename;
+                            
+                            fetchPromises.push(
+                                fetch(path)
+                                    .then(res => res.ok ? res.json() : null)
+                                    .then(data => {
+                                        if (data) {
+                                            const entries = Array.isArray(data) ? data : (data.entries || []);
+                                            // Tag them if they don't have chapter tags
+                                            entries.forEach(e => {
+                                                if (!e.chapter) e.chapter = chStr;
+                                                if (!e.tags) e.tags = [];
+                                                const chTag = `C${chStr}_Generic`;
+                                                if (!e.tags.some(t => t.startsWith('C'))) e.tags.push(chTag);
+                                            });
+                                            return entries;
+                                        }
+                                        return [];
+                                    })
+                                    .catch(() => [])
+                            );
+                        });
+                    }
+                });
+
+                const results = await Promise.all(fetchPromises);
+                results.forEach(res => this.chiaQuestions.push(...res));
+            }
+
+            if (this.chiaQuestions.length === 0) {
+                 throw new Error("No question data found. Please ensure your JSON files are in the 'json/' folder or run 'node scripts/generate_combined.js'.");
+            }
+
             this.processTags(this.chiaQuestions);
             this.initChiaFilters();
             this.isChiaLoaded = true;
@@ -306,40 +435,64 @@ export class QuizUI {
     }
 
     processTags(questions) {
-        const dbPassion = {}, dbSyllabus = {};
-        const SYLLABUS_MAP = {
-            '#AREA1': ['Assurance_Concept', 'Three_Party_Relationship', 'Reasonable_vs_Limited', 'Expectations_Gap', 'Statutory_Audit_Exemptions', 'Engagement_Acceptance', 'Preconditions_FAIF', 'Engagement_Letter_FORARMS', 'Materiality_Calculation', 'Performance_Materiality', 'Double_Materiality_Concept', 'Professional_Scepticism', 'Professional_Judgement', 'Fraud_vs_Error'],
-            '#AREA2': ['Audit_Risk_Formula', 'Inherent_Risk', 'Control_Risk', 'Detection_Risk', 'Business_Risk_Impact', 'Control_Environment', 'Risk_Assessment_Process', 'Information_System', 'Monitoring_Controls', 'Existing_Control_Activities', 'Preventative_vs_Detective', 'Segregation_of_Duties', 'Revenue_System_Flow', 'Purchases_System_Flow', 'Payroll_System_Flow', 'Walkthrough_Procedures', 'IA_Function_Role', 'IA_vs_External_Audit', 'IA_Independence'],
-            '#AREA3': ['Reliability_Hierarchy', 'Assertions_PACC_CO', 'Assertions_CVP_RE', 'Analytical_Procedures', 'Audit_Data_Analytics_ADA', 'Enquiry', 'Inspection', 'Observation', 'recalcUlation_reperformance', 'Confirmation', 'Sampling_Risk', 'Statistical_vs_NonStatistical', 'MUS_Monetary_Unit_Sampling', 'Experienced_Auditor_Rule', 'Written_Representations_ISA580', 'Modified_Opinion', 'KAM_Key_Audit_Matters'],
-            '#AREA4': ['Principles_vs_Rules', 'BOCIP_Fundamental_Principles', 'Ethical_Threats', 'Self_Interest', 'Self_Review', 'Advocacy', 'Familiarity', 'Intimidation', 'Management_Threat', 'Ethical_Safeguards', 'Confidentiality_GDPR', 'Money_Laundering_POCA', 'MLRO_Tipping_Off', 'ISSB_Role_Aims', 'IFRS_S1_General', 'IFRS_S2_Climate', 'ISSA_5000_Standard'],
-            '#TECH_MODERN': ['Cyber_Data_Security', 'Automation_Bias', 'RPA_AI_Blockchain', 'Remote_Auditing_Techniques', 'Physical_vs_Transition_Risks', 'ESG_Assurance']
-        };
-        const PASSION_GROUPS = ['#ASSURANCE_CORE', '#SUSTAINABILITY', '#ENGAGEMENT_ACCEPT', '#RISK_PLANNING', '#MATERIALITY', '#AUDIT_RISK', '#EVIDENCE_PROCEDURES', '#ASSERTIONS', '#REPORTING', '#IC_COMPONENTS', '#IC_CONTROLS', '#IT_CONTROLS', '#AUDIT_CYCLES', '#INTERNAL_AUDIT', '#DOCUMENTATION', '#SAMPLING', '#REPRESENTATIONS', '#SUBSTANTIVE_ACCOUNTS', '#ETHICS_FUNDAMENTALS', '#ETHICAL_THREATS', '#INDEPENDENCE', '#CONFIDENTIALITY'];
+        if (!CONFIG.tags || !CONFIG.tags.definitions) return;
+        
+        // Initialize databases for each category defined in config
+        const databases = {};
+        Object.keys(CONFIG.tags.definitions).forEach(cat => {
+            databases[cat] = {};
+        });
+
         questions.forEach(q => {
             if (!q.tags || !Array.isArray(q.tags)) return;
             const chapters = q.tags.filter(t => /^C\d{2}_/.test(t));
-            const groupsOld = q.tags.filter(t => PASSION_GROUPS.includes(t));
-            const conceptsOld = q.tags.filter(t => !/^C\d{2}_/.test(t) && !t.startsWith('#'));
-            if (chapters.length > 0) {
-                chapters.forEach(chap => {
-                    if (!dbPassion[chap]) dbPassion[chap] = {};
-                    if (groupsOld.length > 0) {
-                        groupsOld.forEach(grp => {
-                            if (!dbPassion[chap][grp]) dbPassion[chap][grp] = new Set();
-                            conceptsOld.forEach(c => dbPassion[chap][grp].add(c));
-                        });
+            
+            Object.entries(CONFIG.tags.definitions).forEach(([catId, defs]) => {
+                // Check if this category logic requires chapters (like 'passion' did) or is direct mapping
+                // For now, we'll assume a generic structure: 
+                // If a tag matches a definition key (e.g. #AREA1), we look for sub-concepts
+                
+                Object.entries(defs).forEach(([groupTag, groupData]) => {
+                    const groupLabel = groupData.label || groupTag;
+                    const allowedConcepts = groupData.concepts || [];
+                    
+                    if (q.tags.includes(groupTag)) {
+                        if (chapters.length > 0 && catId === 'passion') { 
+                            // Special handling for 'passion' style (Group by Chapter -> Topic) if needed
+                            // But to be generic, we might want to just map Group -> Concepts
+                            // For backward compatibility with the 'passion' logic (Chapter -> Group -> Concepts):
+                            chapters.forEach(chap => {
+                                if (!databases[catId][chap]) databases[catId][chap] = {};
+                                if (!databases[catId][chap][groupTag]) databases[catId][chap][groupTag] = new Set();
+                                q.tags.forEach(t => { 
+                                     if (allowedConcepts.includes(t) || (!t.startsWith('#') && !/^C\d{2}_/.test(t))) {
+                                         // Heuristic: if it's not a special tag, add it
+                                         databases[catId][chap][groupTag].add(t); 
+                                     }
+                                });
+                            });
+                        } else {
+                            // Standard 'syllabus' style (Area -> Concepts)
+                            if (!databases[catId][groupTag]) databases[catId][groupTag] = {};
+                            // Use 'General' or just the concepts directly? 
+                            // The original UI expects: db[Chapter/Area][Group] -> Set(Concepts)
+                            // For Syllabus: db[Area]['General'] -> Set
+                            const subKey = 'General'; 
+                            if (!databases[catId][groupTag][subKey]) databases[catId][groupTag][subKey] = new Set();
+                            
+                            q.tags.forEach(t => { 
+                                if (allowedConcepts.includes(t)) databases[catId][groupTag][subKey].add(t); 
+                            });
+                        }
                     }
                 });
-            }
-            Object.entries(SYLLABUS_MAP).forEach(([area, allowedConcepts]) => {
-                if (q.tags.includes(area)) {
-                    if (!dbSyllabus[area]) dbSyllabus[area] = {};
-                    if (!dbSyllabus[area]['General']) dbSyllabus[area]['General'] = new Set();
-                    q.tags.forEach(t => { if (allowedConcepts.includes(t)) dbSyllabus[area]['General'].add(t); });
-                }
             });
         });
-        this.tagDatabase = { passion: this.sortDB(dbPassion), syllabus: this.sortDB(dbSyllabus) };
+        
+        this.tagDatabase = {};
+        Object.keys(databases).forEach(cat => {
+            this.tagDatabase[cat] = this.sortDB(databases[cat]);
+        });
     }
 
     sortDB(db) {
@@ -358,15 +511,26 @@ export class QuizUI {
         const primarySel = this.els.inputs.chiaChapter;
         const primaryLabel = this.els.inputs.chiaPrimaryLabel;
         const currentDB = this.tagDatabase[category] || {};
-        const areaLabels = { '#AREA1': 'Area 1: Concept, Process & Need', '#AREA2': 'Area 2: Risk, Controls & Info Flows', '#AREA3': 'Area 3: Evidence & Reporting', '#AREA4': 'Area 4: Ethics & Regulation', '#TECH_MODERN': 'Specialized: Tech & Modernization' };
-        if (primaryLabel) primaryLabel.textContent = category === 'syllabus' ? 'Syllabus Area' : 'Chapter';
+        
+        // Get labels from config
+        const labelsMap = {};
+        if (CONFIG.tags && CONFIG.tags.definitions && CONFIG.tags.definitions[category]) {
+             Object.entries(CONFIG.tags.definitions[category]).forEach(([key, val]) => {
+                 labelsMap[key] = val.label;
+             });
+        }
+
+        if (primaryLabel) primaryLabel.textContent = (category === 'syllabus') ? 'Syllabus Area' : 'Chapter';
+        
         primarySel.innerHTML = '<option value="">Select...</option>';
         const globalOpt = document.createElement('option');
-        globalOpt.value = "GLOBAL"; globalOpt.textContent = category === 'syllabus' ? "All Areas (Global)" : "All Chapters (Global)";
+        globalOpt.value = "GLOBAL"; globalOpt.textContent = (category === 'syllabus') ? "All Areas (Global)" : "All Chapters (Global)";
         primarySel.appendChild(globalOpt);
+        
         Object.keys(currentDB).forEach(key => {
             const opt = document.createElement('option'); opt.value = key;
-            opt.textContent = areaLabels[key] || key.replace(/_/g, ' ').replace('#', '');
+            // Use config label if available, else format the key
+            opt.textContent = labelsMap[key] || key.replace(/_/g, ' ').replace('#', '');
             primarySel.appendChild(opt);
         });
         this.onChiaChapterChange();
@@ -450,7 +614,7 @@ export class QuizUI {
             if (this.filteredChiaQuestions.length === 0) return alert("No questions selected.");
             this.switchView('loading');
             const questions = Utils.shuffle([...this.filteredChiaQuestions]);
-            this.engine.start(questions, questions.length * 1.5, this.els.inputs.malMode.checked, { subject: 'ARF', chapter: this.els.inputs.chiaChapter.value || 'CHIASEED', set: this.els.inputs.chiaCategory.value || 'Tags', platform: 'chiaseed' });
+            this.engine.start(questions, questions.length * 1.5, this.els.inputs.malMode.checked, { subject: 'CHIASEED', chapter: this.els.inputs.chiaChapter.value || 'CHIASEED', set: this.els.inputs.chiaCategory.value || 'Tags', platform: 'chiaseed' });
             return;
         }
         const damSettings = { type: this.els.inputs.damMode.value, count: parseInt(document.getElementById('input-dam-count').value), timePerQ: parseFloat(document.getElementById('input-dam-time').value), chapters: Array.from(document.querySelectorAll('#chapter-checkboxes input:checked')).map(c => c.value), sets: Array.from(document.querySelectorAll('input[name="dam-set"]:checked')).map(c => c.value) };
@@ -539,5 +703,4 @@ export class QuizUI {
             container.innerHTML = `<div style="background:var(--bg-body); padding:1.5rem; border-radius:1rem; border:1px solid var(--border); margin-bottom:1rem;"><div style="margin-bottom:1rem;"><span style="font-size:0.85rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">Total Cost (Approx)</span><div style="font-size:2.5rem; font-weight:800; color:var(--primary); line-height:1.2;">RM ${costMYR.toFixed(4)}</div><div style="font-size:0.9rem; color:var(--text-muted);">($${costUSD.toFixed(5)} USD)</div></div><div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; border-top:1px solid var(--border); padding-top:1rem; text-align:left;"><div><span style="display:block; font-size:0.75rem; color:var(--text-muted); font-weight:600;">Input Tokens</span><span style="font-size:1.1rem; font-weight:700; color:var(--text-main);">${(data.in_tokens || 0).toLocaleString()}</span></div><div><span style="display:block; font-size:0.75rem; color:var(--text-muted); font-weight:600;">Output Tokens</span><span style="font-size:1.1rem; font-weight:700; color:var(--text-main);">${(data.out_tokens || 0).toLocaleString()}</span></div></div></div><p style="font-size:0.8rem; color:var(--text-muted);">* Costs are estimated based on standard rates. MYR conversion rate approx 4.0.</p>`;
         } catch (e) { container.innerHTML = `<p style="color:var(--error)">Error loading usage: ${e.message}</p>`; }
     }
-    checkDonation() { if(!sessionStorage.getItem('donationSeen')) { setTimeout(()=>showModal('modal-donation'), 2000); sessionStorage.setItem('donationSeen','true'); } }
 }

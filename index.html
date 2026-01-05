@@ -23,6 +23,7 @@
 <div id="user-info"></div>
 <button class="btn-icon" id="btn-stats" title="View Statistics">📈</button>
 <button class="btn-icon" id="btn-cost" title="Check Usage">💰</button>
+<button class="btn-icon" id="btn-settings" title="Settings">⚙️</button>
 <button class="btn-icon" id="theme-toggle" title="Toggle Dark Mode">
 <svg class="hidden" fill="none" height="24" id="icon-sun" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
 <svg fill="none" height="24" id="icon-moon" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -36,7 +37,7 @@
 <div class="tabs" style="margin-bottom: 0;">
 <button class="tab-btn active" data-tab="study">Study Mode (Chapters)</button>
 <button class="tab-btn" data-tab="dam">Question Bank (DAM)</button>
-<button class="tab-btn" data-tab="chiaseed">ChiaSeed (Tags/Weakness)</button>
+<button class="tab-btn" data-tab="chiaseed">Tags/Weakness Mode</button>
 </div>
 </div>
 <div id="view-selector">
@@ -53,16 +54,12 @@
 
         <div id="options-study" class="sub-grid full-width">
             <div class="input-group">
-                <label>Chapter</label>
-                <select id="input-chapter"></select>
+                <label>Set</label>
+                <select id="input-set"></select>
             </div>
             <div class="input-group">
-                <label>Set</label>
-                <select id="input-set">
-                    <option value="00">Standard (00)</option>
-                    <option value="10">AI Set 1 (10)</option>
-                    <option value="02">Set 02 (02)</option>
-                </select>
+                <label>Chapter</label>
+                <select id="input-chapter"></select>
             </div>
         </div>
 
@@ -72,7 +69,7 @@
                 <select id="input-dam-mode">
                     <option value="qb_random">Random 50 (Standard Exam)</option>
                     <option value="ai_random">AI Questions (Random 50)</option>
-                    <option value="iz_mixed">Iz Mode (All Questions Shuffled)</option>
+                    <option value="iz_mixed">Mixed Mode (All Questions Shuffled)</option>
                     <option value="customise">Custom Selection</option>
                 </select>
             </div>
@@ -80,10 +77,7 @@
             <div class="hidden" id="dam-custom-settings" style="border-top: 1px solid var(--border); padding-top: 1rem;">
                 <div class="input-group mb-2">
                     <label>Chapter List Source</label>
-                    <select id="dam-chapter-source">
-                        <option value="00">Standard (00)</option>
-                        <option value="02">Set 02 (Independent)</option>
-                    </select>
+                    <select id="dam-chapter-source"></select>
                 </div>
                 <div class="flex justify-between items-center mb-2">
                     <label style="margin-bottom:0;">Select Chapters</label>
@@ -92,16 +86,8 @@
                 <div class="checkbox-grid mb-4" id="chapter-checkboxes"></div>
                 
                 <label>Select Sets</label>
-                <div class="flex gap-4 mb-4" style="flex-wrap: wrap;">
-                    <label class="checkbox-item" style="margin-bottom:0; width: auto;">
-                        <input checked="" name="dam-set" type="checkbox" value="00"/> Standard (00)
-                    </label>
-                    <label class="checkbox-item" style="margin-bottom:0; width: auto;">
-                        <input name="dam-set" type="checkbox" value="10"/> AI Set 1 (10)
-                    </label>
-                    <label class="checkbox-item" style="margin-bottom:0; width: auto;">
-                        <input name="dam-set" type="checkbox" value="02"/> Set 02 (02)
-                    </label>
+                <div class="flex gap-4 mb-4" style="flex-wrap: wrap;" id="dam-set-container">
+                    <!-- Checkboxes generated dynamically -->
                 </div>
                 
                 <div class="sub-grid">
@@ -120,10 +106,7 @@
         <div class="hidden full-width" id="options-chiaseed">
             <div class="input-group mb-4">
                 <label>Tag Set</label>
-                <select id="chia-category-select">
-                    <option value="passion">PassionFruit (By Chapter)</option>
-                    <option value="syllabus">PerSyllabus (By Area)</option>
-                </select>
+                <select id="chia-category-select"></select>
             </div>
 
             <div class="input-group mb-4">

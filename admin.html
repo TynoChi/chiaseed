@@ -241,8 +241,8 @@
                         <button class="source-btn" id="btn-view-tag">Tags</button>
                     </div>
                     <div class="source-toggle hidden" id="tag-set-toggle">
-                        <button class="source-btn active" id="btn-tag-passion">PassionFruit</button>
-                        <button class="source-btn" id="btn-tag-syllabus">PerSyllabus</button>
+                        <button class="source-btn active" id="btn-tag-passion">By Group</button>
+                        <button class="source-btn" id="btn-tag-syllabus">By Area</button>
                     </div>
                     <div class="source-toggle">
                         <button class="source-btn active" id="btn-source-qb">QB</button>
@@ -367,11 +367,11 @@
         // STRICT TAG DEFINITIONS
         const TAG_SETS = {
             syllabus: {
-                areas: ['#AREA1', '#AREA2', '#AREA3', '#AREA4', '#TECH_MODERN'],
+                areas: ['#AREA1', '#AREA2', '#AREA3'], // Example Areas
                 concepts: [] 
             },
             passion: {
-                groups: ['#ASSURANCE_CORE', '#SUSTAINABILITY', '#ENGAGEMENT_ACCEPT', '#RISK_PLANNING', '#MATERIALITY', '#AUDIT_RISK', '#EVIDENCE_PROCEDURES', '#ASSERTIONS', '#REPORTING', '#IC_COMPONENTS', '#IC_CONTROLS', '#IT_CONTROLS', '#AUDIT_CYCLES', '#INTERNAL_AUDIT', '#DOCUMENTATION', '#SAMPLING', '#REPRESENTATIONS', '#SUBSTANTIVE_ACCOUNTS', '#ETHICS_FUNDAMENTALS', '#ETHICAL_THREATS', '#INDEPENDENCE', '#CONFIDENTIALITY']
+                groups: ['#TOPIC_A', '#TOPIC_B', '#TOPIC_C'] // Example Groups
             }
         };
 
@@ -547,30 +547,22 @@
 
         async function fetchQuestionStructure() {
             try {
-                // Load Standard, AI, and Independent Sets
-                const [qbRes, aiRes, s2Res] = await Promise.allSettled([
-                    fetch('json/combined/combined-set-qb.json'),
-                    fetch('json/combined/combined-set-ai.json'),
-                    fetch('json/combined/combined-set-02.json')
-                ]);
+                const combinedDir = CONFIG.platform.paths.combined || 'json/combined/';
+                const files = CONFIG.platform.paths.combinedFiles || [];
+                
+                const results = await Promise.allSettled(files.map(f => fetch(combinedDir + f)));
 
-                const processData = async (res, source) => {
+                for (const res of results) {
                     if (res.status === 'fulfilled' && res.value.ok) {
                         const data = await res.value.json();
                         (data.entries || []).forEach(q => {
-                            if (!q.source) q.source = source; 
                             if (!state.allQuestions[q.chapter]) state.allQuestions[q.chapter] = [];
                             if (!state.allQuestions[q.chapter].find(ex => ex.id === q.id)) {
                                 state.allQuestions[q.chapter].push(q);
                             }
                         });
                     }
-                };
-
-                await processData(qbRes, 'QB');
-                await processData(aiRes, 'AI');
-                await processData(s2Res, 'Set 02');
-
+                }
             } catch (e) {
                 console.error("Error fetching question structure", e);
                 document.getElementById('chapters-container').innerHTML = `<p style="color:var(--error)">Warning: Partial data load.</p>`;
@@ -773,7 +765,7 @@
             }
 
             const grouped = {};
-            const areaLabels = { '#AREA1': 'Area 1: Concept, Process & Need', '#AREA2': 'Area 2: Risk, Controls & Info Flows', '#AREA3': 'Area 3: Evidence & Reporting', '#AREA4': 'Area 4: Ethics & Regulation', '#TECH_MODERN': 'Specialized: Tech & Modernization' };
+            const areaLabels = { '#AREA1': 'Area 1: Concept, Process & Need', '#AREA2': 'Area 2: Risk, Controls & Info Flows', '#AREA3': 'Area 3: Evidence & Reporting' };
             
             filteredQs.forEach(q => {
                 if (state.groupMode === 'tag') {

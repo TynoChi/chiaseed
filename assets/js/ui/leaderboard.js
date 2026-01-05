@@ -1,4 +1,4 @@
-import { CONFIG } from '../config.js';
+import { activeConfig as CONFIG } from '../settings_manager.js';
 import { getCookie } from '../utils.js';
 
 export class LeaderboardManager {
@@ -20,66 +20,39 @@ export class LeaderboardManager {
         });
 
         try {
-            const res = await fetch(CONFIG.endpoints.data + '/leaderboard', { credentials: 'include' });
+            const res = await fetch(CONFIG.endpoints.data + '/v2/leaderboard', { credentials: 'include' });
             if (!res.ok) throw new Error("Failed to load");
             const rawData = await res.json();
             console.log('Leaderboard data fetched:', rawData);
             
-            // Aggregate Data by User Name & Calculate Personal Stats
-            const aggregated = {};
             const currentUser = getCookie("cf_user"); 
 
-            rawData.forEach(entry => {
-                const name = entry.Name || entry.name || "Anonymous";
-                
-                if (!aggregated[name]) {
-                    aggregated[name] = {
-                        Name: name,
-                        Profilepictureurl: entry.Profilepictureurl || entry.profilepictureurl,
-                        Correctcount: 0,
-                        Totalquestions: 0,
-                        TimetakenMs: 0,
-                        Attempts: 0
-                    };
-                }
-                
-                // Accumulate Counts
-                aggregated[name].Correctcount += (parseInt(entry.Correctcount || entry.correctcount) || 0);
-                aggregated[name].Totalquestions += (parseInt(entry.Totalquestions || entry.totalquestions) || 0);
-                aggregated[name].Attempts += 1;
-                
-                // Robust Time Parsing
-                let seconds = 0;
-                // Try various keys for time
-                const timeStr = entry.Timetaken || entry.TimeTaken || entry.time_taken || entry.timetaken;
-                const timeMs = entry.TimetakenMs || entry.Timetaken_ms || entry.Time_taken_ms || entry.time_taken_ms;
+            if (!rawData || rawData.length === 0) {
+                 tbody.innerHTML = '<tr><td colspan="5" class="text-center p-4">No data available yet. Be the first!</td></tr>';
+                 return;
+            }
 
-                if (timeMs !== undefined && timeMs !== null && !isNaN(timeMs) && Number(timeMs) > 0) {
-                    seconds = Number(timeMs) / 1000;
-                } else if (typeof timeStr === 'string' && timeStr.includes(':')) {
-                    const parts = timeStr.split(':').map(p => parseFloat(p));
-                    if (parts.length === 3) seconds = parts[0] * 3600 + parts[1] * 60 + parts[2]; // HH:MM:SS
-                    else if (parts.length === 2) seconds = parts[0] * 60 + parts[1]; // MM:SS
-                }
-                
-                aggregated[name].TimetakenMs += (seconds * 1000);
-            });
+            // Map V2 Data Structure to internal format for rendering
+            const data = rawData.map(entry => ({
+                Name: entry.name || "Anonymous",
+                Profilepictureurl: `https://robohash.org/${encodeURIComponent(entry.name || 'User')}?set=set4&bg=bg1&size=60x60`,
+                Correctcount: entry.total_correct,
+                Totalquestions: entry.total_attempted,
+                TimetakenMs: entry.total_time_ms,
+                Accuracy: entry.average_accuracy
+            }));
 
-            // Convert back to array
-            const data = Object.values(aggregated);
-
-            // Sort by Correctcount desc (Cumulative Score)
-            data.sort((a, b) => b.Correctcount - a.Correctcount);
-            
             // Update Personal Statistics
-            if (currentUser && aggregated[currentUser]) {
-                const userStats = aggregated[currentUser];
-                const acc = userStats.Totalquestions > 0 ? ((userStats.Correctcount / userStats.Totalquestions) * 100).toFixed(1) : 0;
-                
-                document.getElementById('stat-attempts').textContent = userStats.Attempts;
+            const userStats = data.find(d => d.Name === currentUser);
+            if (userStats) {
+                const acc = userStats.Accuracy !== undefined ? Math.round(userStats.Accuracy) + '%' : '-';
+                // Note: 'Attempts' metric is not strictly in V2 leaderboard summary (it aggregates sessions), 
+                // but we can show Total Questions or fetch user specific stats if needed. 
+                // For now, using Total Questions as proxy for "volume of work".
+                document.getElementById('stat-attempts').textContent = userStats.Totalquestions; 
                 document.getElementById('stat-total-questions').textContent = userStats.Totalquestions;
                 document.getElementById('stat-correct-answers').textContent = userStats.Correctcount;
-                document.getElementById('stat-accuracy').textContent = acc + '%';
+                document.getElementById('stat-accuracy').textContent = acc;
             } else {
                  // Reset if no data found for user
                 document.getElementById('stat-attempts').textContent = '0';
@@ -94,10 +67,6 @@ export class LeaderboardManager {
             this.updatePodium('third', data[2]);
 
             tbody.innerHTML = '';
-            if (data.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" class="text-center p-4">No records yet. Be the first!</td></tr>';
-                return;
-            }
 
             for(let i = 0; i < data.length; i++) {
                     const row = data[i];
@@ -137,7 +106,7 @@ export class LeaderboardManager {
                         </td>
                         <td style="font-weight:bold;color:var(--primary)">${row.Correctcount}</td>
                         <td>${timeStr}</td>
-                        <td>${row.Totalquestions > 0 ? Math.round((row.Correctcount/row.Totalquestions)*100) + '%' : '-'}</td>
+                        <td>${row.Accuracy !== undefined ? Math.round(row.Accuracy) + '%' : '-'}</td>
                     `;
                     tbody.appendChild(tr);
                 }
@@ -158,14 +127,17 @@ export class LeaderboardManager {
         container.innerHTML = '<div class="spinner"></div>';
 
         try {
-            // 1. Fetch Question Structure (Combined JSON)
-            let questionData = window.DAM_CACHE ? window.DAM_CACHE['combined-set-1.json'] : null;
+            const combinedDir = CONFIG.platform.paths.combined || 'json/combined/';
+            const firstFile = (CONFIG.platform.paths.combinedFiles && CONFIG.platform.paths.combinedFiles.length > 0) ? CONFIG.platform.paths.combinedFiles[0] : 'combined-set-qb.json';
+
+            // 1. Fetch Question Structure (Primary Combined JSON)
+            let questionData = window.DAM_CACHE ? window.DAM_CACHE[firstFile] : null;
             if (!questionData) {
-                 const qRes = await fetch('json/combined/combined-set-1.json');
+                 const qRes = await fetch(combinedDir + firstFile);
                  if (qRes.ok) {
                      questionData = await qRes.json();
                      if (!window.DAM_CACHE) window.DAM_CACHE = {};
-                     window.DAM_CACHE['combined-set-1.json'] = questionData;
+                     window.DAM_CACHE[firstFile] = questionData;
                  }
             }
             if (!questionData || !questionData.entries) throw new Error("Question data unavailable");
@@ -281,15 +253,18 @@ export class LeaderboardManager {
                 return;
             }
 
+            const combinedDir = CONFIG.platform.paths.combined || 'json/combined/';
+            const firstFile = (CONFIG.platform.paths.combinedFiles && CONFIG.platform.paths.combinedFiles.length > 0) ? CONFIG.platform.paths.combinedFiles[0] : 'combined-set-qb.json';
+
             // 2. Fetch Questions
             // Accessing DAM_CACHE via window for simplicity as it was global
-            let questionData = window.DAM_CACHE ? window.DAM_CACHE['combined-set-1.json'] : null;
+            let questionData = window.DAM_CACHE ? window.DAM_CACHE[firstFile] : null;
             if (!questionData) {
-                 const qRes = await fetch('json/combined/combined-set-1.json');
+                 const qRes = await fetch(combinedDir + firstFile);
                  if (qRes.ok) {
                      questionData = await qRes.json();
                      if (!window.DAM_CACHE) window.DAM_CACHE = {};
-                     window.DAM_CACHE['combined-set-1.json'] = questionData;
+                     window.DAM_CACHE[firstFile] = questionData;
                  }
             }
             

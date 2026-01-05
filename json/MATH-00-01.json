@@ -1,0 +1,74 @@
+{
+  "entries": [
+    {
+      "id": "MATH-001",
+      "chapter": "01",
+      "question": "Solve for x: x^2 - 5x + 6 = 0",
+      "options": [
+        "x = 2, x = 3",
+        "x = -2, x = -3",
+        "x = 1, x = 6",
+        "x = -1, x = -6"
+      ],
+      "answer": "A",
+      "explanation": "Factor the quadratic equation: (x-2)(x-3) = 0. Therefore, x = 2 or x = 3.",
+      "tags": ["Quadratic", "Algebra"]
+    },
+    {
+      "id": "MATH-002",
+      "chapter": "01",
+      "question": "What is the value of log_2(32)?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "answer": "C",
+      "explanation": "2^5 = 32, so log_2(32) = 5.",
+      "tags": ["Logarithm", "Algebra"]
+    },
+    {
+      "id": "MATH-003",
+      "chapter": "01",
+      "question": "If log_10(x) = 2, what is x?",
+      "options": [
+        "20",
+        "100",
+        "200",
+        "1000"
+      ],
+      "answer": "B",
+      "explanation": "The base is 10. So x = 10^2 = 100.",
+      "tags": ["Logarithm", "Algebra"]
+    },
+    {
+      "id": "MATH-004",
+      "chapter": "01",
+      "question": "Find the roots of the equation 2x^2 - 4x - 6 = 0.",
+      "options": [
+        "x = 1, x = -3",
+        "x = -1, x = 3",
+        "x = 2, x = -2",
+        "x = 0, x = 2"
+      ],
+      "answer": "B",
+      "explanation": "Divide by 2: x^2 - 2x - 3 = 0. Factor: (x-3)(x+1) = 0. So x = 3 or x = -1.",
+      "tags": ["Quadratic", "Algebra"]
+    },
+    {
+      "id": "MATH-005",
+      "chapter": "01",
+      "question": "Simplify log(a) + log(b) - log(c).",
+      "options": [
+        "log(abc)",
+        "log((a+b)/c)",
+        "log(ab/c)",
+        "log(a/bc)"
+      ],
+      "answer": "C",
+      "explanation": "Using logarithm rules: log(a) + log(b) = log(ab) and log(ab) - log(c) = log(ab/c).",
+      "tags": ["Logarithm", "Algebra"]
+    }
+  ]
+}

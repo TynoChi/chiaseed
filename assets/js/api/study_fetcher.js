@@ -1,3 +1,4 @@
+import { activeConfig as CONFIG } from '../settings_manager.js';
 import { CACHE } from './cache.js';
 import { fetchWithFallback, normalizeQuestions } from './common.js';
 
@@ -7,9 +8,10 @@ export async function fetchStudyQuiz(params) {
 
     const isUnseen = subject.endsWith('-UQB');
     const baseSubjectCode = isUnseen ? subject.replace('-UQB', '') : subject;
+    const subjectDef = CONFIG.subjects[baseSubjectCode];
 
-    // For ARF standard sets (00 and 10), use combined JSON
-    if (baseSubjectCode === 'ARF' && !isUnseen && (set === '00' || set === '10')) {
+    // Use combined JSON if configured for standard sets (00 and 10)
+    if (subjectDef && subjectDef.useCombined && !isUnseen && (set === '00' || set === '10')) {
         const combinedFilename = set === '00' ? 'combined-set-qb.json' : 'combined-set-ai.json';
         try {
             let allData = CACHE[combinedFilename];
@@ -42,8 +44,8 @@ export async function fetchStudyQuiz(params) {
     const fileSuffix = isUnseen ? '10' : '00'; 
     const finalSet = set === '00' ? fileSuffix : set;
     let filename = `${baseSubjectCode}-${finalSet}-${chapter}.json`;
-    if (baseSubjectCode === 'ARF' && !isUnseen) {
-        filename = `new/${filename}`;
+    if (subjectDef && subjectDef.pathPrefix && !isUnseen) {
+        filename = `${subjectDef.pathPrefix}${filename}`;
     }
     const data = await fetchWithFallback(filename, isUnseen);
     const questionsArray = Array.isArray(data) ? data : (data.entries || []);
