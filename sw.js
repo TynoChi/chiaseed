@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiz-app-v2.3.4';
+const CACHE_NAME = 'quiz-app-v2.3.5';
 const ASSETS = [
   './',
   './index.html',
@@ -25,26 +25,34 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
+  const url = new URL(event.request.url);
+
+  // Skip caching for API requests and non-GET methods
+  if (url.hostname.includes('fayempire.com') || event.request.method !== 'GET') {
+    return; // Let the browser handle these normally
+  }
+
   event.respondWith(
-    fetch(event.request)
-      .then(response => {
-        // Check if we received a valid response
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
-        }
-
-        // Clone the response
-        const responseToCache = response.clone();
-
-        caches.open(CACHE_NAME)
-          .then(cache => {
-            cache.put(event.request, responseToCache);
+    caches.match(event.request)
+      .then(cachedResponse => {
+        const fetchPromise = fetch(event.request)
+          .then(networkResponse => {
+            // Update cache with new version if it's a valid internal request
+            if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
+              const responseToCache = networkResponse.clone();
+              caches.open(CACHE_NAME).then(cache => {
+                cache.put(event.request, responseToCache);
+              });
+            }
+            return networkResponse;
+          })
+          .catch(err => {
+            console.error('Fetch failed:', err);
+            return cachedResponse; // Fallback to cache on error
           });
 
-        return response;
-      })
-      .catch(() => {
-        return caches.match(event.request);
+        // Return cached version immediately if available, otherwise wait for network
+        return cachedResponse || fetchPromise;
       })
   );
 });

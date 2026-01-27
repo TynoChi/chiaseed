@@ -4,3 +4,5 @@ update.pdf
 bump_version.bat
 workers/pact/
 pact.html
+dist/
+*.log

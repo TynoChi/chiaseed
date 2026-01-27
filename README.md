@@ -1,64 +1,63 @@
-# Chiaseed Quiz Platform v1.1.0
+# Chiaseed Quiz Platform v1.1.2
 
-A lightweight, customizable, and open-source quiz platform designed for accountancy exams and similar question-bank-based learning.
+A modern, lightweight, and customizable open-source quiz platform designed for accountancy exams and similar question-bank-based learning.
 
-## 🚀 Quick Start
+## 🚀 Features
 
-1.  **Run the Setup Utility:**
-    ```bash
-    python3 setup.py
-    ```
-    This will help you configure your Platform Name and API endpoints without manually editing code.
+- **Modern Tech Stack**: Powered by **Vite** and **Tailwind CSS v4** for high performance and modern styling.
+- **Dynamic Logic**: Selection-first flow (Set -> Chapter) with dynamic content loading.
+- **Multiple Practice Modes**:
+  - **Study Mode**: Target specific chapters.
+  - **Question Bank (DAM)**: Standardized random exam practice.
+  - **Tags/Weakness Mode**: Focus on specific semantic topics and concepts.
+- **AI Integration**: Support for AI-generated explanations via Cloudflare Workers.
+- **Analytics**: Integrated leaderboard and personal progress tracking.
 
-2.  **Serve the application:**
-    *   **Using Python:** `python3 -m http.server 8080`
-    *   **Using Node.js:** `npx http-server .`
+## 🛠️ Quick Start
 
-3.  **Open in Browser:** Navigate to `http://localhost:8080`.
+### 1. Prerequisites
+- **Node.js**: v20 or higher
+- **npm**: v10 or higher
 
----
-
-## 📖 Configuration
-
-The platform is settings-driven. While defaults are in `assets/js/config.js`, users can override them via the in-app Settings UI.
-
-### Selection Flow (v1.1.0)
-The selection logic has been optimized for user flow:
-1.  **Select Set**: Choose between Question Bank, AI, or custom sets.
-2.  **Select Chapter**: The chapter list dynamically updates based on the selected set.
-
-### Endpoints
-*   **Static**: Where your JSON files are hosted.
-*   **GenAI**: Your Cloudflare Worker for AI explanations.
-*   **Data**: Your Cloudflare Worker for tracking and leaderboards.
-
----
-
-## 🛠️ Setup Utility
-
-To avoid manual code editing, use the included `setup.py` script. This interactive tool will automatically update your `config.js` with:
-*   **Custom Branding**: Change the Platform Name.
-*   **API Integration**: Set your GenAI and Data tracking endpoints.
-
-**Usage:**
+### 2. Installation
 ```bash
-python3 setup.py
+npm install
 ```
 
+### 3. Development
+```bash
+./run.sh
+# OR
+npm run dev
+```
+Open `http://localhost:8080` to view the platform.
+
+### 4. Build for Production
+```bash
+npm run build
+```
+The optimized files will be generated in the `dist/` directory.
+
+## 📂 Project Structure
+
+- **`assets/js/`**: Core ESM modules for the application.
+  - `config.js`: Default configuration and subject data.
+  - `settings_manager.js`: **Central hub** for active configuration.
+- **`json/`**: Question bank JSON files (managed via individual and combined sets).
+- **`workers/`**: Cloudflare Workers for AI (`alpha`) and Data persistence (`beta`).
+- **`editor/`**: Integrated tool for creating and editing question JSONs.
+
+## ☁️ Deployment
+
+### Cloudflare Pages (Frontend)
+1. Connect your repository to Cloudflare Pages.
+2. Set Build Command: `npm run build`
+3. Set Build Output: `dist`
+
+### Cloudflare Workers (Backend)
+1. Deploy `alpha` and `beta` workers using `wrangler`.
+2. Configure `OPENROUTER_API_KEY` as a secret for the `alpha` worker.
+3. Initialize the Cloudflare D1 database for the `beta` worker using the provided SQL schemas.
+
 ---
-
-## 🛠️ Tools & Scripts
-
-*   **`setup.py`**: Interactive CLI tool to configure your platform.
-*   **`scripts/generate_combined.js`**: Merges individual chapter files into combined sets for faster loading.
-*   **`editor/`**: A standalone tool included in this folder to create and edit your question JSONs.
-
----
-
-## 📂 Directory Structure
-
-*   **`assets/js/`**: Core application logic.
-    *   `settings_manager.js`: **Central configuration hub.**
-*   **`json/`**: Place your question bank JSON files here.
-*   **`workers/`**: Cloudflare Worker source code.
-*   **`docs/`**: Detailed technical documentation.
+Developed by Tyno Chi & code002xcode016.

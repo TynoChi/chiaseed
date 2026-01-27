@@ -11,6 +11,74 @@ export const CONFIG = {
             json: "json/", // Base directory for JSON files
             combined: "json/combined/", // Directory for combined sets
             combinedFiles: []
+        },
+        // Admin Dashboard Configuration
+        admin: {
+            views: [
+                { 
+                    id: 'individual', 
+                    label: 'Students', 
+                    icon: '👤', 
+                    tabId: 'tab-individual', 
+                    containerId: 'progress-view',
+                    title: 'Welcome, Admin',
+                    subtitle: 'Select a student or view the global heatmap to begin analysis.',
+                    searchPlaceholder: 'Search accounts...'
+                },
+                { 
+                    id: 'overall', 
+                    label: 'Heatmap', 
+                    icon: '🌍', 
+                    tabId: 'tab-overall', 
+                    containerId: 'progress-view',
+                    title: 'Global Performance Heatmap',
+                    subtitle: 'Aggregated accuracy distribution for all students.'
+                },
+                { 
+                    id: 'weakness', 
+                    label: 'Weakness', 
+                    icon: '📉', 
+                    tabId: 'tab-weakness', 
+                    containerId: 'weakness-view',
+                    title: 'Systemic Weakness Analysis',
+                    subtitle: 'Identifying common pitfalls across the entire student population.'
+                },
+                { 
+                    id: 'leaderboard', 
+                    label: 'Rank', 
+                    icon: '🏆', 
+                    tabId: 'tab-leaderboard', 
+                    containerId: 'leaderboard-view',
+                    title: 'Leaderboard',
+                    subtitle: 'Ranking based on correct answers and total accuracy.',
+                    searchPlaceholder: 'Search students...'
+                },
+                { 
+                    id: 'genai', 
+                    label: 'GenAI', 
+                    icon: '🤖', 
+                    tabId: 'tab-genai', 
+                    containerId: 'genai-view',
+                    title: 'GenAI Performance Audit',
+                    subtitle: 'Monitoring token consumption and AI generation reliability.'
+                },
+                { 
+                    id: 'visualizer', 
+                    label: 'Visualizer', 
+                    icon: '📊', 
+                    tabId: 'tab-visualizer', 
+                    containerId: 'visualizer-view',
+                    title: 'Visualizer',
+                    subtitle: 'Time-series data and distribution metrics.'
+                }
+            ],
+            sources: [
+                { id: 'QB', label: 'QB', file: 'combined-set-qb.json', btnId: 'btn-source-qb' },
+                { id: 'Old Syllabus', label: 'S11', file: 'combined-set-11.json', btnId: 'btn-source-s11' },
+                { id: 'Set 12', label: 'S12', file: 'combined-set-12.json', btnId: 'btn-source-s12' },
+                { id: 'Set 02', label: 'S02', file: 'combined-set-02.json', btnId: 'btn-source-s2' },
+                { id: 'ALL', label: 'All', file: null, btnId: 'btn-source-all' }
+            ]
         }
     },
 
@@ -47,7 +115,8 @@ export const CONFIG = {
     tags: {
         categories: [
             { id: "passion", label: "Group By Topic" },
-            { id: "syllabus", label: "Group By Area" }
+            { id: "syllabus", label: "Group By Area" },
+            { id: "clusters", label: "AI Clusters" }
         ],
         // Database of tags mapping to specific concepts
         definitions: {
